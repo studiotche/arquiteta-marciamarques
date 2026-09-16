@@ -21,7 +21,7 @@ export const site = {
     "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
   googleRating: {
     score: "5,0",
-    reviews: 14,
+    reviews: 25,
   },
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=-29.5774779,-51.086554&z=17&hl=pt-BR&output=embed",
@@ -30,7 +30,7 @@ export const site = {
   seo: {
     title: "Nutricionista em Dois Irmãos | Nádia Richter · Emagrecimento, Hipertrofia e Modulação Intestinal",
     description:
-      "Nádia Richter, nutricionista clínica em Dois Irmãos/RS (CRN-2 13230D). Mais de 10 anos de experiência em emagrecimento saudável, hipertrofia e modulação intestinal. Atendimento presencial e online.",
+      "Nádia Richter, nutricionista clínica em Dois Irmãos/RS (CRN-2 13230D). Mais de 12 anos de experiência em emagrecimento saudável, hipertrofia e modulação intestinal. Atendimento presencial e online.",
     url: "https://studiotche.github.io/nutricionista-nadiarichter/",
     ogImage: "/assets/images/nutricionista-nadia-richter.webp",
   },
@@ -44,19 +44,19 @@ export const site = {
   },
   about: {
     eyebrow: "Olá, eu sou a Nádia Richter!",
-    title: "Mais de 10 anos transformando vidas pela nutrição e gastronomia",
-    titleHighlight: "nutrição e gastronomia",
+    title: "Mais de 12 anos transformando vidas pela nutrição clínica e esportiva",
+    titleHighlight: "nutrição clínica e esportiva",
     paragraphs: [
-      "Acredito que o verdadeiro resultado nasce de uma estratégia alimentar possível de ser mantida na vida real, respeitando sua rotina, suas preferências e sua saúde.",
-      "Com mais de uma década de prática clínica e especializações em Gastronomia Aplicada, Emagrecimento, Hipertrofia e Modulação Intestinal, meu foco é aliar o rigor científico ao prazer da boa mesa.",
-      "Seja para emagrecer com saúde, ganhar massa muscular ou restaurar seu equilíbrio digestivo, construímos juntos um plano alimentar saboroso, eficiente e sustentável a longo prazo.",
+      "Oi, eu sou a Nádia Richter Faber! Nutricionista clínica e esportiva apaixonada por ajudar você a construir uma relação leve, saudável e prazerosa com a comida — sem culpa, extremos ou dietas restritivas.",
+      "Com mais de 12 anos de atuação prática e especializações em Emagrecimento, Hipertrofia, Gastronomia Aplicada e Modulação Intestinal, acredito que a nutrição deve ser simples, sustentável e viável na vida real.",
+      "Seja para restaurar sua saúde intestinal (SII, constipação, estufamento), alcançar seus objetivos de emagrecimento e ganho de massa, ou simplesmente viver com mais disposição e energia, guio você com estratégias baseadas em evidências científicas e personalizadas para a sua rotina.",
     ],
   },
   assets: {
     logo: "/assets/images/logo-nutricionista-nadia-richter.webp",
     hero: "/assets/images/nutricionista-nadia-richter.webp",
     heroMobile: "/assets/images/nutricionista-nadia-richter-m.webp",
-    about: "/assets/images/nutricionista-nadia-richter-m.webp",
+    about: "/assets/images/sobre-nutricionista-nadia-richter.webp",
     processBg: "/assets/images/nutricionista-fundo-sessao-agende.webp",
     consultorio: "/assets/images/nutricionista-nadia-richter-clinica.webp",
     consultorioFachada: "/assets/images/nutricionista-dois-irmaos-nadia-richter-clinica.webp",
@@ -177,40 +177,40 @@ export const locations = [
 
 export const faqs = [
   [
+    "Qual é a melhor dieta para quem quer emagrecer?",
+    "Aquela que combina com o seu estilo e ritmo de vida. Para que dê certo e gere resultados consistentes, o plano alimentar precisa ter a ver com a sua rotina, respeitar o seu paladar e suas preferências, sem radicalismos ou restrições insustentáveis.",
+  ],
+  [
+    "Existe um método para uma perda de peso duradoura?",
+    "Sim! Aquele com foco em reeducação alimentar genuína: porções na medida certa (nem de mais, nem de menos), comida de verdade e acompanhamento individualizado que ensina você a ter autonomia alimentar para a vida inteira.",
+  ],
+  [
+    "Dá para emagrecer ou definir sem cortar o carboidrato?",
+    "Com certeza! Os carboidratos são fontes primordiais de energia e disposição física. O segredo está em ajustar a quantidade ideal para o seu gasto energético, priorizar opções ricas em fibras e nutrientes e distribuir de maneira estratégica ao longo do seu dia.",
+  ],
+  [
+    "Como funciona o tratamento para saúde e modulação intestinal?",
+    "É um protocolo personalizado para pacientes com diagnóstico de Síndrome do Intestino Irritável (SII), constipação, estufamento, gases ou distensão abdominal. Investigamos os gatilhos alimentares, recuperamos a barreira intestinal e restauramos o equilíbrio da microbiota.",
+  ],
+  [
     "Onde acontecem as consultas presenciais?",
     "Os atendimentos presenciais acontecem na Débora Blume Clinic, situada na Av. 25 de Julho, 1201, Térreo, Bairro União / Centro, Dois Irmãos/RS, CEP 93950-000.",
   ],
   [
     "Vocês atendem online?",
-    "Sim! Além do atendimento presencial em Dois Irmãos, realizo acompanhamento nutricional online para pacientes de todo o Brasil e exterior, com a mesma dedicação e suporte.",
+    "Sim! Além do atendimento presencial em Dois Irmãos, realizo acompanhamento nutricional online para pacientes de todo o Brasil e exterior, com a mesma qualidade clínica e suporte contínuo.",
   ],
   [
-    "Como faço para agendar?",
-    `Clique em qualquer botão de agendamento do site para conversar diretamente pelo WhatsApp ${site.phoneDisplay}. O atendimento é particular e com horários flexíveis.`,
+    "Como faço para agendar uma consulta?",
+    `Basta clicar em qualquer botão de agendamento do site para conversar diretamente comigo pelo WhatsApp ${site.phoneDisplay}. O atendimento é particular e com horários flexíveis para acomodar sua rotina.`,
   ],
   [
     "Atende convênio?",
-    "Não. O atendimento é exclusivamente particular para garantir uma consulta aprofundada, sem pressa e com planejamento verdadeiramente individualizado.",
-  ],
-  [
-    "Quais as formas de pagamento?",
-    "Pagamentos via PIX, dinheiro e cartões de débito/crédito.",
-  ],
-  [
-    "O acompanhamento é personalizado?",
-    "Sim, 100%. Cada plano alimentar é único e formulado respeitando seus exames, hábitos, gostos gastronômicos, histórico de saúde e objetivos específicos.",
+    "Não. Os atendimentos são exclusivamente particulares para garantir consultas aprofundadas, sem pressa e com planejamento verdadeiramente personalizado para as suas necessidades.",
   ],
   [
     "Como funciona a primeira consulta?",
-    "Conversamos em detalhes sobre sua rotina, hábitos, histórico clínico e metas. Fazemos a avaliação completa e estruturamos as primeiras condutas e o plano alimentar.",
-  ],
-  [
-    "Preciso levar exames na primeira consulta?",
-    "Se você tiver exames laboratoriais recentes (últimos 6 meses), pode trazê-los ou enviá-los. Caso não tenha, o atendimento acontece normalmente e solicitamos caso necessário.",
-  ],
-  [
-    "Vou ter que fazer uma dieta restritiva e passar fome?",
-    "Não! A filosofia de trabalho une nutrição clínica e gastronomia funcional para que você emagreça ou atinja seus objetivos comendo pratos saborosos e sustentáveis no seu dia a dia.",
+    "Fazemos uma anamnese completa sobre seus hábitos, exames laboratoriais, histórico de saúde, rotina e metas. A partir dessa análise aprofundada, estruturamos seu plano alimentar individualizado e os primeiros passos do tratamento.",
   ],
 ] as const;
 

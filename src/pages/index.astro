@@ -100,7 +100,7 @@ const jsonLd = {
       media="(max-width: 760px)"
     />
     <link rel="preload" as="image" href={asset(site.assets.logo)} />
-    <link rel="preload" as="image" href={asset("/images/whatsapp.webp")} />
+    <link rel="preload" as="image" href={asset("/assets/images/whatsapp.webp")} />
     <script
       is:inline
       type="application/ld+json"
@@ -114,8 +114,8 @@ const jsonLd = {
         ><img
           src={asset(site.assets.logo)}
           alt={`${site.role} ${site.name}`}
-          width="205"
-          height="65"
+          width="430"
+          height="185"
         /></a
       >
       <nav class="desktop-nav" aria-label="Navegação principal">
@@ -683,7 +683,7 @@ const jsonLd = {
     rel="noreferrer"
     aria-label={`Olá, ${site.name}! Gostaria de agendar uma consulta.`}
   >
-    <img src={asset("/images/whatsapp.webp")} alt="" width="34" height="34" />
+    <img src={asset("/assets/images/whatsapp.webp")} alt="WhatsApp" width="60" height="60" />
   </a>
 </BaseLayout>
 
