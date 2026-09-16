@@ -157,10 +157,10 @@ export const testimonials: {
       "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
   },
   {
-    name: "Juliana Becker",
-    city: "Ivoti/RS",
-    dateTime: "2025-11-18",
-    text: "O trabalho nutricional da Nádia mudou a minha qualidade de vida. Sentia muito desconforto e inchaço, e hoje me sinto com outra disposição e saúde. Super recomendo!",
+    name: "Deise Strey",
+    city: "Dois Irmãos/RS",
+    dateTime: "2025-03-10",
+    text: "Profissional muito atenciosa. Consegue adaptar a boa alimentação à rotina da gente. Incentiva as pequenas mudanças, em busca de resultados que queremos atingir. Explica muito bem sobre alimentação, dá dicas de receitas e produtos que podem facilitar a dieta no dia a dia. O que mais gosto na Nádia é a clareza e a atenção que ela dispensa nas consultas. Vibra com nossos resultados e adapta o que não está funcionando. Com certeza, é uma profissional que eu indico!",
     profile:
       "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
   },
