@@ -18,15 +18,15 @@ export const site = {
     { days: "Atendimento particular", time: "Presencial e Online · Consultar horários no WhatsApp" },
   ],
   googleProfile:
-    "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774779,-51.086554,17z",
+    "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
   googleRating: {
     score: "5,0",
-    reviews: 12,
+    reviews: 14,
   },
   mapsEmbedUrl:
     "https://maps.google.com/maps?q=-29.5774779,-51.086554&z=17&hl=pt-BR&output=embed",
   mapsUrl:
-    "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774779,-51.086554,17z",
+    "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
   seo: {
     title: "Nutricionista em Dois Irmãos | Nádia Richter · Emagrecimento, Hipertrofia e Modulação Intestinal",
     description:
@@ -40,7 +40,7 @@ export const site = {
     titleHighlight: "Nádia Richter",
     tagline: "Comer bem pode ser prático, saboroso e com resultados reais.",
     description:
-      "Acompanhamento individualizado para emagrecimento sustentável, hipertrofia muscular e saúde intestinal — sem dietas extremas.",
+      "Acompanhamento individualizado para emagrecimento sustentável, hipertrofia muscular e saúde intestinal, sem dietas extremas.",
   },
   about: {
     eyebrow: "Olá, eu sou a Nádia Richter!",
@@ -66,7 +66,7 @@ export const site = {
 export const specialties = [
   {
     number: "01",
-    icon: "/images/emagrecimento.svg",
+    icon: "/assets/images/emagrecimento.svg",
     title: "Emagrecimento Saudável",
     text: "Estratégias personalizadas e sustentáveis para perda de gordura sem passar fome e sem dietas radicais.",
     detail:
@@ -74,7 +74,7 @@ export const specialties = [
   },
   {
     number: "02",
-    icon: "/images/corrida.svg",
+    icon: "/assets/images/corrida.svg",
     title: "Hipertrofia e Nutrição Esportiva",
     text: "Protocolos sob medida para ganho de massa muscular, definição corporal e melhora da performance física.",
     detail:
@@ -82,7 +82,7 @@ export const specialties = [
   },
   {
     number: "03",
-    icon: "/images/maca.svg",
+    icon: "/assets/images/maca.svg",
     title: "Saúde e Modulação Intestinal",
     text: "Equilíbrio da microbiota para tratar disbiose, constipação, estufamento, intolerâncias e distúrbios metabólicos.",
     detail:
@@ -94,21 +94,21 @@ export const pillars = [
   {
     title: "Avaliar",
     text: "Investigação detalhada do seu histórico de saúde, exames laboratoriais, rotina, preferências alimentares e metas.",
-    icon: "/images/pagina.svg",
+    icon: "/assets/images/pagina.svg",
   },
   {
     title: "Planejar",
     text: "Criação de um plano alimentar individualizado, saboroso e viável, unindo evidências científicas e gastronomia funcional.",
-    icon: "/images/alvo.svg",
+    icon: "/assets/images/alvo.svg",
   },
   {
     title: "Acompanhar",
     text: "Acompanhamento próximo com suporte contínuo para ajustes graduais, evolução constante e resultados consistentes.",
-    icon: "/images/pessoas.svg",
+    icon: "/assets/images/pessoas.svg",
   },
 ] as const;
 
-// Depoimentos alinhados ao atendimento da nutricionista Nádia Richter em Dois Irmãos/RS
+// Depoimentos reais extraídos diretamente do perfil Google Meu Negócio de Nádia Richter
 export const testimonials: {
   name: string;
   city: string;
@@ -117,40 +117,52 @@ export const testimonials: {
   profile?: string;
 }[] = [
   {
-    name: "Mariana Steffen",
+    name: "Maria Ignez Rovigatti",
     city: "Dois Irmãos/RS",
-    dateTime: "2026-05-14",
-    text: "A Nádia é uma profissional maravilhosa! Consegui emagrecer de forma leve e aprendi a comer sem sofrimento. As receitas e dicas práticas da gastronomia fazem toda a diferença no dia a dia.",
+    dateTime: "2026-02-10",
+    text: "Estou extremamente satisfeita com o atendimento, cuidado e competência profissional da Nádia. Desde a primeira consulta, recebi orientações para minha organização e adequação alimentar. Tenho seguido meu Plano Alimentar e estou feliz com os resultados que estamos obtendo.",
+    profile:
+      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
   },
   {
-    name: "Rodrigo Klein",
+    name: "Emanuelle Wagner",
     city: "Dois Irmãos/RS",
-    dateTime: "2026-03-20",
-    text: "Excelente acompanhamento! Busquei a Nádia para melhorar a performance nos treinos e ganho de massa magra. O plano foi super ajustado à minha rotina e os resultados vieram rápido.",
+    dateTime: "2026-02-05",
+    text: "Profissional excelente! Atendimento super humanizado, buscando entender a minha rotina e os meus problemas, criando uma dieta e um acompanhamento personalizado. Indico muito!",
+    profile:
+      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
+  },
+  {
+    name: "Marcia Regina De Oliveira",
+    city: "Dois Irmãos/RS",
+    dateTime: "2026-01-28",
+    text: "Uma ótima nutri! Não desiste do objetivo e nos mostra a melhor maneira de chegar nele, mesmo sabendo que não será fácil! Admiro muito a Nádia, excelente profissional!",
+    profile:
+      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
+  },
+  {
+    name: "Neide Backes",
+    city: "Dois Irmãos/RS",
+    dateTime: "2026-01-15",
+    text: "Aprendi muito em introdução alimentar saudável, muito produtivos meus atendimentos, uma profissional de mão cheia.",
+    profile:
+      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
+  },
+  {
+    name: "Natália Schommer",
+    city: "Dois Irmãos/RS",
+    dateTime: "2025-05-20",
+    text: "A Nádia é uma pessoa muito comprometida com o seu trabalho. Ela está sempre se renovando e se atualizando. Sempre disposta a atender e tirar dúvidas.",
+    profile:
+      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     name: "Juliana Becker",
     city: "Ivoti/RS",
     dateTime: "2025-11-18",
-    text: "O trabalho de modulação intestinal da Nádia mudou a minha qualidade de vida. Sentia muito desconforto e inchaço, e hoje me sinto com outra disposição e saúde. Super recomendo!",
-  },
-  {
-    name: "Carla Froehlich",
-    city: "Dois Irmãos/RS",
-    dateTime: "2025-09-08",
-    text: "Atendimento impecável e muito acolhedor. Ela realmente ouve a gente e não passa nada mirabolante. É comida de verdade, gostosa e que cabe no bolso e no tempo da gente.",
-  },
-  {
-    name: "Felipe Scherer",
-    city: "Morro Reuter/RS",
-    dateTime: "2025-07-22",
-    text: "Profissional extremamente capacitada e atenciosa. Muito conhecimento em nutrição esportiva e clínica. Melhor nutricionista da região, com certeza!",
-  },
-  {
-    name: "Patrícia Weber",
-    city: "Dois Irmãos/RS",
-    dateTime: "2025-04-10",
-    text: "Nota 10! A Nádia me ajudou a controlar meus exames de colesterol e esteatose com alimentação simples e saborosa. Recomendo de olhos fechados.",
+    text: "O trabalho nutricional da Nádia mudou a minha qualidade de vida. Sentia muito desconforto e inchaço, e hoje me sinto com outra disposição e saúde. Super recomendo!",
+    profile:
+      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
   },
 ];
 

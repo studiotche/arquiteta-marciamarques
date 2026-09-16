@@ -29,9 +29,9 @@
   --muted: #58544d;
   --cream: #eae2d0;
   --paper: #f8f3e9;
-  --sage: #3d6b52;
-  --sage-dark: #044925;
-  --sage-tint: #a3c0a5;
+  --sage: #9b3d49;
+  --sage-dark: #44161b;
+  --sage-tint: #f3cfd2;
   --terracotta: #81502a;
   --terracotta-deep: #81502a;
   --terracotta-light: #e8c39f;
@@ -342,9 +342,9 @@ summary:focus-visible {
   z-index: 2;
 }
 
-.hero-copy.hero-reveal-ready > .eyebrow,
-.hero-copy.hero-reveal-ready > .location-note,
-.hero-copy.hero-reveal-ready .hero-actions > * {
+.hero-copy.hero-reveal-ready>.eyebrow,
+.hero-copy.hero-reveal-ready>.location-note,
+.hero-copy.hero-reveal-ready .hero-actions>* {
   animation: hero-line-rise .45s cubic-bezier(.22, .61, .36, 1) backwards;
   animation-delay: var(--hero-delay, 0s);
 }
@@ -359,11 +359,13 @@ summary:focus-visible {
   animation: hero-line-rise .45s cubic-bezier(.22, .61, .36, 1) backwards;
   animation-delay: var(--hero-delay, 0s);
 }
+
 @keyframes hero-line-rise {
   from {
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -422,14 +424,12 @@ summary:focus-visible {
 }
 
 .about-copy h2 .highlight {
-  /* Pêssego claro sobre verde-escuro: contraste ~6.4:1 (AA). O terracota
-     escuro (#81502a) sobre #044925 tinha só 1.57:1 e reprovava no Lighthouse. */
+  /* Pêssego claro sobre fundo vinho escuro (#44161b): contraste ~9.8:1 (AAA). */
   color: var(--terracotta-light);
 }
 
 .contact-card h2 .highlight {
-  /* Creme sobre terracota: contraste ~5.2:1 (AA). O verde-claro anterior
-     (#a3c0a5) tinha só 3.42:1. */
+  /* Creme sobre terracota: contraste ~5.2:1 (AA). */
   color: var(--cream);
 }
 
@@ -756,7 +756,7 @@ summary:focus-visible {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  filter: invert(25%) sepia(22%) saturate(1100%) hue-rotate(96deg) brightness(80%) contrast(100%);
+  filter: invert(30%) sepia(36%) saturate(1650%) hue-rotate(315deg) brightness(88%) contrast(92%);
 }
 
 .service-number {
@@ -1045,7 +1045,7 @@ summary:focus-visible {
   font-weight: 600;
 }
 
-.testimonial-author > span {
+.testimonial-author>span {
   color: var(--muted);
   font-size: .76rem;
 }
@@ -1099,6 +1099,7 @@ summary:focus-visible {
     transform: scale(1.035);
   }
 }
+
 .locations-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1289,7 +1290,7 @@ summary:focus-visible {
   transition: height .42s cubic-bezier(.22, .61, .36, 1), opacity .32s ease;
 }
 
-.faq-answer > p {
+.faq-answer>p {
   max-width: 680px;
   margin: 0;
   padding: 4px 0 28px;
@@ -1307,7 +1308,6 @@ summary:focus-visible {
   gap: 80px;
   align-items: center;
   background-color: var(--terracotta-deep);
-  background-image: linear-gradient(rgba(129, 80, 42, .9), rgba(129, 80, 42, .9)), url('/images/nutricionista-fundo-sessao-agende.webp');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1635,6 +1635,7 @@ summary:focus-visible {
   width: auto;
   object-fit: contain;
 }
+
 .floating-whatsapp {
   position: fixed;
   z-index: 40;
@@ -1891,7 +1892,6 @@ body.menu-open {
   .hero-visual {
     position: relative;
     inset: auto;
-    width: min(100% - 34px, 620px);
     margin-inline: auto;
   }
 
@@ -1904,7 +1904,6 @@ body.menu-open {
     position: relative;
     width: 100%;
     height: auto;
-    aspect-ratio: 8 / 7;
     object-fit: contain;
     object-position: top center;
   }
@@ -2033,6 +2032,7 @@ body.menu-open {
   .consultorio-gallery figure {
     aspect-ratio: 4 / 3;
   }
+
   .locations-grid {
     grid-template-columns: 1fr;
   }
@@ -2097,6 +2097,7 @@ body.menu-open {
   .footer-credit {
     justify-self: center;
   }
+
   .site-footer {
     padding-bottom: 48px;
   }
