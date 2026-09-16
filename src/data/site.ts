@@ -32,7 +32,7 @@ export const site = {
     description:
       "Nádia Richter, nutricionista clínica em Dois Irmãos/RS (CRN-2 13230D). Mais de 10 anos de experiência em emagrecimento saudável, hipertrofia e modulação intestinal. Atendimento presencial e online.",
     url: "https://studiotche.github.io/nutricionista-nadiarichter/",
-    ogImage: "/images/nutricionista-nadia-richter.png",
+    ogImage: "/assets/images/nutricionista-nadia-richter.webp",
   },
   hero: {
     eyebrow: "Nutrição Clínica & Performance",
@@ -53,13 +53,13 @@ export const site = {
     ],
   },
   assets: {
-    logo: "/images/nutricionista-nadia-richter.png",
-    hero: "/images/nutricionista-nadia-richter.png",
-    heroMobile: "/images/camila_daer.webp",
-    about: "/images/camila_daer_nutricionista_sobre.webp",
-    processBg: "/images/nutricionista.webp",
-    consultorio: "/images/camila_daer_fachada.webp",
-    consultorioFachada: "/images/camila_daer_fachada.webp",
+    logo: "/assets/images/logo-nutricionista-nadia-richter.webp",
+    hero: "/assets/images/nutricionista-nadia-richter.webp",
+    heroMobile: "/assets/images/nutricionista-nadia-richter-m.webp",
+    about: "/assets/images/nutricionista-nadia-richter-m.webp",
+    processBg: "/assets/images/nutricionista-fundo-sessao-agende.webp",
+    consultorio: "/assets/images/nutricionista-nadia-richter-clinica.webp",
+    consultorioFachada: "/assets/images/nutricionista-dois-irmaos-nadia-richter-clinica.webp",
   },
 } as const;
 
