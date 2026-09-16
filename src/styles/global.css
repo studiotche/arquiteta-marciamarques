@@ -49,12 +49,22 @@
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 88px;
 }
 
-/* Lenis (scroll suave, só desktop) — mesmo CSS injetado pelo plugin.
-   Escopado em html.lenis para não afetar mobile/sem JS. */
+@media (max-width: 1024px) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (min-width: 1025px) {
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Lenis (scroll suave, desktop) — paridade exata com o plugin Scroll Suave */
 html.lenis {
   scroll-behavior: auto !important;
   height: auto !important;
@@ -128,7 +138,9 @@ a {
   z-index: 30;
   background: rgba(248, 243, 233, 0.94);
   border-bottom: 1px solid rgba(23, 21, 16, .08);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
+  transform: translateZ(0);
 }
 
 .header-inner {
@@ -343,33 +355,35 @@ summary:focus-visible {
   z-index: 2;
 }
 
-.hero-copy.hero-reveal-ready>.eyebrow,
-.hero-copy.hero-reveal-ready>.location-note,
-.hero-copy.hero-reveal-ready .hero-actions>* {
-  animation: hero-line-rise .45s cubic-bezier(.22, .61, .36, 1) backwards;
-  animation-delay: var(--hero-delay, 0s);
-}
-
-.hero-copy.hero-reveal-ready .hero-reveal-word {
-  display: inline-block;
-  animation: hero-line-rise .42s cubic-bezier(.22, .61, .36, 1) backwards;
-  animation-delay: var(--hero-delay, 0s);
-}
-
-.floating-card.hero-reveal-ready {
-  animation: hero-line-rise .45s cubic-bezier(.22, .61, .36, 1) backwards;
-  animation-delay: var(--hero-delay, 0s);
-}
-
-@keyframes hero-line-rise {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
+@media (min-width: 761px) {
+  .hero-copy.hero-reveal-ready>.eyebrow,
+  .hero-copy.hero-reveal-ready>.location-note,
+  .hero-copy.hero-reveal-ready .hero-actions>* {
+    animation: hero-line-rise .45s cubic-bezier(.22, .61, .36, 1) backwards;
+    animation-delay: var(--hero-delay, 0s);
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .hero-copy.hero-reveal-ready .hero-reveal-word {
+    display: inline-block;
+    animation: hero-line-rise .42s cubic-bezier(.22, .61, .36, 1) backwards;
+    animation-delay: var(--hero-delay, 0s);
+  }
+
+  .floating-card.hero-reveal-ready {
+    animation: hero-line-rise .45s cubic-bezier(.22, .61, .36, 1) backwards;
+    animation-delay: var(--hero-delay, 0s);
+  }
+
+  @keyframes hero-line-rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -1917,6 +1931,24 @@ body.menu-open {
 
   .hero h1 {
     font-size: clamp(1.7rem, 8vw, 2.4rem);
+  }
+
+  .hero-copy > .eyebrow,
+  .hero-copy > .location-note,
+  .hero-copy .hero-actions > *,
+  .hero-copy .hero-reveal-word,
+  .hero-copy.hero-reveal-ready > .eyebrow,
+  .hero-copy.hero-reveal-ready > .location-note,
+  .hero-copy.hero-reveal-ready .hero-actions > *,
+  .hero-copy.hero-reveal-ready .hero-reveal-word,
+  .hero h1,
+  .hero-tagline,
+  .lead,
+  .floating-card,
+  .floating-card.hero-reveal-ready {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .about-grid,

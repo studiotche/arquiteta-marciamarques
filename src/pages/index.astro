@@ -721,8 +721,9 @@ const jsonLd = {
   }
 
   const heroCopy = document.querySelector<HTMLElement>(".hero-copy");
+  const isDesktopHero = window.matchMedia("(min-width: 761px)").matches;
 
-  if (heroCopy) {
+  if (heroCopy && isDesktopHero) {
     const heroEyebrow = heroCopy.querySelector<HTMLElement>(".eyebrow");
     const heroTitle = heroCopy.querySelector<HTMLElement>("h1");
     const heroTagline = heroCopy.querySelector<HTMLElement>(".hero-tagline");
