@@ -1,0 +1,915 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  faqs,
+  locations,
+  pillars,
+  site,
+  specialties,
+  testimonials,
+  whatsappUrl,
+} from "../data/site";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const asset = (path: string) => `${base}${path.replace(/^\//, "")}`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${site.seo.url}/#person`,
+      name: `${site.fullRole} ${site.name}`,
+      jobTitle: site.fullRole,
+      url: site.seo.url,
+      image: `${site.seo.url.replace(/\/$/, "")}${site.seo.ogImage}`,
+      telephone: `+${site.phoneLink}`,
+      sameAs: [site.googleProfile, site.instagram, site.doctoralia],
+      areaServed: [site.city, "Vale do Sinos", "Encosta da Serra", "Ivoti", "Morro Reuter"],
+      workLocation: locations.slice(0, 1).map((location) => ({
+        "@type": "Place",
+        name: `Consultório em ${location.city}`,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: location.address,
+          addressLocality: location.city,
+          addressRegion: site.state,
+          postalCode: "93950-000",
+          addressCountry: "BR",
+        },
+      })),
+    },
+    {
+      "@type": "Dietitian",
+      "@id": `${site.seo.url}/#dietitian`,
+      name: `${site.fullRole} ${site.name}`,
+      image: `${site.seo.url.replace(/\/$/, "")}${site.seo.ogImage}`,
+      telephone: `+${site.phoneLink}`,
+      priceRange: "$$",
+      medicalSpecialty: "Nutrition",
+      sameAs: [site.instagram, site.googleProfile, site.doctoralia],
+      areaServed: [site.city, "Dois Irmãos", "Ivoti", "Morro Reuter", "Novo Hamburgo", "Vale do Sinos"],
+      location: locations.slice(0, 1).map((location) => ({
+        "@type": "Place",
+        name: `Consultório em ${location.city}`,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: location.address,
+          addressLocality: location.city,
+          addressRegion: site.state,
+          postalCode: "93950-000",
+          addressCountry: "BR",
+        },
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${site.seo.url}/#faq`,
+      mainEntity: faqs.map(([question, answer]) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      })),
+    },
+    ...testimonials.map((testimonial) => ({
+      "@type": "Review",
+      itemReviewed: { "@id": `${site.seo.url}/#dietitian` },
+      author: { "@type": "Person", name: testimonial.name },
+      ...(testimonial.dateTime ? { datePublished: testimonial.dateTime } : {}),
+      reviewBody: testimonial.text,
+    })),
+  ],
+};
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href={asset(site.assets.hero)}
+      media="(min-width: 761px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href={asset(site.assets.heroMobile)}
+      media="(max-width: 760px)"
+    />
+    <link rel="preload" as="image" href={asset(site.assets.logo)} />
+    <link rel="preload" as="image" href={asset("/images/whatsapp.webp")} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
+  </Fragment>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label={`${site.name}, início`}
+        ><img
+          src={asset(site.assets.logo)}
+          alt={`${site.role} ${site.name}`}
+          width="205"
+          height="65"
+        /></a
+      >
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a><a href="#atendimentos">Atendimentos</a><a
+          href="#metodo">Abordagem</a
+        ><a href="#depoimentos">Depoimentos</a><a href="#locais">Locais</a>
+      </nav>
+      <a
+        class="button button-small"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer">Agendar consulta</a
+      >
+      <button
+        class="hamburger"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobileMenu"
+        aria-label="Abrir menu"><span></span><span></span><span></span></button
+      >
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-backdrop" data-close-menu></div>
+    <div class="mobile-menu-panel">
+      <button
+        class="menu-close"
+        type="button"
+        data-close-menu
+        aria-label="Fechar menu"><span aria-hidden="true">✕</span></button
+      >
+      <div class="menu-panel-head">
+        <span class="menu-brand">{site.name}</span><small class="kicker"
+          >{site.role}</small
+        >
+      </div>
+      <nav class="mobile-nav" aria-label="Navegação móvel">
+        <a href="#sobre">Sobre</a>
+        <a href="#atendimentos">Atendimentos</a>
+        <a href="#metodo">Abordagem</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#locais">Locais</a>
+      </nav>
+      <a
+        class="button menu-cta"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noreferrer">Agendar consulta <span aria-hidden="true">↗</span></a
+      >
+    </div>
+  </div>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-visual">
+        <picture class="hero-bg">
+          <source
+            media="(max-width: 760px)"
+            srcset={asset(site.assets.heroMobile)}
+          />
+          <img
+            src={asset(site.assets.hero)}
+            alt={`Nutricionista ${site.name} sorrindo, atendimento particular em ${site.city}`}
+            width="2950"
+            height="1440"
+            fetchpriority="high"
+          />
+        </picture>
+        <div class="floating-card">
+          <span class="floating-kicker">Cuidado individual</span><strong
+            >Sem fórmulas prontas.</strong
+          >
+        </div>
+      </div>
+      <div class="container hero-copy">
+        <p class="eyebrow">{site.hero.eyebrow}</p>
+        <h1>
+          {site.hero.title.replace(site.hero.titleHighlight, "")}<span
+            class="highlight">{site.hero.titleHighlight}</span
+          >
+        </h1>
+        <p class="hero-tagline">{site.hero.tagline}</p>
+        <p class="lead">{site.hero.description}</p>
+        <div class="hero-actions">
+          <a class="button" href={whatsappUrl} target="_blank" rel="noreferrer"
+            >Agendar minha consulta <span aria-hidden="true">↗</span></a
+          >
+          <a class="text-link" href="#atendimentos"
+            >Como posso ajudar <span aria-hidden="true">↓</span></a
+          >
+        </div>
+        <div class="location-note">
+          <span class="location-dot" aria-hidden="true"></span><span
+            >Presencial em {site.city} · Particular</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Diferenciais do atendimento">
+      <div class="container trust-grid">
+        <p><span>01</span> Escuta sem julgamentos</p><p>
+          <span>02</span> Estratégias personalizadas
+        </p><p><span>03</span> Atendimento particular</p>
+      </div>
+    </section>
+
+    <section class="section services-section" id="atendimentos">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow eyebrow-light">Posso ajudar você</p><h2>
+              Cuidado nutricional para <span class="highlight"
+                >diferentes momentos da vida</span
+              >
+            </h2>
+          </div><p>
+            Cada acompanhamento começa pela sua história e respeita o
+            diagnóstico e os tratamentos conduzidos por outros profissionais.
+          </p>
+        </div>
+        <div class="service-grid">
+          {
+            specialties.map((specialty) => (
+              <article class="service-card">
+                <div class="service-card-top">
+                  <img
+                    class="service-icon"
+                    src={asset(specialty.icon)}
+                    alt=""
+                    width="56"
+                    height="56"
+                  />
+                  <span class="service-number">{specialty.number}</span>
+                </div>
+                <div class="service-card-body">
+                  <h3>{specialty.title}</h3>
+                  <p>{specialty.text}</p>
+                </div>
+                <a
+                  class="service-card-link"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Saber mais sobre ${specialty.title.toLowerCase()}`}
+                >
+                  Saiba mais <span aria-hidden="true">→</span>
+                </a>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section process-section" id="metodo">
+      <img
+        class="process-bg"
+        src={asset(site.assets.processBg)}
+        alt=""
+        aria-hidden="true"
+        width="1737"
+        height="905"
+        loading="lazy"
+      />
+      <div class="container process-grid">
+        <div class="process-intro">
+          <p class="eyebrow">Abordagem integrada</p><h2>
+            Três pilares <span class="highlight">para cuidar</span> de você por inteiro
+          </h2><p>
+            A alimentação não acontece isolada da vida. Por isso, o
+            acompanhamento considera o que você come, como organiza seus hábitos
+            e como se relaciona com a comida.
+          </p><a
+            class="button"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            >Iniciar meu acompanhamento <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <ol class="steps-list">
+          {
+            pillars.map((pillar) => (
+              <li class="step-item">
+                <div class="step-icon-badge" aria-hidden="true">
+                  <img
+                    class="step-icon"
+                    src={asset(pillar.icon)}
+                    alt=""
+                    width="32"
+                    height="32"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="step-content">
+                  <h3>{pillar.title}</h3>
+                  <p>{pillar.text}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="section testimonials-section" id="depoimentos">
+      <div class="container">
+        <div class="testimonial-heading">
+          <div>
+            <p class="eyebrow">Transformando vidas</p><h2>
+              Experiências de <span class="highlight">quem já começou</span>
+            </h2>
+          </div>
+          <div>
+            <p>
+              Relatos de pacientes sobre o cuidado recebido durante o
+              acompanhamento nutricional.
+            </p><a
+              class="google-rating"
+              href={site.googleProfile}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Avaliação ${site.googleRating.score} de 5 em ${site.googleRating.reviews} avaliações no Google`}
+            >
+              <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="#4285F4"
+                  d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"
+                ></path>
+                <path
+                  fill="#34A853"
+                  d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"
+                ></path>
+                <path
+                  fill="#FBBC05"
+                  d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"
+                ></path>
+                <path
+                  fill="#EA4335"
+                  d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"
+                ></path>
+              </svg>
+              <strong>{site.googleRating.score}</strong>
+              <span class="google-stars" aria-hidden="true">
+                {
+                  [0, 1, 2, 3, 4].map(() => (
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                  ))
+                }
+              </span>
+              <small>{site.googleRating.reviews} avaliações</small>
+            </a>
+          </div>
+        </div>
+        <div class="testimonial-grid">
+          {
+            testimonials.map((testimonial) => (
+              <figure class="testimonial-card">
+                <>
+                  <div class="testimonial-topline">
+                    <svg class="google-mark" viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"></path>
+                      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08-.72-2.45-1.16-4.07-1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"></path>
+                      <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"></path>
+                      <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"></path>
+                    </svg>
+                    <span class="testimonial-stars" role="img" aria-label="5 estrelas">
+                      {
+                        [0, 1, 2, 3, 4].map(() => (
+                          <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                          </svg>
+                        ))
+                      }
+                    </span>
+                  </div>
+                  <blockquote>{testimonial.text}</blockquote>
+                  <figcaption>
+                    <>
+                      <span class="testimonial-author">
+                        <strong>{testimonial.name}</strong>
+                        {testimonial.city && <span>{testimonial.city}</span>}
+                        {testimonial.profile ? (
+                          <a
+                            class="testimonial-source"
+                            href={testimonial.profile}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Avalia&#231;&#227;o Google
+                          </a>
+                        ) : (
+                          <span class="testimonial-source">Avalia&#231;&#227;o Google</span>
+                        )}
+                      </span>
+                    </>
+                  </figcaption>
+                </>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="sobre">
+      <div class="container about-grid">
+        <div class="about-media">
+          <div class="image-frame about-frame">
+            <img
+              src={asset(site.assets.about)}
+              alt={`Nutricionista ${site.name} em ambiente profissional com luz natural`}
+              width="704"
+              height="874"
+              loading="lazy"
+            />
+          </div>
+          <div class="signature-card" aria-hidden="true">
+            <span>NR</span><small>estratégia que cabe na sua vida</small>
+          </div>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow eyebrow-light">{site.about.eyebrow}</p><h2>
+            {site.about.title.replace(site.about.titleHighlight, "")}<span
+              class="highlight">{site.about.titleHighlight}</span
+            >
+          </h2>
+          {site.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          <p class="about-credentials">{site.credentials}</p>
+          <div class="about-values">
+            <div>
+              <strong>Consciência</strong><span
+                >para entender suas escolhas</span
+              >
+            </div><div>
+              <strong>Autonomia</strong><span>para cuidar de si com leveza</span
+              >
+            </div>
+          </div>
+          <a
+            class="text-link text-link-dark"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            >Conversar com a nutricionista <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section locations-section" id="locais">
+      <div class="container">
+        <div class="locations-heading">
+          <p class="eyebrow">Onde você pode me encontrar</p><h2>
+            Presencial em {site.city}, com <span class="highlight"
+              >a mesma atenção</span
+            >
+          </h2>
+        </div>
+        <div class="consultorio-gallery" aria-label={`Imagens do consultório em ${site.city}`}>
+          <figure>
+            <img
+              src={asset(site.assets.consultorio)}
+              alt={`Consultório da nutricionista ${site.name} em ${site.city}`}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <figure>
+            <img
+              src={asset(site.assets.consultorioFachada)}
+              alt={`Fachada do consultório da nutricionista ${site.name}`}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+        </div>
+        <div class="locations-grid locations-duo">
+          {
+            locations.map((location) => (
+              <article class="location-card">
+                <>
+                  <span class="kicker">{location.type}</span>
+                  <h3>{location.city}</h3>
+                  <p>
+                    <>
+                      <strong>{location.address}</strong>
+                      <small>{location.district}</small>
+                    </>
+                  </p>
+                </>
+              </article>
+            ))
+          }
+          <div class="map-frame locations-map">
+            <iframe
+              src={site.mapsEmbedUrl}
+              title={`Mapa do consultório da nutricionista ${site.name} em ${site.city}`}
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div class="locations-actions">
+          <a
+            class="text-link text-link-dark"
+            href={site.googleProfile}
+            target="_blank"
+            rel="noreferrer"
+            >Abrir localização no Google <span aria-hidden="true">↗</span></a
+          ><p>
+            WhatsApp: <a href={whatsappUrl} target="_blank" rel="noreferrer"
+              >{site.phoneDisplay}</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="duvidas">
+      <div class="container faq-grid">
+        <div>
+          <p class="eyebrow">Dúvidas frequentes</p><h2>Antes de começar</h2><p
+            class="faq-intro"
+          >
+            Algumas respostas para deixar sua decisão mais tranquila.
+          </p>
+        </div>
+        <div class="faq-list">
+          {
+            faqs.map(([question, answer], index) => (
+              <details open={index === 0}>
+                <summary>
+                  {question}
+                  <span aria-hidden="true" />
+                </summary>
+                <div class="faq-answer">
+                  <p>{answer}</p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contato">
+      <div class="container contact-card">
+        <div>
+          <p class="eyebrow eyebrow-light">Agende sua consulta</p><h2>
+            Sua transformação pode começar por <span class="highlight"
+              >uma conversa</span
+            >
+          </h2>
+        </div><div class="contact-details">
+          <p>
+            <span>Modalidade</span><strong>Presencial · Particular</strong>
+          </p><p>
+            <span>WhatsApp</span><strong>{site.phoneDisplay}</strong>
+          </p><a
+            class="button button-light"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            >Falar com {site.name.split(" ")[0]} <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand logo">
+        <img
+          src={asset(site.assets.logo)}
+          alt={site.role + " " + site.name}
+          width="205"
+          height="65"
+        />
+        <p>
+          Atendimento nutricional particular<br />
+          em {site.city}, {site.state}.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Servi&#231;os</h3>
+        <nav class="footer-nav footer-nav-vertical" aria-label="Servi&#231;os">
+          {specialties.map((specialty) => (
+            <a href="#atendimentos">{specialty.title}</a>
+          ))}
+        </nav>
+      </div>
+
+      <div class="footer-column">
+        <h3 class="footer-column-title">Navega&#231;&#227;o</h3>
+        <nav class="footer-nav footer-nav-vertical" aria-label="Navega&#231;&#227;o do rodap&#233;">
+          <a href="#atendimentos">Atendimentos</a>
+          <a href="#metodo">Como funciona</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#sobre">Sobre mim</a>
+          <a href="#locais">Local</a>
+          <a href="#duvidas">FAQ</a>
+        </nav>
+      </div>
+
+      <div class="footer-column footer-contact">
+        <h3 class="footer-column-title">Contato</h3>
+        <p class="footer-address">
+          <strong>Local:</strong> {locations[0].address}<br />
+          {locations[0].city}/{site.state}
+        </p>
+        <div class="social-links" aria-label="Perfis online">
+          <a href={site.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+            </svg>
+          </a>
+          <a class="social-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.2a9.8 9.8 0 0 0-8.47 14.74L2.2 21.8l5.02-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.08-1.12l-.29-.17-2.98.77.8-2.9-.19-.3A8 8 0 1 1 12 20Zm4.38-5.94c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.18-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.16 1.51.1.46-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"></path>
+            </svg>
+          </a>
+          <a href={site.doctoralia} target="_blank" rel="noreferrer" aria-label="Doctoralia" title="Doctoralia">
+            <span class="social-letter" aria-hidden="true">D</span>
+          </a>
+          <a href={site.googleProfile} target="_blank" rel="noreferrer" aria-label="Google" title="Google">
+            <span class="social-letter" aria-hidden="true">G</span>
+          </a>
+        </div>
+        <div class="footer-hours">
+          {site.hours.map((h) => (
+            <span>{h.days}: {h.time}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>&#169; {new Date().getFullYear()} {site.name} &#183; {site.fullRole} &#183; {site.crn}</span>
+      <span class="footer-credit">
+        Desenvolvido por
+        <a href="https://jeankist.com" target="_blank" rel="noreferrer">Jean Kist</a>
+        &#169;
+      </span>
+      <span class="footer-legal">
+        <a href="#">Pol&#237;tica de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+      </span>
+    </div>
+  </footer>
+  <a
+    class="floating-whatsapp"
+    href={whatsappUrl}
+    target="_blank"
+    rel="noreferrer"
+    aria-label={`Olá, ${site.name}! Gostaria de agendar uma consulta.`}
+  >
+    <img src={asset("/images/whatsapp.webp")} alt="" width="34" height="34" />
+  </a>
+</BaseLayout>
+
+<script>
+  const hamburger = document.querySelector<HTMLButtonElement>(".hamburger");
+  const menu = document.getElementById("mobileMenu");
+
+  if (hamburger && menu) {
+    const close = () => {
+      menu.classList.remove("open");
+      menu.setAttribute("aria-hidden", "true");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+      hamburger.focus();
+    };
+    const open = () => {
+      menu.classList.add("open");
+      menu.setAttribute("aria-hidden", "false");
+      hamburger.setAttribute("aria-expanded", "true");
+      document.body.classList.add("menu-open");
+    };
+
+    hamburger.addEventListener("click", () => {
+      menu.classList.contains("open") ? close() : open();
+    });
+    menu
+      .querySelectorAll("[data-close-menu]")
+      .forEach((el) => el.addEventListener("click", close));
+    menu
+      .querySelectorAll(".mobile-nav a")
+      .forEach((link) => link.addEventListener("click", close));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.classList.contains("open")) close();
+    });
+  }
+
+  const heroCopy = document.querySelector<HTMLElement>(".hero-copy");
+
+  if (heroCopy) {
+    const heroEyebrow = heroCopy.querySelector<HTMLElement>(".eyebrow");
+    const heroTitle = heroCopy.querySelector<HTMLElement>("h1");
+    const heroTagline = heroCopy.querySelector<HTMLElement>(".hero-tagline");
+    const heroLead = heroCopy.querySelector<HTMLElement>(".lead");
+    const heroActions = heroCopy.querySelector<HTMLElement>(".hero-actions");
+    const heroLocation = heroCopy.querySelector<HTMLElement>(".location-note");
+    const heroCard = document.querySelector<HTMLElement>(".floating-card");
+
+    const splitHeroWords = (element: HTMLElement | null) => {
+      if (!element) return [];
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const textNodes: Text[] = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+
+      const words = textNodes.flatMap((node) => {
+        const isHighlight = node.parentElement?.closest(".highlight") !== null;
+        return (node.textContent || "")
+          .trim()
+          .split(/\s+/)
+          .filter(Boolean)
+          .map((text) => ({ text, isHighlight }));
+      });
+
+      element.replaceChildren();
+      return words.map(({ text, isHighlight }) => {
+        const word = document.createElement("span");
+        word.className = `hero-reveal-word${isHighlight ? " highlight" : ""}`;
+        word.textContent = text;
+        element.append(word, " ");
+        return word;
+      });
+    };
+
+    const scheduleHeroWords = (words: HTMLElement[], startDelay: number) => {
+      let line = 0;
+      let wordInLine = 0;
+      let previousTop: number | null = null;
+
+      words.forEach((word) => {
+        const currentTop = word.offsetTop;
+        if (previousTop !== null && Math.abs(currentTop - previousTop) > 2) {
+          line += 1;
+          wordInLine = 0;
+        }
+        word.style.setProperty(
+          "--hero-delay",
+          `${startDelay + line * 0.07 + wordInLine * 0.018}s`,
+        );
+        wordInLine += 1;
+        previousTop = currentTop;
+      });
+
+      return line + 1;
+    };
+
+    const startHeroReveal = () => {
+      const titleWords = splitHeroWords(heroTitle);
+      const taglineWords = splitHeroWords(heroTagline);
+      const leadWords = splitHeroWords(heroLead);
+      heroCopy.classList.add("hero-reveal-ready");
+      heroCard?.classList.add("hero-reveal-ready");
+
+      const eyebrowDelay = 0.05;
+      const titleDelay = 0.12;
+      const titleLines = scheduleHeroWords(titleWords, titleDelay);
+      const taglineDelay = titleDelay + titleLines * 0.07 + 0.24;
+      const taglineLines = scheduleHeroWords(taglineWords, taglineDelay);
+      const leadDelay = taglineDelay + taglineLines * 0.07 + 0.24;
+      const leadLines = scheduleHeroWords(leadWords, leadDelay);
+      const actionsDelay = leadDelay + leadLines * 0.07 + 0.24;
+      const locationDelay = actionsDelay + 0.3;
+
+      heroEyebrow?.style.setProperty("--hero-delay", `${eyebrowDelay}s`);
+      heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {
+        item.style.setProperty(
+          "--hero-delay",
+          `${actionsDelay + index * 0.06}s`,
+        );
+      });
+      heroLocation?.style.setProperty("--hero-delay", `${locationDelay}s`);
+      heroCard?.style.setProperty("--hero-delay", `${locationDelay}s`);
+    };
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(startHeroReveal);
+    } else {
+      startHeroReveal();
+    }
+  }
+  const faqItems =
+    document.querySelectorAll<HTMLDetailsElement>(".faq-list details");
+  const faqTimeouts = new WeakMap<HTMLDetailsElement, number>();
+  const FAQ_DURATION = 430;
+
+  const clearFaqTimeout = (details: HTMLDetailsElement) => {
+    const timeout = faqTimeouts.get(details);
+    if (timeout !== undefined) window.clearTimeout(timeout);
+  };
+
+  const finishOpenFaq = (details: HTMLDetailsElement, answer: HTMLElement) => {
+    clearFaqTimeout(details);
+    faqTimeouts.set(
+      details,
+      window.setTimeout(() => {
+        if (details.open && !details.classList.contains("is-closing")) {
+          answer.style.height = "auto";
+        }
+      }, FAQ_DURATION),
+    );
+  };
+
+  const animatedCloseFaq = (details: HTMLDetailsElement) => {
+    const answer = details.querySelector<HTMLElement>(".faq-answer");
+    if (!details.open || !answer || details.classList.contains("is-closing"))
+      return;
+    details.classList.add("is-closing");
+    answer.style.height = `${answer.offsetHeight}px`;
+    answer.style.opacity = "1";
+    void answer.offsetHeight;
+    answer.style.height = "0px";
+    answer.style.opacity = "0";
+    clearFaqTimeout(details);
+    faqTimeouts.set(
+      details,
+      window.setTimeout(() => {
+        details.removeAttribute("open");
+        details.classList.remove("is-closing");
+        answer.style.height = "";
+        answer.style.opacity = "";
+      }, FAQ_DURATION),
+    );
+  };
+
+  const animatedOpenFaq = (details: HTMLDetailsElement) => {
+    const answer = details.querySelector<HTMLElement>(".faq-answer");
+    if (!answer || details.open) return;
+    details.classList.remove("is-closing");
+    details.setAttribute("open", "");
+    answer.style.height = "0px";
+    answer.style.opacity = "0";
+    void answer.offsetHeight;
+    answer.style.height = `${answer.scrollHeight}px`;
+    answer.style.opacity = "1";
+    finishOpenFaq(details, answer);
+  };
+
+  faqItems.forEach((details) => {
+    const summary = details.querySelector("summary");
+    if (!summary) return;
+    summary.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (details.classList.contains("is-closing")) {
+        clearFaqTimeout(details);
+        details.classList.remove("is-closing");
+        const answer = details.querySelector<HTMLElement>(".faq-answer");
+        if (answer) {
+          answer.style.height = `${answer.scrollHeight}px`;
+          answer.style.opacity = "1";
+          finishOpenFaq(details, answer);
+        }
+        return;
+      }
+      if (details.open) {
+        animatedCloseFaq(details);
+      } else {
+        faqItems.forEach((other) => {
+          if (other !== details && other.open) animatedCloseFaq(other);
+        });
+        animatedOpenFaq(details);
+      }
+    });
+  });
+
+  const aboutFrame = document.querySelector(".about-frame");
+  if (aboutFrame) {
+    if ("IntersectionObserver" in window) {
+      const aboutObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              aboutFrame.classList.add("in-view");
+              aboutObserver.disconnect();
+            }
+          });
+        },
+        { threshold: 0.25 },
+      );
+      aboutObserver.observe(aboutFrame);
+    } else {
+      aboutFrame.classList.add("in-view");
+    }
+  }
+</script>
