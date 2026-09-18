@@ -14,44 +14,69 @@ const preview = import.meta.env.PUBLIC_SITE_PREVIEW === "true";
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const asset = (path: string) => `${base}${path.replace(/^\//, "")}`;
+const asset = (filePath: string) => `${base}${filePath.replace(/^\//, "")}`;
 const ogImage = new URL(site.seo.ogImage.replace(/^\//, ""), site.seo.url);
 ---
 <!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/webp" href={asset("/assets/images/favicon-nutricionista-nadia-richter.webp")} />
-    <link rel="shortcut icon" href={asset("/assets/images/favicon-nutricionista-nadia-richter.webp")} />
-    <link rel="apple-touch-icon" href={asset("/assets/images/favicon-nutricionista-nadia-richter.webp")} />
+    <link rel="icon" type="image/webp" sizes="32x32" href={asset(site.assets.favicon)} />
+    <link rel="icon" type="image/webp" sizes="192x192" href={asset(site.assets.favicon192)} />
+    <link rel="apple-touch-icon" sizes="180x180" href={asset(site.assets.faviconApple)} />
     <link
       rel="preload"
-      href={asset("/fonts/dm-sans.woff2")}
+      href={asset("/fonts/Kiona-Regular.woff2")}
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href={asset("/fonts/newsreader.woff2")}
+      href={asset("/fonts/montserrat-v25-latin-300.woff2")}
       as="font"
       type="font/woff2"
       crossorigin
     />
-    <meta name="theme-color" content="#44161b" />
-    <meta name="robots" content={preview ? "noindex,nofollow" : "index,follow"} />
+    <link
+      rel="preload"
+      href={asset("/fonts/montserrat-v25-latin-500.woff2")}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={asset(site.assets.heroDesktop)}
+      as="image"
+      media="(min-width: 1025px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      href={asset(site.assets.heroMobile)}
+      as="image"
+      media="(max-width: 1024px)"
+    />
+    <meta name="theme-color" content="#292929" />
+    <meta name="robots" content={preview ? "noindex,nofollow" : "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:label1" content="Escrito por" />
+    <meta name="twitter:data1" content={site.email} />
     <slot name="head" />
   </head>
   <body>

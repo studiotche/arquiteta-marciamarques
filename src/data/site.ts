@@ -1,217 +1,456 @@
 export const site = {
-  name: "Nádia Richter",
-  role: "Nutricionista Clínica",
-  fullRole: "Nutricionista Clínica · CRN-2 13230D",
-  city: "Dois Irmãos",
-  state: "RS",
-  region: "Dois Irmãos/RS",
-  crn: "CRN-2 13230D",
-  credentials: "Nutricionista Clínica · Especialista em Emagrecimento, Hipertrofia e Modulação Intestinal · CRN-2 13230D",
-  phoneDisplay: "(51) 99933-6079",
-  phoneLink: "5551999336079",
-  telLink: "tel:+5551999336079",
-  email: "",
-  instagram: "https://www.instagram.com/nutrinadiarichter/",
-  doctoralia:
-    "https://www.doctoralia.com.br/nadia-richter-faber/nutricionista/dois-irmaos",
-  hours: [
-    { days: "Atendimento particular", time: "Presencial e Online · Consultar horários no WhatsApp" },
-  ],
-  googleProfile:
-    "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
-  googleRating: {
-    score: "5,0",
-    reviews: 25,
-  },
-  mapsEmbedUrl:
-    "https://maps.google.com/maps?q=-29.5774779,-51.086554&z=17&hl=pt-BR&output=embed",
-  mapsUrl:
-    "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
+  name: "Koplan Arquitetura",
+  shortName: "Koplan",
+  role: "Estúdio de Arquitetura e Interiores",
+  fullRole: "Projetos Arquitetônicos e Design de Interiores",
+  city: "Uberlândia",
+  state: "MG",
+  cities: "Uberlândia | MG e Goiânia | GO",
+  phoneDisplay: "(34) 99717-1314",
+  phoneLink: "5534997171314",
+  telLink: "tel:+5534997171314",
+  email: "contato@koplan.com.br",
+  instagram: "https://www.instagram.com/koplanarq/",
+  whatsappMessage: "Olá, gostaria de solicitar um orçamento para o meu projeto com a Koplan!",
   seo: {
-    title: "Nutricionista em Dois Irmãos | Nádia Richter · Emagrecimento, Hipertrofia e Modulação Intestinal",
+    title: "Koplan - Koplan Arquitetura",
     description:
-      "Nádia Richter, nutricionista clínica em Dois Irmãos/RS (CRN-2 13230D). Mais de 12 anos de experiência em emagrecimento saudável, hipertrofia e modulação intestinal. Atendimento presencial e online.",
-    url: "https://studiotche.github.io/nutricionista-nadiarichter/",
-    ogImage: "/assets/images/nutricionista-nadia-richter.webp",
-  },
-  hero: {
-    eyebrow: "Nutrição Clínica & Performance",
-    title: "Nutricionista clínica em Dois Irmãos, Nádia Richter",
-    titleHighlight: "Nádia Richter",
-    tagline: "Comer bem pode ser prático, saboroso e com resultados reais.",
-    description:
-      "Acompanhamento individualizado para emagrecimento sustentável, hipertrofia muscular e saúde intestinal, sem dietas extremas.",
-  },
-  about: {
-    eyebrow: "Olá, eu sou a Nádia Richter!",
-    title: "Mais de 12 anos transformando vidas pela nutrição clínica e esportiva",
-    titleHighlight: "nutrição clínica e esportiva",
-    paragraphs: [
-      "Oi, eu sou a Nádia Richter Faber! Nutricionista clínica e esportiva apaixonada por ajudar você a construir uma relação leve, saudável e prazerosa com a comida — sem culpa, extremos ou dietas restritivas.",
-      "Com mais de 12 anos de atuação prática e especializações em Emagrecimento, Hipertrofia, Gastronomia Aplicada e Modulação Intestinal, acredito que a nutrição deve ser simples, sustentável e viável na vida real.",
-      "Seja para restaurar sua saúde intestinal (SII, constipação, estufamento), alcançar seus objetivos de emagrecimento e ganho de massa, ou simplesmente viver com mais disposição e energia, guio você com estratégias baseadas em evidências científicas e personalizadas para a sua rotina.",
-    ],
+      "Projetos arquitetônicos e design de interiores com planejamento estratégico e transparência total. Viabilidade financeira mapeada antes da obra, cronograma com marcos definidos. Do conceito à entrega.",
+    url: "https://koplan.com.br/",
+    ogImage: "/assets/images/BG-desktop-KOPLAN.webp",
   },
   assets: {
-    logo: "/assets/images/logo-nutricionista-nadia-richter.webp",
-    hero: "/assets/images/nutricionista-nadia-richter.webp",
-    heroMobile: "/assets/images/nutricionista-nadia-richter-m.webp",
-    about: "/assets/images/sobre-nutricionista-nadia-richter.webp",
-    processBg: "/assets/images/nutricionista-fundo-sessao-agende.webp",
-    consultorio: "/assets/images/nutricionista-nadia-richter-clinica.webp",
-    consultorioFachada: "/assets/images/nutricionista-dois-irmaos-nadia-richter-clinica.webp",
+    logo: "/assets/images/logo-KOPLAN.webp",
+    logo1: "/assets/images/logo-KOPLAN-1.webp",
+    logoWhite: "/assets/images/logo-KOPLAN-branco.webp",
+    logoSymbol: "/assets/images/logok-KOPLAN-1.webp",
+    favicon: "/assets/images/cropped-logok-KOPLAN-32x32.webp",
+    faviconApple: "/assets/images/cropped-logok-KOPLAN-180x180.webp",
+    favicon192: "/assets/images/cropped-logok-KOPLAN-192x192.webp",
+    heroDesktop: "/assets/images/BG-desktop-KOPLAN.webp",
+    heroMobile: "/assets/images/BG-Koplan-Mobile.webp",
+    heroBadgeThumbnail: "/assets/images/miniatura-BG-desktop1-KOPLAN.webp",
+    formBg: "/assets/images/k-bg-formulario-KOPLAN.webp",
+    watermarkBg: "/assets/images/K-fundo-KOPLAN.webp",
+    kitchenPraQuem: "/assets/images/cozinha-arquitetura-KOPLAN.webp",
+    leisurePraQuem: "/assets/images/area-lazer-arquitetura-KOPLAN.webp",
+    livingRoomBenefits: "/assets/images/sala-arquitetura-KOPLAN.webp",
+    gardenBenefits: "/assets/images/jardim-KOPLAN.webp",
+    kitchenLarge: "/assets/images/cozinha-grande-arquiteta-KOPLAN.webp",
+    kitchenMinimalist: "/assets/images/cozinha-minimalista-arquitetura-KOPLAN.webp",
+    foundersAmanda: "/assets/images/sobre-nos1-KOPLAN.webp",
+    foundersLeonardo: "/assets/images/sobre-leo1-KOPLAN.webp",
+    aboutIllustration: "/assets/images/sobre-KOPLAN.webp",
+    whatsappAvatar: "/assets/images/7-300x300.jpg",
   },
 } as const;
 
-export const specialties = [
+export const whatsappUrl = `https://wa.me/+${site.phoneLink}?text=${encodeURIComponent(site.whatsappMessage)}`;
+
+export interface PraQuemItem {
+  readonly bold?: string;
+  readonly gray?: string;
+  readonly grayEnd?: string;
+}
+
+export const praQuemE = {
+  sectionTitle: "PRA QUEM É",
+  heading: "ARQUITETURA PARA QUEM VALORIZA PROCESSO, TEMPO E RESULTADO.",
+  subheading: "A KOPLAN ATENDE QUEM:",
+  items: [
+    { bold: "Valoriza a execução", gray: "tanto quanto o conceito." },
+    { bold: "Precisa de direção", gray: "no processo criativo." },
+    { bold: "Quer decisões", gray: "baseadas em dados, não achismo." },
+    { gray: "Não aceita", bold: '"Vamos resolver na obra".' },
+    { gray: "Já", bold: "passou por experiências frustrantes", grayEnd: "com obras desorganizadas." },
+    { bold: "Tem pouco tempo para acompanhar obra,", gray: "mas quer controle total." },
+  ] as readonly PraQuemItem[],
+  quote: {
+    gray1: "Processos inteligentes que formam uma arquitetura bem construída.",
+    gray2: "O cliente como coautor do projeto.",
+    bold: "Planejar é traduzir a vida em forma e matéria.",
+  },
+  badge: {
+    bold1: "Qualidade",
+    gray: "não se improvisa, se constrói com",
+    bold2: "método.",
+  },
+} as const;
+
+export const beneficios = {
+  sectionTitle: "BENEFÍCIOS",
+  heading: "VOCÊ NÃO PRECISA ENTENDER DE OBRA. PRECISA DE QUEM ENTENDA POR VOCÊ.",
+  cards: [
+    {
+      title: "Certeza do resultado antes de investir:",
+      items: [
+        "Visualização imersiva com 3D hiper-realista, você visualiza tudo antes de gastar 1 real em obra.",
+        "Visualização imersiva, revisões ilimitadas + reembolso integral se não aprovar.",
+      ],
+      iconFill: "#CFD0D1",
+    },
+    {
+      title: "Orçamento sob controle do início ao fim:",
+      items: [
+        "EVF detalhado dos custos por insumo antes da execução.",
+        "Previsibilidade de investimento.",
+      ],
+      iconFill: "#687479",
+    },
+    {
+      title: "Comunicação clara em todas as etapas:",
+      items: [
+        "Cronograma com marcos e responsáveis, atualizado em atas.",
+        "Atendimento direto pelos sócios.",
+      ],
+      iconFill: "#CFD0D1",
+    },
+    {
+      title: "Projeto que sai do papel com qualidade:",
+      items: [
+        "Compatibilidade total entre arquitetura e engenharias.",
+        'Caderno executivo completo. Nada fica "para resolver na obra".',
+      ],
+      iconFill: "#687479",
+    },
+  ],
+} as const;
+
+export const servicos = {
+  sectionTitle: "SERVIÇOS",
+  heading: "O QUE ENTREGAMOS:",
+  hoverPrompt: "Passe o mouse para ver mais.",
+  cards: [
+    {
+      title: "Projetos arquitetônicos:",
+      tags: ["APROVAÇÃO EM ÓRGÃOS COMPETENTES", "COMPATIBILIZAÇÃO TÉCNICA", "NORMAS"],
+      subtitle: "Residencial, comercial e cultural. Planejar é a base de tudo o que criamos.",
+      description:
+        "Concepção completa de edificações, do estudo inicial ao executivo. A identidade de cada pessoa ou marca traduzida em forma e matéria, com soluções técnicas integradas. Trabalhamos com a metodologia BIM e parceria com engenheiros especializados.",
+    },
+    {
+      title: "Design de Interiores",
+      tags: ["LAYOUT", "ILUMINAÇÃO", "ACABAMENTOS", "MOBILIÁRIO E MARCENARIA", "MATERIAIS"],
+      subtitle: "Lugares que nascem de histórias. Criados para serem vividos.",
+      description:
+        "Criação de ambientes internos funcionais e sofisticados, alinhados à sua identidade. Cada detalhe é pensado para oferecer conforto e estilo atemporal. Flexibilidade: Você pode contratar o projeto completo ou selecionar ambientes específicos para ajustar ao seu orçamento.",
+    },
+    {
+      title: "Viabilidade Financeira (E.V.F.):",
+      tags: ["PLANILHA DETALHADA POR INSUMO", "DIRECIONAMENTO ESTRATÉGICO", "PARECERES TÉCNICOS"],
+      subtitle: "Segurança antes de investir. Todos os custos mapeados.",
+      description:
+        "Orientação profissional para decisões de projeto, laudos e documentação técnica. Ideal para quem busca segurança antes de investir ou precisa solucionar questões específicas com rigor técnico.",
+    },
+    {
+      title: "Acompanhamento Técnico e Conexão com Parceiros:",
+      tags: [
+        "INTEGRAÇÃO PROJETO-EXECUÇÃO",
+        "ORÇAMENTO E ALINHAMENTO",
+        "VISITA TÉCNICA",
+        "INDICAÇÃO DE PARCEIROS DE CONFIANÇA",
+      ],
+      subtitle: "Realizamos visitas para tirar dúvidas, verificar o andamento da obra e orientar ajustes.",
+      description:
+        "Conectamos você a parceiros de confiança para facilitar orçamentos e decisões. Nosso suporte garante que cada etapa cumpra o padrão de qualidade do projeto.",
+    },
+  ],
+} as const;
+
+export const comoFunciona = {
+  sectionTitle: "COMO FUNCIONA",
+  heading: "ETAPAS DETALHADAS DO PROCESSO KOPLAN:",
+  steps: [
+    {
+      number: "01",
+      title: "Diagnóstico técnico:",
+      tagline: "Medições, documentação e condicionantes legais.",
+      description:
+        "Coletamos todas as informações do terreno ou imóvel: medições detalhadas, estudo de insolação, registro fotográfico e análise de restrições legais. Base sólida para evitar imprevistos.",
+      extra:
+        "Para projetos remotos: Fornecemos plantas-guia e tutoriais didáticos. Se preferir, indicamos profissionais locais para realizar a medição.",
+    },
+    {
+      number: "02",
+      title: "Briefing Validado:",
+      tagline: "Você escolhe como prefere conversar. Aprovação garantida antes de qualquer traço.",
+      description:
+        "Aqui, você manda. Escolha o formato ideal para você: questionário online completo, reunião presencial em um café ou na sua casa/empresa, ou reunião online. O importante é entender profundamente suas necessidades, rotina e expectativas para definirmos juntos o programa de necessidades.",
+      extra:
+        "Entregas: Ata de validação de briefing + cronograma detalhado + manual do cliente (para acompanhar cada etapa do processo).",
+    },
+    {
+      number: "03",
+      title: "Estudos iniciais + Anteprojeto 3D:",
+      tagline: "Você visualiza tudo antes de executar. Revisões ilimitadas.",
+      description:
+        "Criamos estudos de layout com opções de distribuição e volumetria. Depois, evoluímos para anteprojeto 3D com renders realistas e moodboard de materiais. Você vê exatamente como ficará. E pode pedir revisões até aprovar completamente.",
+      extra:
+        "Garantia: Se ao final desta etapa você não estiver satisfeito, devolvemos 100% do valor investido.",
+    },
+    {
+      number: "04",
+      title: "Viabilidade Financeira (EVF):",
+      tagline: "Todos os custos mapeados. Ajustamos o projeto se necessário.",
+      description:
+        "Levantamento completo de custos da obra antes do projeto executivo: estrutura, acabamentos, marcenaria, mobiliário, instalações. Após aprovar o 3D Visual, você já recebe uma estimativa real de investimento. Se quiser ajustar para um projeto mais básico ou mais elaborado, ainda há tempo de revisar sem retrabalho. Planilha detalhada por insumo para você saber exatamente onde cada real será investido. Se o projeto ultrapassar o orçamento planejado, ajustamos antes da execução. Sem surpresas. Decisões baseadas em dados.",
+      extra: "",
+    },
+    {
+      number: "05",
+      title: "Executivo + Obra:",
+      tagline: "Cadernos técnicos completos. Acompanhamento até a entrega.",
+      description:
+        "Projeto executivo completo: plantas, complementares, iluminação, marcenaria, especificações técnicas. Acompanhamento presencial (Uberlândia/Goiânia) ou suporte remoto contínuo (todo Brasil). Garantimos um projeto completo, detalhado e didático para que a execução seja fiel ao planejado.",
+      extra:
+        "Não nos responsabilizamos por erros de execução dos profissionais contratados, mas estamos disponíveis para esclarecer dúvidas e orientar durante toda a obra.",
+    },
+  ],
+} as const;
+
+export interface ServicoComplementarItem {
+  readonly icon: string;
+  readonly text: string;
+  readonly note?: string;
+}
+
+export const servicosComplementares = {
+  sectionTitle: "SERVIÇOS COMPLEMENTARES",
+  heading: "VOCÊ PODE CONTRATAR SEPARADAMENTE :",
+  items: [
+    {
+      icon: "/assets/images/icone-visitas-tecnicas-obra-KOPLAN.webp",
+      text: "Visitas técnicas em obra.",
+    },
+    {
+      icon: "/assets/images/icone-consultorias-pontuais-KOPLAN.webp",
+      text: "Consultorias pontuais.",
+    },
+    {
+      icon: "/assets/images/icone-acompanhamento-obra-KOPLAN.webp",
+      text: "Acompanhamento de obra.",
+      note: "*Apenas em Uberlândia-MG.",
+    },
+    {
+      icon: "/assets/images/icone-imagens-realistas-KOPLAN.webp",
+      text: "Imagens realísticas 360º.",
+    },
+    {
+      icon: "/assets/images/icone-videos-KOPLAN.webp",
+      text: "Vídeos renderizados.",
+    },
+  ] as readonly ServicoComplementarItem[],
+  partnerBox: {
+    title: "EM PARCERIA COM ENGENHEIROS ESPECIALIZADOS:",
+    text: "Projetos estruturais (concreto armado e estrutura metálica), elétrico, hidrossanitário, climatização, combate a incêndio, planilha financeira final pós-executivo.",
+  },
+} as const;
+
+export interface PortfolioProject {
+  readonly id: string;
+  readonly name: string;
+  readonly locationDetails: string;
+  readonly description: string;
+  readonly imagesDesktop: readonly string[];
+  readonly imagesMobile: readonly string[];
+}
+
+export const portfolioProjects: readonly PortfolioProject[] = [
   {
-    number: "01",
-    icon: "/assets/images/emagrecimento.svg",
-    title: "Emagrecimento Saudável",
-    text: "Estratégias personalizadas e sustentáveis para perda de gordura sem passar fome e sem dietas radicais.",
-    detail:
-      "Reeducação alimentar com comida de verdade e saciedade, aplicando técnicas gastronômicas para refeições práticas e saborosas.",
+    id: "ap-tamandua",
+    name: "AP Tamanduá",
+    locationDetails: "AP Tamanduá fica em Uberlândia e tem 346m².",
+    description: "Interiores completos, marcenaria sob medida, iluminação técnica.",
+    imagesDesktop: [
+      "/assets/images/portfolio-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio11-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio111-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio1111-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio11111-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio1-KOPLAN.webp",
+    ],
+    imagesMobile: [
+      "/assets/images/portfolio11-mobile-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio1111-mobile-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio111-mobile-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio1-mobile-KOPLAN.webp",
+      "/assets/images/portfolio-mobile-KOPLAN.webp",
+      "/assets/images/portfolio11111-mobile-KOPLAN-sem-sombra.webp",
+    ],
   },
   {
-    number: "02",
-    icon: "/assets/images/corrida.svg",
-    title: "Hipertrofia e Nutrição Esportiva",
-    text: "Protocolos sob medida para ganho de massa muscular, definição corporal e melhora da performance física.",
-    detail:
-      "Cálculo preciso de macronutrientes, periodização alimentar e suplementação estratégica alinhada aos seus treinos.",
+    id: "ap-brise",
+    name: "Apartamento Brise",
+    locationDetails: "Apartamento Brise de 55,7m².",
+    description: "Compatibilização total para reforma sem interrupção do negócio.",
+    imagesDesktop: [
+      "/assets/images/portfolio-brisa-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa1-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa2-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa3-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa4-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa5-KOPLAN-sem-sombra.webp",
+    ],
+    imagesMobile: [
+      "/assets/images/portfolio-brisa-mobile-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa5-mobile-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa4-mobile-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa3-mobile-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa2-mobile-KOPLAN-sem-sombra.webp",
+      "/assets/images/portfolio-brisa1-mobile-KOPLAN-sem-sombra.webp",
+    ],
   },
   {
-    number: "03",
-    icon: "/assets/images/maca.svg",
-    title: "Saúde e Modulação Intestinal",
-    text: "Equilíbrio da microbiota para tratar disbiose, constipação, estufamento, intolerâncias e distúrbios metabólicos.",
-    detail:
-      "Cuidado integral com a digestão que se reflete em mais energia, imunidade e controle de esteatose hepática, glicose e colesterol.",
+    id: "casa-marau",
+    name: "Casa Maraú",
+    locationDetails: "Casa Maraú em Uberlândia de 534m².",
+    description: "Layout integrado à rotina, iluminação e marcenaria personalizadas.",
+    imagesDesktop: [
+      "/assets/images/portfolio-casa-marau.webp",
+      "/assets/images/portfolio-casa-marau1.webp",
+      "/assets/images/portfolio-casa-marau2.webp",
+      "/assets/images/portfolio-casa-marau4.webp",
+      "/assets/images/portfolio-casa-marau5.webp",
+      "/assets/images/portfolio-casa-marau6.webp",
+    ],
+    imagesMobile: [
+      "/assets/images/portfolio-casa-marau2-mobile.webp",
+      "/assets/images/portfolio-casa-marau1-mobile.webp",
+      "/assets/images/portfolio-casa-marau4-mobile.webp",
+      "/assets/images/portfolio-casa-marau5-mobile.webp",
+      "/assets/images/portfolio-casa-marau-mobile.webp",
+      "/assets/images/portfolio-casa-marau6-mobile.webp",
+    ],
+  },
+  {
+    id: "fiore-di-latte",
+    name: "Fiore di Latte",
+    locationDetails: "Gelateria/drinkeria Fiore di Latte fica em SP e tem 350m².",
+    description: "Espaço comercial com atmosfera e funcionalidade pensadas para atrair, receber e reter clientes",
+    imagesDesktop: [
+      "/assets/images/Fioredilatte.webp",
+      "/assets/images/Fioredilatte1.webp",
+      "/assets/images/Fioredilatte2.webp",
+      "/assets/images/Fioredilatte3.webp",
+      "/assets/images/Fioredilatte4.webp",
+      "/assets/images/Fioredilatte5.webp",
+    ],
+    imagesMobile: [
+      "/assets/images/Fioredilatte1-mobile.webp",
+      "/assets/images/Fioredilatte2-mobile.webp",
+      "/assets/images/Fioredilatte3-mobile.webp",
+      "/assets/images/Fioredilatte4-mobile.webp",
+      "/assets/images/Fioredilatte5-mobile.webp",
+      "/assets/images/Fioredilatte-mobile.webp",
+    ],
+  },
+  {
+    id: "living-ypes",
+    name: "Living Ypês",
+    locationDetails: "Living Ypês em São Paulo de 191m².",
+    description: "Layout integrado à rotina, iluminação e marcenaria personalizadas.",
+    imagesDesktop: [
+      "/assets/images/living-ipes.webp",
+      "/assets/images/living-ipes1.webp",
+      "/assets/images/living-ipes2.webp",
+      "/assets/images/living-ipes3.webp",
+      "/assets/images/living-ipes4.webp",
+      "/assets/images/living-ipes5.webp",
+    ],
+    imagesMobile: [
+      "/assets/images/living-ipes1-mobile.webp",
+      "/assets/images/living-ipes2-mobile.webp",
+      "/assets/images/living-ipes3-mobile.webp",
+      "/assets/images/living-ipes4-mobile.webp",
+      "/assets/images/living-ipes5-mobile.webp",
+      "/assets/images/living-ipes-mobile.webp",
+    ],
   },
 ] as const;
 
-export const pillars = [
+export const testimonials = [
   {
-    title: "Avaliar",
-    text: "Investigação detalhada do seu histórico de saúde, exames laboratoriais, rotina, preferências alimentares e metas.",
-    icon: "/assets/images/pagina.svg",
+    name: "Marcelo",
+    role: "Proprietário de cafeteria, Porto Alegre/RS",
+    quote:
+      '"Desde o primeiro contato que tivemos com vocês, já senti que ia dar tudo certo. Vocês são profissionais super atenciosos, generosos, que realmente ouviram nossa história, ouviram o que a gente precisava, nossas ideias, entenderam a essência da marca e traduziram isso em um resultado perfeito. Todo mundo da empresa adorou, ficou maluco. Sem dúvidas queremos contratar vocês de novo quando a gente puder."',
   },
   {
-    title: "Planejar",
-    text: "Criação de um plano alimentar individualizado, saboroso e viável, unindo evidências científicas e gastronomia funcional.",
-    icon: "/assets/images/alvo.svg",
+    name: "João Pedro",
+    role: "Cliente residencial, Catalão/GO",
+    quote:
+      '"Pessoal, não sei o que seria da gente sem vocês. Cometi o erro de contratar uma empreitada muito ruim, mas vocês nos ajudaram tanto, que não tem dinheiro no mundo que pague o valor de vocês. Eu e a Raissa só temos a agradecer."',
   },
   {
-    title: "Acompanhar",
-    text: "Acompanhamento próximo com suporte contínuo para ajustes graduais, evolução constante e resultados consistentes.",
-    icon: "/assets/images/pessoas.svg",
-  },
-] as const;
-
-// Depoimentos reais extraídos diretamente do perfil Google Meu Negócio de Nádia Richter
-export const testimonials: {
-  name: string;
-  city: string;
-  dateTime?: string;
-  text: string;
-  profile?: string;
-}[] = [
-  {
-    name: "Maria Ignez Rovigatti",
-    city: "Dois Irmãos/RS",
-    dateTime: "2026-02-10",
-    text: "Estou extremamente satisfeita com o atendimento, cuidado e competência profissional da Nádia. Desde a primeira consulta, recebi orientações para minha organização e adequação alimentar. Tenho seguido meu Plano Alimentar e estou feliz com os resultados que estamos obtendo.",
-    profile:
-      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
-  },
-  {
-    name: "Emanuelle Wagner",
-    city: "Dois Irmãos/RS",
-    dateTime: "2026-02-05",
-    text: "Profissional excelente! Atendimento super humanizado, buscando entender a minha rotina e os meus problemas, criando uma dieta e um acompanhamento personalizado. Indico muito!",
-    profile:
-      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
-  },
-  {
-    name: "Marcia Regina De Oliveira",
-    city: "Dois Irmãos/RS",
-    dateTime: "2026-01-28",
-    text: "Uma ótima nutri! Não desiste do objetivo e nos mostra a melhor maneira de chegar nele, mesmo sabendo que não será fácil! Admiro muito a Nádia, excelente profissional!",
-    profile:
-      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
-  },
-  {
-    name: "Neide Backes",
-    city: "Dois Irmãos/RS",
-    dateTime: "2026-01-15",
-    text: "Aprendi muito em introdução alimentar saudável, muito produtivos meus atendimentos, uma profissional de mão cheia.",
-    profile:
-      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
-  },
-  {
-    name: "Natália Schommer",
-    city: "Dois Irmãos/RS",
-    dateTime: "2025-05-20",
-    text: "A Nádia é uma pessoa muito comprometida com o seu trabalho. Ela está sempre se renovando e se atualizando. Sempre disposta a atender e tirar dúvidas.",
-    profile:
-      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
-  },
-  {
-    name: "Deise Strey",
-    city: "Dois Irmãos/RS",
-    dateTime: "2025-03-10",
-    text: "Profissional muito atenciosa. Consegue adaptar a boa alimentação à rotina da gente. Incentiva as pequenas mudanças, em busca de resultados que queremos atingir. Explica muito bem sobre alimentação, dá dicas de receitas e produtos que podem facilitar a dieta no dia a dia. O que mais gosto na Nádia é a clareza e a atenção que ela dispensa nas consultas. Vibra com nossos resultados e adapta o que não está funcionando. Com certeza, é uma profissional que eu indico!",
-    profile:
-      "https://www.google.com/maps/place/N%C3%A1dia+Richter+-+Nutricionista/@-29.5774477,-51.0867773,980m/data=!3m1!1e3!4m15!1m8!3m7!1s0x9519466fff9960b1:0x102896425bc2195e!2sN%C3%A1dia+Richter+-+Nutricionista!8m2!3d-29.5774779!4d-51.086554!10e5!16s%2Fg%2F11fx7vxm4z!3m5!1s0x9519466fff9960b1:0x102896425bc2195e!8m2!3d-29.5774779!4d-51.086554!16s%2Fg%2F11fx7vxm4z?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D",
-  },
-];
-
-export const locations = [
-  {
-    city: "Dois Irmãos",
-    address: "Av. 25 de Julho, 1201 · Térreo",
-    district: "Débora Blume Clinic · Bairro União / Centro · Dois Irmãos/RS · CEP 93950-000",
-    type: "Presencial · Online · Particular",
+    name: "Rafael",
+    role: "Cliente residencial, Uberlândia/MG",
+    quote:
+      '"Eu já sabia que a Amanda é uma pessoa doida e perfeccionista, então contratei. É um apartamento temporário, então as mudanças foram simples, mas, mesmo no simples, vocês me surpreenderam; ficou aconchegante e muito bonito. Até fiquei mais tempo do que tinha calculado que ficaria, porque fiquei muito confortável de morar. Vou comprar um apartamento novo mais pra frente e quero contratar vocês de novo."',
   },
 ] as const;
 
-export const faqs = [
+export const garantia = {
+  sectionTitle: "GARANTIA",
+  heading: "GARANTIA DE REEMBOLSO INTEGRAL",
+  paragraphs: [
+    "Se ao final do anteprojeto 3D você não estiver satisfeito com o resultado, devolvemos 100% do valor investido até essa etapa.",
+    "Sem burocracia. Sem perguntas complexas.",
+    "Nossa única condição: que você participe do processo de forma colaborativa.",
+    "Por que oferecemos isso? Porque confiamos no nosso processo. E porque você merece investir com segurança.",
+  ],
+  sobre: {
+    p1: "A Koplan é um estúdio de arquitetura e interiores, fundado por arquitetos que acreditam que planejamento estratégico não é opcional.",
+    p2: "Atendimento: Nacional via processo digital integrado.",
+    p3: "Cada projeto recebe atenção direta dos sócios fundadores, sem intermediários. Trabalhamos com a metodologia BIM (compatibilização total entre disciplinas) e parceria com engenheiros especializados.",
+    p4: "O resultado não é apenas um projeto bonito, mas uma obra bem-sucedida do início ao fim.",
+    p5: "Valorizamos muito cada um de nossos clientes. Por isso a conversa aqui é clara, os números são transparentes e as promessas são cumpridas.",
+    p6: "A Koplan é a junção rara entre rigor técnico, sensibilidade estética e método de gestão. Nos moldamos ao cliente, sem abrir mão da técnica.",
+  },
+  founders: [
+    {
+      name: "Amanda",
+      title: "Arquiteta",
+      photo: "/assets/images/sobre-nos1-KOPLAN.webp",
+    },
+    {
+      name: "Leonardo",
+      title: "Arquiteto",
+      photo: "/assets/images/sobre-leo1-KOPLAN.webp",
+    },
+  ],
+} as const;
+
+export const faqs: readonly [string, string][] = [
   [
-    "Qual é a melhor dieta para quem quer emagrecer?",
-    "Aquela que combina com o seu estilo e ritmo de vida. Para que dê certo e gere resultados consistentes, o plano alimentar precisa ter a ver com a sua rotina, respeitar o seu paladar e suas preferências, sem radicalismos ou restrições insustentáveis.",
+    "Atendem fora de MG/GO?",
+    "Sim. Atuamos em todo o território nacional por meio de um processo digital integrado. Fornecemos plantas guia e orientações técnicas didáticas para medições remotas, com reuniões e entregas 100% online. Atendimentos presenciais estão disponíveis em Uberlândia e Goiânia.",
   ],
   [
-    "Existe um método para uma perda de peso duradoura?",
-    "Sim! Aquele com foco em reeducação alimentar genuína: porções na medida certa (nem de mais, nem de menos), comida de verdade e acompanhamento individualizado que ensina você a ter autonomia alimentar para a vida inteira.",
+    "Como funciona o processo remoto?",
+    "Todo o processo (briefing, estudos, aprovações, acompanhamento) acontece online via reuniões, plataformas digitais e entregas documentadas. O suporte remoto está incluso em todos os projetos, garantindo a mesma qualidade de atendimento e entrega, onde quer que você esteja.",
   ],
   [
-    "Dá para emagrecer ou definir sem cortar o carboidrato?",
-    "Com certeza! Os carboidratos são fontes primordiais de energia e disposição física. O segredo está em ajustar a quantidade ideal para o seu gasto energético, priorizar opções ricas em fibras e nutrientes e distribuir de maneira estratégica ao longo do seu dia.",
+    "Qual o prazo médio?",
+    "Após o briefing validado, o prazo é definido no cronograma. Em média, projetos residenciais levam de 4 a 6 meses, variando conforme escopo e nível de detalhamento.",
   ],
   [
-    "Como funciona o tratamento para saúde e modulação intestinal?",
-    "É um protocolo personalizado para pacientes com diagnóstico de Síndrome do Intestino Irritável (SII), constipação, estufamento, gases ou distensão abdominal. Investigamos os gatilhos alimentares, recuperamos a barreira intestinal e restauramos o equilíbrio da microbiota.",
+    "Quanto custa um projeto?",
+    "As propostas são personalizadas após diagnóstico inicial. Trabalhamos por pacote completo ou por ambientes (em projetos de interiores), permitindo ajuste ao seu orçamento.",
   ],
   [
-    "Onde acontecem as consultas presenciais?",
-    "Os atendimentos presenciais acontecem na Débora Blume Clinic, situada na Av. 25 de Julho, 1201, Térreo, Bairro União / Centro, Dois Irmãos/RS, CEP 93950-000.",
+    "E se eu não gostar do projeto em 3D?",
+    "Você pede quantas revisões precisar durante a fase de anteprojeto. Se ainda assim não aprovar, devolvemos o investimento integral desta etapa.",
   ],
   [
-    "Vocês atendem online?",
-    "Sim! Além do atendimento presencial em Dois Irmãos, realizo acompanhamento nutricional online para pacientes de todo o Brasil e exterior, com a mesma qualidade clínica e suporte contínuo.",
+    "Vocês executam a obra?",
+    "Não somos construtora, não executamos ou coordenamos a obra. Em Uberlândia-MG temos um parceiro que faz isso por nós em nossas obras.",
   ],
   [
-    "Como faço para agendar uma consulta?",
-    `Basta clicar em qualquer botão de agendamento do site para conversar diretamente comigo pelo WhatsApp ${site.phoneDisplay}. O atendimento é particular e com horários flexíveis para acomodar sua rotina.`,
+    "O que é o EVF e por que preciso dele?",
+    "Estudo de Viabilidade Financeira: planilha detalhada com todos os custos da obra (materiais, mão de obra, mobiliário e acabamentos) antes de começar. Evita surpresas e permite ajustes no projeto para caber no orçamento.",
   ],
   [
-    "Atende convênio?",
-    "Não. Os atendimentos são exclusivamente particulares para garantir consultas aprofundadas, sem pressa e com planejamento verdadeiramente personalizado para as suas necessidades.",
-  ],
-  [
-    "Como funciona a primeira consulta?",
-    "Fazemos uma anamnese completa sobre seus hábitos, exames laboratoriais, histórico de saúde, rotina e metas. A partir dessa análise aprofundada, estruturamos seu plano alimentar individualizado e os primeiros passos do tratamento.",
+    "Posso contratar apenas alguns ambientes?",
+    "Sim. Em projetos de interiores, você pode escolher quais ambientes deseja desenvolver, ajustando o escopo ao seu orçamento e prioridades.",
   ],
 ] as const;
-
-export const whatsappUrl = `https://wa.me/${site.phoneLink}?text=${encodeURIComponent("Olá, Nádia! Gostaria de agendar uma consulta.")}`;

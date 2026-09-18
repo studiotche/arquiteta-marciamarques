@@ -1,11 +1,15 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
+  beneficios,
+  comoFunciona,
   faqs,
-  locations,
-  pillars,
+  garantia,
+  portfolioProjects,
+  praQuemE,
+  servicos,
+  servicosComplementares,
   site,
-  specialties,
   testimonials,
   whatsappUrl,
 } from "../data/site";
@@ -13,72 +17,60 @@ import {
 const base = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const asset = (path: string) => `${base}${path.replace(/^\//, "")}`;
+const asset = (filePath: string) => `${base}${filePath.replace(/^\//, "")}`;
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Person",
-      "@id": `${site.seo.url}/#person`,
-      name: `${site.fullRole} ${site.name}`,
-      jobTitle: site.fullRole,
+      "@type": "Organization",
+      "@id": `${site.seo.url}#organization`,
+      name: site.name,
       url: site.seo.url,
-      image: `${site.seo.url.replace(/\/$/, "")}${site.seo.ogImage}`,
-      telephone: `+${site.phoneLink}`,
-      sameAs: [site.googleProfile, site.instagram, site.doctoralia],
-      areaServed: [site.city, "Vale do Sinos", "Encosta da Serra", "Ivoti", "Morro Reuter"],
-      workLocation: locations.slice(0, 1).map((location) => ({
-        "@type": "Place",
-        name: `Consultório em ${location.city}`,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: location.address,
-          addressLocality: location.city,
-          addressRegion: site.state,
-          postalCode: "93950-000",
-          addressCountry: "BR",
-        },
-      })),
+      email: site.email,
+      logo: `${site.seo.url.replace(/\/$/, "")}${site.assets.logo}`,
+      sameAs: [site.instagram],
     },
     {
-      "@type": "Dietitian",
-      "@id": `${site.seo.url}/#dietitian`,
-      name: `${site.fullRole} ${site.name}`,
-      image: `${site.seo.url.replace(/\/$/, "")}${site.seo.ogImage}`,
+      "@type": "WebSite",
+      "@id": `${site.seo.url}#website`,
+      url: site.seo.url,
+      name: site.name,
+      publisher: { "@id": `${site.seo.url}#organization` },
+      inLanguage: "pt-BR",
+    },
+    {
+      "@type": "ArchitectureFirm",
+      "@id": `${site.seo.url}#business`,
+      name: site.name,
+      image: `${site.seo.url.replace(/\/$/, "")}${site.assets.logo}`,
       telephone: `+${site.phoneLink}`,
-      priceRange: "$$",
-      medicalSpecialty: "Nutrition",
-      sameAs: [site.instagram, site.googleProfile, site.doctoralia],
-      areaServed: [site.city, "Dois Irmãos", "Ivoti", "Morro Reuter", "Novo Hamburgo", "Vale do Sinos"],
-      location: locations.slice(0, 1).map((location) => ({
-        "@type": "Place",
-        name: `Consultório em ${location.city}`,
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: location.address,
-          addressLocality: location.city,
-          addressRegion: site.state,
-          postalCode: "93950-000",
-          addressCountry: "BR",
-        },
-      })),
+      email: site.email,
+      url: site.seo.url,
+      priceRange: "$$$",
+      sameAs: [site.instagram],
+      areaServed: ["Uberlândia", "Goiânia", "Brasil"],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: site.city,
+        addressRegion: site.state,
+        addressCountry: "BR",
+      },
     },
     {
       "@type": "FAQPage",
-      "@id": `${site.seo.url}/#faq`,
+      "@id": `${site.seo.url}#faq`,
       mainEntity: faqs.map(([question, answer]) => ({
         "@type": "Question",
         name: question,
         acceptedAnswer: { "@type": "Answer", text: answer },
       })),
     },
-    ...testimonials.map((testimonial) => ({
+    ...testimonials.map((t) => ({
       "@type": "Review",
-      itemReviewed: { "@id": `${site.seo.url}/#dietitian` },
-      author: { "@type": "Person", name: testimonial.name },
-      ...(testimonial.dateTime ? { datePublished: testimonial.dateTime } : {}),
-      reviewBody: testimonial.text,
+      itemReviewed: { "@id": `${site.seo.url}#business` },
+      author: { "@type": "Person", name: t.name },
+      reviewBody: t.quote,
     })),
   ],
 };
@@ -86,620 +78,597 @@ const jsonLd = {
 
 <BaseLayout>
   <Fragment slot="head">
-    <link
-      rel="preload"
-      as="image"
-      href={asset(site.assets.hero)}
-      media="(min-width: 761px)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href={asset(site.assets.heroMobile)}
-      media="(max-width: 760px)"
-    />
-    <link rel="preload" as="image" href={asset(site.assets.logo)} />
-    <link rel="preload" as="image" href={asset("/assets/images/whatsapp.webp")} />
     <script
       is:inline
       type="application/ld+json"
       set:html={JSON.stringify(jsonLd)}
     />
   </Fragment>
-  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <!-- Header & Navigation -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#inicio" aria-label={`${site.name}, início`}
-        ><img
-          src={asset(site.assets.logo)}
-          alt={`${site.role} ${site.name}`}
-          width="430"
-          height="185"
-        /></a
-      >
-      <nav class="desktop-nav" aria-label="Navegação principal">
-        <a href="#sobre">Sobre</a><a href="#atendimentos">Atendimentos</a><a
-          href="#metodo">Abordagem</a
-        ><a href="#depoimentos">Depoimentos</a><a href="#locais">Locais</a>
+      <a class="header-brand" href="#inicio" aria-label={`${site.name} — Início`}>
+        <img src={asset(site.assets.logoWhite)} alt={site.name} width="156" height="40" />
+      </a>
+      <nav class="desktop-nav" aria-label="Navegação Principal">
+        <a href="#pra-quem">Pra quem é</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#como-funciona">Processo</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#faq">FAQ</a>
       </nav>
-      <a
-        class="button button-small"
-        href={whatsappUrl}
-        target="_blank"
-        rel="noreferrer">Agendar consulta</a
-      >
+      <a class="header-cta-button" href="#contato">Solicitar Orçamento</a>
       <button
         class="hamburger"
         type="button"
         aria-expanded="false"
         aria-controls="mobileMenu"
-        aria-label="Abrir menu"><span></span><span></span><span></span></button
+        aria-label="Abrir menu de navegação"
       >
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
+  <!-- Mobile Menu Drawer -->
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <div class="mobile-menu-backdrop" data-close-menu></div>
     <div class="mobile-menu-panel">
-      <button
-        class="menu-close"
-        type="button"
-        data-close-menu
-        aria-label="Fechar menu"><span aria-hidden="true">✕</span></button
-      >
-      <div class="menu-panel-head">
-        <span class="menu-brand">{site.name}</span><small class="kicker"
-          >{site.role}</small
-        >
+      <div>
+        <div class="mobile-menu-head">
+          <img src={asset(site.assets.logoWhite)} alt={site.name} width="120" height="30" />
+          <button class="mobile-menu-close" type="button" data-close-menu aria-label="Fechar menu">✕</button>
+        </div>
+        <nav class="mobile-nav" aria-label="Navegação Móvel">
+          <a href="#pra-quem">Pra quem é</a>
+          <a href="#beneficios">Benefícios</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#como-funciona">Como Funciona</a>
+          <a href="#portfolio">Portfólio</a>
+          <a href="#depoimentos">Depoimentos</a>
+          <a href="#garantia">Garantia</a>
+          <a href="#faq">F.A.Q</a>
+          <a href="#contato">Contato</a>
+        </nav>
       </div>
-      <nav class="mobile-nav" aria-label="Navegação móvel">
-        <a href="#sobre">Sobre</a>
-        <a href="#atendimentos">Atendimentos</a>
-        <a href="#metodo">Abordagem</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="#locais">Locais</a>
-      </nav>
-      <a
-        class="button menu-cta"
-        href={whatsappUrl}
-        target="_blank"
-        rel="noreferrer">Agendar consulta <span aria-hidden="true">↗</span></a
-      >
+      <div class="mobile-menu-footer">
+        <a class="mobile-cta-btn" href="#contato">Solicitar Orçamento</a>
+      </div>
     </div>
   </div>
 
   <main id="conteudo">
-    <section class="hero" id="inicio">
-      <div class="hero-visual">
-        <picture class="hero-bg">
-          <source
-            media="(max-width: 760px)"
-            srcset={asset(site.assets.heroMobile)}
-          />
+    <!-- 01. HERO SECTION -->
+    <section class="hero-section" id="inicio">
+      <div class="container hero-grid">
+        <!-- Left: White Card with Logo, H1, Lead & Form -->
+        <div class="hero-card up">
+          <div class="hero-card-brand">
+            <img src={asset(site.assets.logo1)} alt={site.name} width="156" height="40" />
+          </div>
+          <h1 class="hero-card-title">
+            CRIAMOS <i><span class="cinza">LUGARES QUE CONTAM A SUA HISTÓRIA.</span></i>
+          </h1>
+          <p class="hero-card-desc">
+            <span class="cinza">Projetos arquitetônicos e</span> <strong>design de interiores com planejamento estratégico e transparência total.</strong> <span class="cinza">Viabilidade financeira mapeada antes da obra, cronograma com marcos definidos.</span> <strong>Do conceito à entrega.</strong>
+          </p>
+
+          <form class="koplan-form" action={whatsappUrl} target="_blank" method="GET">
+            <div class="form-group">
+              <label class="form-label" for="hero-nome">NOME</label>
+              <input class="form-input" type="text" id="hero-nome" name="nome" placeholder="Seu Nome" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="hero-email">E-MAIL</label>
+              <input class="form-input" type="email" id="hero-email" name="email" placeholder="Seu E-mail" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="hero-whatsapp">SEU WHATSAPP COM DDD</label>
+              <input class="form-input" type="tel" id="hero-whatsapp" name="whatsapp" placeholder="(11) 96123-4567" required />
+            </div>
+            <button class="btn-submit" type="submit">SOLICITAR ORÇAMENTO</button>
+          </form>
+
+          <ul class="hero-bullets">
+            <li class="hero-bullet-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M13.4267 4.28751C13.0761 3.45084 12.5661 2.69036 11.9251 2.04845C11.286 1.40544 10.5269 0.894199 9.69076 0.543764C8.83422 0.183028 7.91392 -0.00188286 6.98451 1.44539e-05H6.95326C6.00795 0.00470195 5.09389 0.192202 4.23295 0.560952C3.404 0.914982 2.65197 1.42713 2.01889 2.06876C1.38409 2.70922 0.879938 3.46705 0.534513 4.30001C0.175947 5.16621 -0.00574178 6.09537 0.000138292 7.03283C0.00482579 8.1172 0.264201 9.19376 0.748576 10.1563V12.5313C0.748576 12.9281 1.07045 13.25 1.46576 13.25H3.83764C4.80463 13.738 5.87171 13.9947 6.95483 14H6.98764C7.92201 14 8.8267 13.8188 9.67983 13.4641C10.5117 13.1178 11.268 12.6125 11.9064 11.9766C12.5501 11.3375 13.0564 10.5906 13.4111 9.75783C13.7783 8.89533 13.9658 7.97814 13.9705 7.03126C13.9736 6.0797 13.7892 5.15626 13.4267 4.28751ZM3.86576 7.75001C3.45326 7.75001 3.11733 7.41408 3.11733 7.00001C3.11733 6.58595 3.45326 6.25001 3.86576 6.25001C4.27826 6.25001 4.6142 6.58595 4.6142 7.00001C4.6142 7.41408 4.27983 7.75001 3.86576 7.75001ZM6.98451 7.75001C6.57201 7.75001 6.23608 7.41408 6.23608 7.00001C6.23608 6.58595 6.57201 6.25001 6.98451 6.25001C7.39701 6.25001 7.73295 6.58595 7.73295 7.00001C7.73295 7.41408 7.39701 7.75001 6.98451 7.75001ZM10.1033 7.75001C9.69076 7.75001 9.35483 7.41408 9.35483 7.00001C9.35483 6.58595 9.69076 6.25001 10.1033 6.25001C10.5158 6.25001 10.8517 6.58595 10.8517 7.00001C10.8517 7.41408 10.5158 7.75001 10.1033 7.75001Z" fill="#292929"/></svg>
+              <span>RETORNO EM ATÉ 1 DIA ÚTIL.</span>
+            </li>
+            <li class="hero-bullet-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 19C14.9707 19 19 14.9707 19 10C19 5.0293 14.9707 1 10 1C5.0293 1 1 5.0293 1 10C1 14.9707 5.0293 19 10 19Z" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 10H19" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.9999 19C11.988 19 13.5999 14.9707 13.5999 10C13.5999 5.0293 11.988 1 9.9999 1C8.0118 1 6.3999 5.0293 6.3999 10C6.3999 14.9707 8.0118 19 9.9999 19Z" stroke="#292929" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>ATENDIMENTO NACIONAL COM PROCESSO DIGITAL.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Hero Visual with Badge -->
+        <div class="hero-visual-wrapper up1">
           <img
-            src={asset(site.assets.hero)}
-            alt={`Nutricionista ${site.name} sorrindo, atendimento particular em ${site.city}`}
-            width="2950"
-            height="1440"
+            class="hero-img-desktop"
+            src={asset(site.assets.heroDesktop)}
+            alt="Projetos arquitetônicos de alto padrão Koplan"
+            width="922"
+            height="1103"
             fetchpriority="high"
           />
-        </picture>
-        <div class="floating-card">
-          <span class="floating-kicker">Cuidado individual</span><strong
-            >Sem fórmulas prontas.</strong
-          >
-        </div>
-      </div>
-      <div class="container hero-copy">
-        <p class="eyebrow">{site.hero.eyebrow}</p>
-        <h1>
-          {site.hero.title.replace(site.hero.titleHighlight, "")}<span
-            class="highlight">{site.hero.titleHighlight}</span
-          >
-        </h1>
-        <p class="hero-tagline">{site.hero.tagline}</p>
-        <p class="lead">{site.hero.description}</p>
-        <div class="hero-actions">
-          <a class="button" href={whatsappUrl} target="_blank" rel="noreferrer"
-            >Agendar minha consulta <span aria-hidden="true">↗</span></a
-          >
-          <a class="text-link" href="#atendimentos"
-            >Como posso ajudar <span aria-hidden="true">↓</span></a
-          >
-        </div>
-        <div class="location-note">
-          <span class="location-dot" aria-hidden="true"></span><span
-            >Presencial em {site.city} · Particular</span
-          >
+          <img
+            class="hero-img-mobile"
+            src={asset(site.assets.heroMobile)}
+            alt="Projetos arquitetônicos Koplan"
+            width="715"
+            height="490"
+          />
+          <div class="hero-protocol-badge up2">
+            <img
+              class="hero-protocol-thumb"
+              src={asset(site.assets.heroBadgeThumbnail)}
+              alt=""
+              width="60"
+              height="60"
+            />
+            <p class="hero-protocol-text">
+              <strong>Arquitetura bem feita</strong> <span class="cinza">não é diferencial. É protocolo.</span>
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="trust-strip" aria-label="Diferenciais do atendimento">
-      <div class="container trust-grid">
-        <p><span>01</span> Escuta sem julgamentos</p><p>
-          <span>02</span> Estratégias personalizadas
-        </p><p><span>03</span> Atendimento particular</p>
-      </div>
-    </section>
+    <!-- 02. SECTION: PRA QUEM É -->
+    <section class="section-pra-quem" id="pra-quem">
+      <div class="container pra-quem-grid">
+        <div class="up">
+          <p class="section-tag">{praQuemE.sectionTitle}</p>
+          <h2 class="section-title-kiona">
+            <i><span class="cinza">ARQUITETURA</span></i> PARA QUEM <i><span class="cinza">VALORIZA PROCESSO,</span></i> TEMPO E RESULTADO.
+          </h2>
 
-    <section class="section services-section" id="atendimentos">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow eyebrow-light">Posso ajudar você</p><h2>
-              Cuidado nutricional para <span class="highlight"
-                >diferentes momentos da vida</span
-              >
-            </h2>
-          </div><p>
-            Cada acompanhamento começa pela sua história e respeita o
-            diagnóstico e os tratamentos conduzidos por outros profissionais.
+          <p class="pra-quem-subhead"><span class="cinza">A</span> KOPLAN <span class="cinza">ATENDE QUEM:</span></p>
+
+          <ul class="pra-quem-list">
+            {praQuemE.items.map((item) => (
+              <li class="pra-quem-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                  <path d="M14.5 0C22.5081 0 29 6.49187 29 14.5C29 22.5081 22.5081 29 14.5 29C6.49187 29 0 22.5081 0 14.5C0 6.49187 6.49187 0 14.5 0ZM22.126 8.68457C21.7372 8.30413 21.1153 8.30405 20.7266 8.68457L11.9941 17.2344C11.6054 17.6148 10.9834 17.6149 10.5947 17.2344L7.27344 13.9824C6.8847 13.6019 6.26276 13.6019 5.87402 13.9824L5.72949 14.123C5.32903 14.5152 5.329 15.1606 5.72949 15.5527L10.5947 20.3154C10.9834 20.6959 11.6054 20.6959 11.9941 20.3154L22.2705 10.2549C22.6707 9.86279 22.6707 9.21826 22.2705 8.82617L22.126 8.68457Z" fill="#292929"/>
+                </svg>
+                <span>
+                  {item.bold && <strong>{item.bold} </strong>}
+                  {item.gray && <span class="cinza">{item.gray} </span>}
+                  {item.grayEnd && <span class="cinza">{item.grayEnd}</span>}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <p class="pra-quem-quote">
+            <span class="cinza">{praQuemE.quote.gray1}<br /><br />{praQuemE.quote.gray2} </span>
+            <strong>{praQuemE.quote.bold}</strong>
           </p>
         </div>
-        <div class="service-grid">
-          {
-            specialties.map((specialty) => (
-              <article class="service-card">
-                <div class="service-card-top">
-                  <img
-                    class="service-icon"
-                    src={asset(specialty.icon)}
-                    alt=""
-                    width="56"
-                    height="56"
-                  />
-                  <span class="service-number">{specialty.number}</span>
-                </div>
-                <div class="service-card-body">
-                  <h3>{specialty.title}</h3>
-                  <p>{specialty.text}</p>
-                </div>
-                <a
-                  class="service-card-link"
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`Saber mais sobre ${specialty.title.toLowerCase()}`}
-                >
-                  Saiba mais <span aria-hidden="true">→</span>
-                </a>
-              </article>
-            ))
-          }
+
+        <div class="pra-quem-visuals up1">
+          <div class="pra-quem-images-row">
+            <img class="pra-quem-img-1" src={asset(site.assets.kitchenPraQuem)} alt="Cozinha planejada Koplan" width="426" height="624" />
+            <img class="pra-quem-img-2" src={asset(site.assets.leisurePraQuem)} alt="Área de lazer Koplan" width="425" height="493" />
+          </div>
+          <div class="pra-quem-badge">
+            <img class="pra-quem-badge-icon" src={asset(site.assets.logoSymbol)} alt="" width="33" height="42" />
+            <p class="pra-quem-badge-title">
+              <strong>{praQuemE.badge.bold1}</strong> <span class="cinza">{praQuemE.badge.gray}</span> <strong>{praQuemE.badge.bold2}</strong>
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section process-section" id="metodo">
-      <img
-        class="process-bg"
-        src={asset(site.assets.processBg)}
-        alt=""
-        aria-hidden="true"
-        width="1737"
-        height="905"
-        loading="lazy"
-      />
-      <div class="container process-grid">
-        <div class="process-intro">
-          <p class="eyebrow">Abordagem integrada</p><h2>
-            Três pilares <span class="highlight">para cuidar</span> de você por inteiro
-          </h2><p>
-            A alimentação não acontece isolada da vida. Por isso, o
-            acompanhamento considera o que você come, como organiza seus hábitos
-            e como se relaciona com a comida.
-          </p><a
-            class="button"
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-            >Iniciar meu acompanhamento <span aria-hidden="true">↗</span></a
-          >
-        </div>
-        <ol class="steps-list">
-          {
-            pillars.map((pillar) => (
-              <li class="step-item">
-                <div class="step-icon-badge" aria-hidden="true">
-                  <img
-                    class="step-icon"
-                    src={asset(pillar.icon)}
-                    alt=""
-                    width="32"
-                    height="32"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="step-content">
-                  <h3>{pillar.title}</h3>
-                  <p>{pillar.text}</p>
-                </div>
-              </li>
-            ))
-          }
-        </ol>
-      </div>
-    </section>
-
-    <section class="section testimonials-section" id="depoimentos">
+    <!-- 03. SECTION: BENEFÍCIOS & SERVIÇOS -->
+    <section class="section-beneficios-servicos" id="beneficios">
       <div class="container">
-        <div class="testimonial-heading">
-          <div>
-            <p class="eyebrow">Transformando vidas</p><h2>
-              Experiências de <span class="highlight">quem já começou</span>
-            </h2>
-          </div>
-          <div>
-            <p>
-              Relatos de pacientes sobre o cuidado recebido durante o
-              acompanhamento nutricional.
-            </p><a
-              class="google-rating"
-              href={site.googleProfile}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`Avaliação ${site.googleRating.score} de 5 em ${site.googleRating.reviews} avaliações no Google`}
-            >
-              <svg class="google-g" viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  fill="#4285F4"
-                  d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"
-                ></path>
-                <path
-                  fill="#34A853"
-                  d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"
-                ></path>
-                <path
-                  fill="#FBBC05"
-                  d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"
-                ></path>
-                <path
-                  fill="#EA4335"
-                  d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"
-                ></path>
-              </svg>
-              <strong>{site.googleRating.score}</strong>
-              <span class="google-stars" aria-hidden="true">
-                {
-                  [0, 1, 2, 3, 4].map(() => (
-                    <svg viewBox="0 0 24 24">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+        <!-- Benefícios Block -->
+        <div class="beneficios-header up">
+          <p class="section-tag">{beneficios.sectionTitle}</p>
+          <h2 class="section-title-kiona">
+            VOCÊ <i><span class="cinza">NÃO PRECISA ENTENDER</span></i> DE OBRA. <i><span class="cinza">PRECISA</span></i> DE <i><span class="cinza">QUEM ENTENDA</span></i> POR VOCÊ.
+          </h2>
+        </div>
+
+        <div class="beneficios-grid">
+          {beneficios.cards.map((card, idx) => (
+            <div class={`beneficio-card up${(idx % 3) + 1}`}>
+              <h3 class="beneficio-card-title">{card.title}</h3>
+              <ul class="beneficio-list">
+                {card.items.map((item) => (
+                  <li class="beneficio-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+                      <path d="M5.99012 10.9019C5.59959 11.2924 4.96643 11.2924 4.5759 10.9019L0.290114 6.61609C-0.10041 6.22557 -0.0950163 5.58701 0.295508 5.19648C0.686032 4.80596 1.32459 4.80057 1.71511 5.19109L4.5759 8.05188C4.96643 8.4424 5.59959 8.4424 5.99011 8.05188L13.7509 0.291092C14.1414 -0.0994327 14.78 -0.0940398 15.1705 0.296485C15.561 0.687009 15.5664 1.32557 15.1759 1.71609L5.99012 10.9019Z" fill={card.iconFill}/>
                     </svg>
-                  ))
-                }
-              </span>
-              <small>{site.googleRating.reviews} avaliações</small>
-            </a>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <!-- Serviços Block ("O QUE ENTREGAMOS:") -->
+        <div class="servicos-header-wrapper up" id="servicos">
+          <div>
+            <p class="section-tag">{servicos.sectionTitle}</p>
+            <h2 class="section-title-kiona">O QUE <i><span class="cinza">ENTREGAMOS:</span></i></h2>
+          </div>
+          <div class="servicos-hover-prompt">
+            <span>{servicos.hoverPrompt}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
           </div>
         </div>
-        <div class="testimonial-grid">
-          {
-            testimonials.map((testimonial) => (
-              <figure class="testimonial-card">
-                <>
-                  <div class="testimonial-topline">
-                    <svg class="google-mark" viewBox="0 0 24 24" aria-hidden="true">
-                      <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"></path>
-                      <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08-.72-2.45-1.16-4.07-1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"></path>
-                      <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"></path>
-                      <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"></path>
-                    </svg>
-                    <span class="testimonial-stars" role="img" aria-label="5 estrelas">
-                      {
-                        [0, 1, 2, 3, 4].map(() => (
-                          <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                          </svg>
-                        ))
-                      }
-                    </span>
-                  </div>
-                  <blockquote>{testimonial.text}</blockquote>
-                  <figcaption>
-                    <>
-                      <span class="testimonial-author">
-                        <strong>{testimonial.name}</strong>
-                        {testimonial.city && <span>{testimonial.city}</span>}
-                        {testimonial.profile ? (
-                          <a
-                            class="testimonial-source"
-                            href={testimonial.profile}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            Avalia&#231;&#227;o Google
-                          </a>
-                        ) : (
-                          <span class="testimonial-source">Avalia&#231;&#227;o Google</span>
-                        )}
-                      </span>
-                    </>
-                  </figcaption>
-                </>
-              </figure>
-            ))
-          }
+
+        <div class="servicos-grid">
+          {servicos.cards.map((card, idx) => (
+            <article class={`servico-card up${(idx % 2) + 1}`}>
+              <div>
+                <div class="servico-tags">
+                  {card.tags.map((tag) => (
+                    <span class="servico-tag">{tag}</span>
+                  ))}
+                </div>
+                <h3 class="servico-card-title">{card.title}</h3>
+                <p class="servico-card-sub">{card.subtitle}</p>
+              </div>
+              <p class="servico-card-desc">{card.description}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="section about-section" id="sobre">
-      <div class="container about-grid">
-        <div class="about-media">
-          <div class="image-frame about-frame">
-            <img
-              src={asset(site.assets.about)}
-              alt={`Nutricionista ${site.name} em ambiente profissional com luz natural`}
-              width="704"
-              height="874"
-              loading="lazy"
-            />
+    <!-- 04. SECTION: COMO FUNCIONA (PROCESS ACCORDION) -->
+    <section class="section-como-funciona" id="como-funciona">
+      <div class="container">
+        <div class="como-funciona-header up">
+          <p class="section-tag">{comoFunciona.sectionTitle}</p>
+          <h2 class="section-title-kiona">{comoFunciona.heading}</h2>
+        </div>
+
+        <div class="process-accordion-list">
+          {comoFunciona.steps.map((step, idx) => (
+            <details class="process-accordion-item up" open={idx === 0}>
+              <summary class="process-accordion-summary">
+                <div class="process-summary-left">
+                  <span class="process-num">{step.number}</span>
+                  <div class="process-title-group">
+                    <h3 class="process-title">{step.title}</h3>
+                    <p class="process-tagline">{step.tagline}</p>
+                  </div>
+                </div>
+                <svg class="process-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </summary>
+              <div class="process-body">
+                <p>{step.description}</p>
+                {step.extra && <p class="process-body-extra">{step.extra}</p>}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. SECTION: SERVIÇOS COMPLEMENTARES -->
+    <section class="section-complementares">
+      <div class="container">
+        <div class="up">
+          <p class="section-tag">{servicosComplementares.sectionTitle}</p>
+          <h2 class="section-title-kiona">
+            VOCÊ PODE <i><span class="cinza">CONTRATAR SEPARADAMENTE</span></i>:
+          </h2>
+        </div>
+
+        <div class="complementares-grid">
+          {servicosComplementares.items.map((item, idx) => (
+            <div class={`complementar-card up${(idx % 3) + 1}`}>
+              <img class="complementar-icon" src={asset(item.icon)} alt="" width="54" height="54" />
+              <p class="complementar-text">
+                {item.text}
+                {item.note && <span class="complementar-note">{item.note}</span>}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div class="partner-box up">
+          <div>
+            <h3 class="partner-box-title">
+              EM <i><span class="cinza">PARCERIA COM ENGENHEIROS</span></i> ESPECIALIZADOS:
+            </h3>
+            <p class="partner-box-text">{servicosComplementares.partnerBox.text}</p>
           </div>
-          <div class="signature-card" aria-hidden="true">
-            <span>NR</span><small>estratégia que cabe na sua vida</small>
+          <div class="partner-photos-row">
+            <img class="partner-photo" src={asset(site.assets.kitchenLarge)} alt="Cozinha grande e moderna" width="713" height="404" />
+            <img class="partner-photo" src={asset(site.assets.kitchenMinimalist)} alt="Cozinha minimalista" width="768" height="289" />
           </div>
         </div>
-        <div class="about-copy">
-          <p class="eyebrow eyebrow-light">{site.about.eyebrow}</p><h2>
-            {site.about.title.replace(site.about.titleHighlight, "")}<span
-              class="highlight">{site.about.titleHighlight}</span
-            >
+      </div>
+    </section>
+
+    <!-- 06. SECTION: NOSSO PORTFÓLIO -->
+    <section class="section-portfolio" id="portfolio">
+      <div class="container">
+        <div class="portfolio-header up">
+          <p class="section-tag">NOSSO PORTFÓLIO</p>
+          <h2 class="section-title-kiona">
+            PROJETOS QUE TRADUZEM <i><span class="cinza">NOSSA FORMA DE PENSAR E CONSTRUIR</span></i>
           </h2>
-          {site.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-          <p class="about-credentials">{site.credentials}</p>
-          <div class="about-values">
-            <div>
-              <strong>Consciência</strong><span
-                >para entender suas escolhas</span
-              >
-            </div><div>
-              <strong>Autonomia</strong><span>para cuidar de si com leveza</span
-              >
+        </div>
+
+        <!-- Project selection tabs -->
+        <div class="portfolio-tabs up1" role="tablist">
+          {portfolioProjects.map((p, idx) => (
+            <button
+              class={`portfolio-tab-btn ${idx === 0 ? "active" : ""}`}
+              type="button"
+              role="tab"
+              data-target={p.id}
+            >
+              {p.name}
+            </button>
+          ))}
+        </div>
+
+        <!-- Desktop Showcase Cards -->
+        {portfolioProjects.map((project, idx) => (
+          <div
+            class={`portfolio-project-card ${idx === 0 ? "active" : ""}`}
+            id={`project-${project.id}`}
+          >
+            <div class="portfolio-info">
+              <h3 class="portfolio-project-title">PORTFÓLIO<br /><i>KOPLAN</i></h3>
+              <p class="portfolio-project-loc">{project.locationDetails}</p>
+              <p class="portfolio-project-desc">{project.description}</p>
+            </div>
+            <div class="portfolio-track-desktop">
+              {project.imagesDesktop.map((img) => (
+                <div class="portfolio-thumb-wrap">
+                  <img class="portfolio-thumb-img" src={asset(img)} alt={project.name} loading="lazy" width="300" height="225" />
+                </div>
+              ))}
+            </div>
+            <!-- Mobile Carousel -->
+            <div class="portfolio-mobile-carousel">
+              {project.imagesMobile.map((img) => (
+                <div class="portfolio-mobile-slide">
+                  <img src={asset(img)} alt={project.name} loading="lazy" width="300" height="225" />
+                </div>
+              ))}
             </div>
           </div>
-          <a
-            class="text-link text-link-dark"
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-            >Conversar com a nutricionista <span aria-hidden="true">↗</span></a
-          >
+        ))}
+      </div>
+    </section>
+
+    <!-- 07. SECTION: DEPOIMENTOS -->
+    <section class="section-depoimentos" id="depoimentos">
+      <div class="container">
+        <div class="up">
+          <p class="section-tag">DEPOIMENTOS</p>
+          <h2 class="section-title-kiona">
+            DEPOIMENTOS DE QUEM CONFIA <i><span class="cinza">EM NOSSO PROCESSO.</span></i>
+          </h2>
+        </div>
+
+        <div class="testimonials-grid">
+          {testimonials.map((item, idx) => (
+            <div class={`testimonial-card up${(idx % 3) + 1}`}>
+              <blockquote class="testimonial-quote">
+                {item.quote}
+              </blockquote>
+              <div>
+                <h3 class="testimonial-author-name">{item.name}</h3>
+                <p class="testimonial-author-role">{item.role}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="section locations-section" id="locais">
+    <!-- 08. SECTION: GARANTIA & SOBRE NÓS -->
+    <section class="section-garantia" id="garantia">
       <div class="container">
-        <div class="locations-heading">
-          <p class="eyebrow">Onde você pode me encontrar</p><h2>
-            Presencial em {site.city}, com <span class="highlight"
-              >a mesma atenção</span
-            >
-          </h2>
-        </div>
-        <div class="consultorio-gallery" aria-label={`Imagens do consultório em ${site.city}`}>
-          <figure>
-            <img
-              src={asset(site.assets.consultorio)}
-              alt={`Consultório da nutricionista ${site.name} em ${site.city}`}
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-          <figure>
-            <img
-              src={asset(site.assets.consultorioFachada)}
-              alt={`Fachada do consultório da nutricionista ${site.name}`}
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
-        </div>
-        <div class="locations-grid locations-duo">
-          {
-            locations.map((location) => (
-              <article class="location-card">
-                <>
-                  <span class="kicker">{location.type}</span>
-                  <h3>{location.city}</h3>
-                  <p>
-                    <>
-                      <strong>{location.address}</strong>
-                      <small>{location.district}</small>
-                    </>
-                  </p>
-                </>
-              </article>
-            ))
-          }
-          <div class="map-frame locations-map">
-            <iframe
-              src={site.mapsEmbedUrl}
-              title={`Mapa do consultório da nutricionista ${site.name} em ${site.city}`}
-              loading="lazy"
-              allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="garantia-card-main up">
+          <p class="section-tag">{garantia.sectionTitle}</p>
+          <h2 class="section-title-kiona">{garantia.heading}</h2>
+          <div class="garantia-paragraphs">
+            {garantia.paragraphs.map((p) => (
+              <p>{p}</p>
+            ))}
           </div>
         </div>
-        <div class="locations-actions">
-          <a
-            class="text-link text-link-dark"
-            href={site.googleProfile}
-            target="_blank"
-            rel="noreferrer"
-            >Abrir localização no Google <span aria-hidden="true">↗</span></a
-          ><p>
-            WhatsApp: <a href={whatsappUrl} target="_blank" rel="noreferrer"
-              >{site.phoneDisplay}</a
-            >
-          </p>
+
+        <div class="founders-wrapper up1">
+          <div class="founders-text">
+            <p>{garantia.sobre.p1}</p>
+            <p><strong>{garantia.sobre.p2}</strong></p>
+            <p>{garantia.sobre.p3}</p>
+            <p>{garantia.sobre.p4}</p>
+            <p>{garantia.sobre.p5}</p>
+            <p><strong>{garantia.sobre.p6}</strong></p>
+          </div>
+
+          <div class="founders-cards-row">
+            {garantia.founders.map((founder) => (
+              <div class="founder-card">
+                <img class="founder-photo" src={asset(founder.photo)} alt={founder.name} width="204" height="272" />
+                <h3 class="founder-name">{founder.name}</h3>
+                <p class="founder-title">{founder.title}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section faq-section" id="duvidas">
-      <div class="container faq-grid">
-        <div>
-          <p class="eyebrow">Dúvidas frequentes</p><h2>Antes de começar</h2><p
-            class="faq-intro"
-          >
-            Algumas respostas para deixar sua decisão mais tranquila.
-          </p>
+    <!-- 09. SECTION: F.A.Q. (Animated Native Accordion) -->
+    <section class="section-faq" id="faq">
+      <div class="container faq-layout-grid">
+        <div class="faq-sticky-title up">
+          <p class="section-tag">F.A.Q</p>
+          <h2 class="section-title-kiona">PERGUNTAS FREQUENTES:</h2>
         </div>
+
         <div class="faq-list">
-          {
-            faqs.map(([question, answer], index) => (
-              <details open={index === 0}>
-                <summary>
-                  {question}
-                  <span aria-hidden="true" />
-                </summary>
-                <div class="faq-answer">
-                  <p>{answer}</p>
+          {faqs.map(([q, a], idx) => (
+            <details class="up" open={idx === 0}>
+              <summary>
+                <span>{q}</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <div class="faq-answer-inner">
+                  <p>{a}</p>
                 </div>
-              </details>
-            ))
-          }
+              </div>
+            </details>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="contact-section" id="contato">
-      <div
-        class="container contact-card"
-        style={`background-image: linear-gradient(rgba(129, 80, 42, .9), rgba(129, 80, 42, .9)), url('${asset(site.assets.processBg)}');`}
-      >
-        <div>
-          <p class="eyebrow eyebrow-light">Agende sua consulta</p><h2>
-            Sua transformação pode começar por <span class="highlight"
-              >uma conversa</span
-            >
-          </h2>
-        </div><div class="contact-details">
-          <p>
-            <span>Modalidade</span><strong>Presencial · Particular</strong>
-          </p><p>
-            <span>WhatsApp</span><strong>{site.phoneDisplay}</strong>
-          </p><a
-            class="button button-light"
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-            >Falar com {site.name.split(" ")[0]} <span aria-hidden="true">↗</span></a
-          >
+    <!-- 10. SECTION: VAMOS CONVERSAR & FOOTER -->
+    <footer class="section-contato-footer" id="contato">
+      <div class="container">
+        <div class="footer-top-grid">
+          <!-- Form Left -->
+          <div class="up">
+            <h2 class="section-title-kiona" style="color: #fff;">
+              VAMOS <i><span class="cinza">CONVERSAR</span></i> SOBRE O <i><span class="cinza">SEU PROJETO</span></i>
+            </h2>
+            <p style="font-size: 1.1rem; color: #CFD0D1; margin-bottom: 28px;">
+              <strong>Entre em contato</strong> <span class="cinza">e veja como a <strong>Koplan</strong> pode traduzir sua identidade em arquitetura.</span>
+            </p>
+
+            <form class="koplan-form" action={whatsappUrl} target="_blank" method="GET">
+              <div class="form-group">
+                <label class="form-label" for="footer-nome" style="color: #fff;">NOME</label>
+                <input class="form-input" type="text" id="footer-nome" name="nome" placeholder="Seu Nome Completo" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="footer-email" style="color: #fff;">E-MAIL</label>
+                <input class="form-input" type="email" id="footer-email" name="email" placeholder="Seu E-mail" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="footer-whatsapp" style="color: #fff;">SEU WHATSAPP COM DDD</label>
+                <input class="form-input" type="tel" id="footer-whatsapp" name="whatsapp" placeholder="(11) 96123-4567" required />
+              </div>
+              <button class="btn-submit" type="submit">SOLICITAR ORÇAMENTO</button>
+            </form>
+          </div>
+
+          <!-- Contact Details Right -->
+          <div class="footer-contact-info up1">
+            <a href="#inicio" aria-label="Voltar ao início">
+              <img class="footer-logo" src={asset(site.assets.logoWhite)} alt={site.name} width="253" height="65" />
+            </a>
+
+            <ul class="footer-contact-list">
+              <li class="footer-contact-item">
+                <a href={site.instagram} target="_blank" rel="noopener">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14 14" fill="none"><path d="M7 0C10.866 0 14 3.13401 14 7C14 10.866 10.866 14 7 14C3.13401 14 0 10.866 0 7C0 3.13401 3.13401 0 7 0ZM9.19043 3.18066C7.73458 3.01923 6.26542 3.01923 4.80957 3.18066C3.97124 3.27441 3.29365 3.93484 3.19531 4.77734C3.0229 6.25409 3.0229 7.74591 3.19531 9.22266C3.29365 10.0652 3.97082 10.7256 4.80957 10.8193C6.26544 10.9804 7.73456 10.9804 9.19043 10.8193C10.0288 10.7256 10.7064 10.0652 10.8047 9.22266C10.9771 7.74591 10.9771 6.25409 10.8047 4.77734C10.7064 3.93484 10.0292 3.27441 9.19043 3.18066ZM7 5.02051C6.47509 5.02051 5.97175 5.22942 5.60059 5.60059C5.22942 5.97175 5.02051 6.47509 5.02051 7C5.02051 7.52491 5.22942 8.02825 5.60059 8.39941C5.97175 8.77058 6.47509 8.97949 7 8.97949C7.52491 8.97949 8.02825 8.77058 8.39941 8.39941C8.77058 8.02825 8.97949 7.52491 8.97949 7C8.97949 6.47509 8.77058 5.97175 8.39941 5.60059C8.02825 5.22942 7.52491 5.02051 7 5.02051Z" fill="#CFD0D1"/></svg>
+                  <span>@koplanarq</span>
+                </a>
+              </li>
+              <li class="footer-contact-item">
+                <a href={`mailto:${site.email}`}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 24 19" fill="none"><path d="M24 4V15.3899C24.0001 16.3107 23.6492 17.1968 23.0193 17.8667C22.3893 18.5367 21.5279 18.94 20.6112 18.994L20.4 19H3.6C2.68175 19.0001 1.79818 18.6482 1.13009 18.0165C0.461992 17.3848 0.059871 16.5209 0.00600014 15.6017L0 15.3899V4L11.334 11.5776L11.4732 11.657C11.6372 11.7374 11.8174 11.7792 12 11.7792C12.1826 11.7792 12.3628 11.7374 12.5268 11.657L12.666 11.5776L24 4Z" fill="#CFD0D1"/></svg>
+                  <span>{site.email}</span>
+                </a>
+              </li>
+              <li class="footer-contact-item">
+                <a href={whatsappUrl} target="_blank" rel="noopener">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21.3299 19.0354C21.2043 19.5984 20.8929 20.1028 20.4459 20.4674C19.9575 20.9628 19.3756 21.3561 18.7339 21.6246C18.0922 21.8931 17.4035 22.0314 16.7079 22.0314H16.3829C14.9229 21.9522 13.4934 21.5826 12.1779 20.9444H12.1679C11.8629 20.8024 11.5479 20.6604 11.2429 20.4874C9.70732 19.6264 8.29885 18.5562 7.05791 17.3074C5.44747 15.7948 4.12592 14.0015 3.15791 12.0154C2.64346 10.927 2.30008 9.76564 2.13991 8.57243C1.90437 7.32344 2.04606 6.03259 2.54691 4.86443C2.86311 4.33741 3.24929 3.85569 3.69491 3.43243C3.89542 3.20568 4.14057 3.02274 4.41502 2.89507C4.68947 2.7674 4.98731 2.69773 5.28991 2.69043C5.61901 2.7268 5.93761 2.82818 6.22721 2.98869C6.51681 3.14919 6.77164 3.36563 6.97691 3.62543C7.43391 4.12243 7.99191 4.64043 8.44991 5.11843L9.07991 5.73843C9.44991 6.06643 9.67891 6.52443 9.71991 7.01843C9.71991 7.47143 9.55291 7.90843 9.25191 8.24743C9.05697 8.48452 8.85004 8.71148 8.63191 8.92743L8.42891 9.14043C8.31091 9.25043 8.22091 9.38643 8.16491 9.53743C8.11491 9.6861 8.09491 9.83843 8.10491 9.99443C8.26591 10.4254 8.51891 10.8174 8.84491 11.1424C9.35391 11.8324 9.86191 12.4324 10.3799 13.0824C11.3169 14.1702 12.4288 15.0938 13.6699 15.8154C13.7969 15.9084 13.9429 15.9704 14.0979 15.9974C14.2319 16.0074 14.3679 15.9874 14.4939 15.9374C14.8489 15.7284 15.1639 15.4604 15.4279 15.1444C15.7829 14.7097 16.2926 14.4294 16.8499 14.3624C17.3862 14.3698 17.8978 14.5891 18.2729 14.9724C18.4759 15.1444 18.6989 15.3784 18.9129 15.6024L19.2169 15.9164L19.5319 16.2214L20.0709 16.7694C20.3922 17.0548 20.6936 17.3598 20.9749 17.6844C21.2569 18.0744 21.3839 18.5574 21.3299 19.0354Z" fill="#CFD0D1"/></svg>
+                  <span>{site.phoneDisplay}</span>
+                </a>
+              </li>
+              <li class="footer-contact-item">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none"><path d="M8 0C5.87901 0.00236318 3.84557 0.830934 2.3458 2.30394C0.846033 3.77694 0.00240612 5.77408 0 7.85722C0 14.5805 7.27273 19.6582 7.58273 19.8707C7.70501 19.9549 7.8507 20 8 20C8.1493 20 8.29499 19.9549 8.41727 19.8707C8.72727 19.6582 16 14.5805 16 7.85722C15.9976 5.77408 15.154 3.77694 13.6542 2.30394C12.1544 0.830934 10.121 0.00236318 8 0Z" fill="#CFD0D1"/></svg>
+                  <span>{site.cities}</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom-row">
+          <span>Copyright © 2026 Koplan Arquitetura. Todos os direitos reservados.</span>
+          <div class="footer-legal-links">
+            <a href="/politica-de-privacidade">Política de privacidade</a>
+            <a href="/termos-de-uso">Termos de uso</a>
+          </div>
+        </div>
+
+        <p class="footer-watermark">KOPLAN</p>
+      </div>
+    </footer>
+
+    <!-- 11. WhatsApp Floating Widget -->
+    <div class="whatsapp-widget-container">
+      <div class="whatsapp-popup-card" id="whatsappPopup">
+        <div class="whatsapp-popup-header">
+          <div class="whatsapp-popup-avatar-wrap">
+            <img class="whatsapp-popup-avatar" src={asset(site.assets.whatsappAvatar)} alt="Amanda Marani" width="44" height="44" />
+            <span class="whatsapp-status-dot"></span>
+          </div>
+          <div class="whatsapp-popup-header-info">
+            <p class="whatsapp-popup-title">Koplan Arquitetos</p>
+            <p class="whatsapp-popup-subtitle">Estúdio de arquitetura</p>
+          </div>
+          <button class="whatsapp-popup-close" id="whatsappPopupClose" type="button" aria-label="Fechar WhatsApp">✕</button>
+        </div>
+        <div class="whatsapp-popup-body">
+          <div class="whatsapp-message-bubble">
+            <p class="whatsapp-bubble-sender">Amanda Marani</p>
+            <p class="whatsapp-bubble-text">Olá, como posso lhe ajudar?</p>
+          </div>
+        </div>
+        <div class="whatsapp-popup-footer">
+          <a class="whatsapp-cta-btn" href={whatsappUrl} target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.83.82 2.796.82 3.18 0 5.766-2.586 5.767-5.766.001-3.182-2.585-5.806-5.767-5.806zm0 13.067h-.002c-1.108 0-2.193-.298-3.14-.86l-.225-.134-2.335.612.623-2.276-.147-.234c-.618-.982-.944-2.122-.943-3.292.002-3.411 2.778-6.186 6.19-6.186 1.652 0 3.205.644 4.373 1.813 1.168 1.168 1.812 2.72 1.811 4.373-.002 3.412-2.778 6.184-6.206 6.184z"/></svg>
+            <span>Falar no WhatsApp</span>
+          </a>
         </div>
       </div>
-    </section>
+
+      <button class="whatsapp-trigger-btn" id="whatsappTrigger" type="button" aria-label="Abrir conversa no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+      </button>
+    </div>
   </main>
-
-  <footer class="site-footer">
-    <div class="container footer-main">
-      <div class="footer-brand logo">
-        <img
-          src={asset(site.assets.logo)}
-          alt={site.role + " " + site.name}
-          width="205"
-          height="65"
-        />
-        <p>
-          Atendimento nutricional particular<br />
-          em {site.city}, {site.state}.
-        </p>
-      </div>
-
-      <div class="footer-column">
-        <h3 class="footer-column-title">Servi&#231;os</h3>
-        <nav class="footer-nav footer-nav-vertical" aria-label="Servi&#231;os">
-          {specialties.map((specialty) => (
-            <a href="#atendimentos">{specialty.title}</a>
-          ))}
-        </nav>
-      </div>
-
-      <div class="footer-column">
-        <h3 class="footer-column-title">Navega&#231;&#227;o</h3>
-        <nav class="footer-nav footer-nav-vertical" aria-label="Navega&#231;&#227;o do rodap&#233;">
-          <a href="#atendimentos">Atendimentos</a>
-          <a href="#metodo">Como funciona</a>
-          <a href="#depoimentos">Depoimentos</a>
-          <a href="#sobre">Sobre mim</a>
-          <a href="#locais">Local</a>
-          <a href="#duvidas">FAQ</a>
-        </nav>
-      </div>
-
-      <div class="footer-column footer-contact">
-        <h3 class="footer-column-title">Contato</h3>
-        <p class="footer-address">
-          <strong>Local:</strong> {locations[0].address}<br />
-          {locations[0].city}/{site.state}
-        </p>
-        <div class="social-links" aria-label="Perfis online">
-          <a href={site.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-              <circle cx="12" cy="12" r="4"></circle>
-              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
-            </svg>
-          </a>
-          <a class="social-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2.2a9.8 9.8 0 0 0-8.47 14.74L2.2 21.8l5.02-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.08-1.12l-.29-.17-2.98.77.8-2.9-.19-.3A8 8 0 1 1 12 20Zm4.38-5.94c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.18-.7-.62-1.18-1.39-1.32-1.63-.14-.24-.01-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.4 1.37.51.58.18 1.1.16 1.51.1.46-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"></path>
-            </svg>
-          </a>
-          <a href={site.doctoralia} target="_blank" rel="noreferrer" aria-label="Doctoralia" title="Doctoralia">
-            <span class="social-letter" aria-hidden="true">D</span>
-          </a>
-          <a href={site.googleProfile} target="_blank" rel="noreferrer" aria-label="Google" title="Google">
-            <span class="social-letter" aria-hidden="true">G</span>
-          </a>
-        </div>
-        <div class="footer-hours">
-          {site.hours.map((h) => (
-            <span>{h.days}: {h.time}</span>
-          ))}
-        </div>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>&#169; {new Date().getFullYear()} {site.name} &#183; {site.fullRole} &#183; {site.crn}</span>
-      <span class="footer-credit">
-        Desenvolvido por
-        <a href="https://jeankist.com" target="_blank" rel="noreferrer">Jean Kist</a>
-        &#169;
-      </span>
-      <span class="footer-legal">
-        <a href="#">Pol&#237;tica de Privacidade</a>
-        <a href="#">Termos de Uso</a>
-      </span>
-    </div>
-  </footer>
-  <a
-    class="floating-whatsapp"
-    href={whatsappUrl}
-    target="_blank"
-    rel="noreferrer"
-    aria-label={`Olá, ${site.name}! Gostaria de agendar uma consulta.`}
-  >
-    <img src={asset("/assets/images/whatsapp.webp")} alt="WhatsApp" width="60" height="60" />
-  </a>
 </BaseLayout>
 
 <script>
+  // Mobile Menu Interaction
   const hamburger = document.querySelector<HTMLButtonElement>(".hamburger");
   const menu = document.getElementById("mobileMenu");
 
   if (hamburger && menu) {
-    const close = () => {
+    const closeMenu = () => {
       menu.classList.remove("open");
       menu.setAttribute("aria-hidden", "true");
       hamburger.setAttribute("aria-expanded", "false");
       document.body.classList.remove("menu-open");
       hamburger.focus();
     };
-    const open = () => {
+    const openMenu = () => {
       menu.classList.add("open");
       menu.setAttribute("aria-hidden", "false");
       hamburger.setAttribute("aria-expanded", "true");
@@ -707,114 +676,21 @@ const jsonLd = {
     };
 
     hamburger.addEventListener("click", () => {
-      menu.classList.contains("open") ? close() : open();
+      menu.classList.contains("open") ? closeMenu() : openMenu();
     });
     menu
       .querySelectorAll("[data-close-menu]")
-      .forEach((el) => el.addEventListener("click", close));
+      .forEach((el) => el.addEventListener("click", closeMenu));
     menu
       .querySelectorAll(".mobile-nav a")
-      .forEach((link) => link.addEventListener("click", close));
+      .forEach((link) => link.addEventListener("click", closeMenu));
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && menu.classList.contains("open")) close();
+      if (event.key === "Escape" && menu.classList.contains("open")) closeMenu();
     });
   }
 
-  const heroCopy = document.querySelector<HTMLElement>(".hero-copy");
-  const isDesktopHero = window.matchMedia("(min-width: 761px)").matches;
-
-  if (heroCopy && isDesktopHero) {
-    const heroEyebrow = heroCopy.querySelector<HTMLElement>(".eyebrow");
-    const heroTitle = heroCopy.querySelector<HTMLElement>("h1");
-    const heroTagline = heroCopy.querySelector<HTMLElement>(".hero-tagline");
-    const heroLead = heroCopy.querySelector<HTMLElement>(".lead");
-    const heroActions = heroCopy.querySelector<HTMLElement>(".hero-actions");
-    const heroLocation = heroCopy.querySelector<HTMLElement>(".location-note");
-    const heroCard = document.querySelector<HTMLElement>(".floating-card");
-
-    const splitHeroWords = (element: HTMLElement | null) => {
-      if (!element) return [];
-      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
-      const textNodes: Text[] = [];
-      while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
-
-      const words = textNodes.flatMap((node) => {
-        const isHighlight = node.parentElement?.closest(".highlight") !== null;
-        return (node.textContent || "")
-          .trim()
-          .split(/\s+/)
-          .filter(Boolean)
-          .map((text) => ({ text, isHighlight }));
-      });
-
-      element.replaceChildren();
-      return words.map(({ text, isHighlight }) => {
-        const word = document.createElement("span");
-        word.className = `hero-reveal-word${isHighlight ? " highlight" : ""}`;
-        word.textContent = text;
-        element.append(word, " ");
-        return word;
-      });
-    };
-
-    const scheduleHeroWords = (words: HTMLElement[], startDelay: number) => {
-      let line = 0;
-      let wordInLine = 0;
-      let previousTop: number | null = null;
-
-      words.forEach((word) => {
-        const currentTop = word.offsetTop;
-        if (previousTop !== null && Math.abs(currentTop - previousTop) > 2) {
-          line += 1;
-          wordInLine = 0;
-        }
-        word.style.setProperty(
-          "--hero-delay",
-          `${startDelay + line * 0.07 + wordInLine * 0.018}s`,
-        );
-        wordInLine += 1;
-        previousTop = currentTop;
-      });
-
-      return line + 1;
-    };
-
-    const startHeroReveal = () => {
-      const titleWords = splitHeroWords(heroTitle);
-      const taglineWords = splitHeroWords(heroTagline);
-      const leadWords = splitHeroWords(heroLead);
-      heroCopy.classList.add("hero-reveal-ready");
-      heroCard?.classList.add("hero-reveal-ready");
-
-      const eyebrowDelay = 0.05;
-      const titleDelay = 0.12;
-      const titleLines = scheduleHeroWords(titleWords, titleDelay);
-      const taglineDelay = titleDelay + titleLines * 0.07 + 0.24;
-      const taglineLines = scheduleHeroWords(taglineWords, taglineDelay);
-      const leadDelay = taglineDelay + taglineLines * 0.07 + 0.24;
-      const leadLines = scheduleHeroWords(leadWords, leadDelay);
-      const actionsDelay = leadDelay + leadLines * 0.07 + 0.24;
-      const locationDelay = actionsDelay + 0.3;
-
-      heroEyebrow?.style.setProperty("--hero-delay", `${eyebrowDelay}s`);
-      heroActions?.querySelectorAll<HTMLElement>(":scope > *").forEach((item, index) => {
-        item.style.setProperty(
-          "--hero-delay",
-          `${actionsDelay + index * 0.06}s`,
-        );
-      });
-      heroLocation?.style.setProperty("--hero-delay", `${locationDelay}s`);
-      heroCard?.style.setProperty("--hero-delay", `${locationDelay}s`);
-    };
-
-    if (document.fonts?.ready) {
-      document.fonts.ready.then(startHeroReveal);
-    } else {
-      startHeroReveal();
-    }
-  }
-  const faqItems =
-    document.querySelectorAll<HTMLDetailsElement>(".faq-list details");
+  // FAQ Smooth Accordion Script (Preserved exactly as requested)
+  const faqItems = document.querySelectorAll<HTMLDetailsElement>(".faq-list details");
   const faqTimeouts = new WeakMap<HTMLDetailsElement, number>();
   const FAQ_DURATION = 430;
 
@@ -897,23 +773,69 @@ const jsonLd = {
     });
   });
 
-  const aboutFrame = document.querySelector(".about-frame");
-  if (aboutFrame) {
-    if ("IntersectionObserver" in window) {
-      const aboutObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              aboutFrame.classList.add("in-view");
-              aboutObserver.disconnect();
-            }
-          });
-        },
-        { threshold: 0.25 },
-      );
-      aboutObserver.observe(aboutFrame);
-    } else {
-      aboutFrame.classList.add("in-view");
+  // Scroll Reveal Animations (.up, .up1, .up2, .up3)
+  const animatedElements = document.querySelectorAll(".up, .up1, .up2, .up3");
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -60px 0px" },
+    );
+    animatedElements.forEach((el) => revealObserver.observe(el));
+  } else {
+    animatedElements.forEach((el) => el.classList.add("active"));
+  }
+
+  // Portfolio Tabs Switcher
+  const portfolioTabs = document.querySelectorAll<HTMLButtonElement>(".portfolio-tab-btn");
+  const portfolioCards = document.querySelectorAll<HTMLElement>(".portfolio-project-card");
+
+  portfolioTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const targetId = tab.dataset.target;
+      if (!targetId) return;
+
+      portfolioTabs.forEach((t) => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      portfolioCards.forEach((card) => {
+        if (card.id === `project-${targetId}`) {
+          card.classList.add("active");
+        } else {
+          card.classList.remove("active");
+        }
+      });
+    });
+  });
+
+  // WhatsApp Floating Widget Toggle
+  const whatsappTrigger = document.getElementById("whatsappTrigger");
+  const whatsappPopup = document.getElementById("whatsappPopup");
+  const whatsappPopupClose = document.getElementById("whatsappPopupClose");
+
+  if (whatsappTrigger && whatsappPopup) {
+    whatsappTrigger.addEventListener("click", () => {
+      whatsappPopup.classList.toggle("open");
+    });
+
+    if (whatsappPopupClose) {
+      whatsappPopupClose.addEventListener("click", (e) => {
+        e.stopPropagation();
+        whatsappPopup.classList.remove("open");
+      });
     }
+
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest(".whatsapp-widget-container") && whatsappPopup.classList.contains("open")) {
+        whatsappPopup.classList.remove("open");
+      }
+    });
   }
 </script>

@@ -1,12 +1,11 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-// Base do GitHub Pages. O sitemap usa origem + base, por isso o subpath
-// vai no `base` (e não embutido no `site`) — assim todo build gera sitemap certo.
-const pagesBase = process.env.PAGES_BASE ?? "/nutricionista-nadiarichter/";
+// Base do deploy. Suporta subpaths configurados via variável de ambiente PAGES_BASE ou raiz por padrão.
+const pagesBase = process.env.PAGES_BASE ?? "/";
 
 export default defineConfig({
-  site: "https://studiotche.github.io",
+  site: "https://koplan.com.br",
   base: pagesBase,
   output: "static",
   integrations: [sitemap()],
