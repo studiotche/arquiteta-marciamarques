@@ -147,13 +147,15 @@ const jsonLd = {
         <!-- Layer 1: Left White Card with Logo, H1, Lead, Form & Bullets -->
         <div class="hero-card">
           <div class="hero-card-brand">
-            <img src={asset(site.assets.logo1)} alt={site.name} width="156" height="40" />
+            <img src={asset(site.assets.logo1)} alt={site.name} width="148" height="38" />
           </div>
           <h1 class="hero-card-title">
-            CRIAMOS <i><span class="cinza">LUGARES QUE CONTAM A SUA HISTÓRIA.</span></i>
+            CRIAMOS <i><span class="cinza">LUGARES</span></i><br />
+            <i><span class="cinza">QUE CONTAM A</span></i><br />
+            <i><span class="cinza">SUA HISTÓRIA.</span></i>
           </h1>
           <p class="hero-card-desc">
-            <span class="cinza">Projetos arquitetônicos e</span> <strong>design de interiores com planejamento estratégico e transparência total.</strong> <span class="cinza">Viabilidade financeira mapeada antes da obra, cronograma com marcos definidos.</span> <strong>Do conceito à entrega.</strong>
+            <span class="cinza">Projetos arquitetônicos e</span> <strong>design de <br class="desc-break" />interiores com planejamento estratégico e <br class="desc-break" />transparência total.</strong> <span class="cinza">Viabilidade financeira <br class="desc-break" />mapeada antes da obra, cronograma com <br class="desc-break" />marcos definidos.</span> <strong>Do conceito à entrega.</strong>
           </p>
 
           <form class="koplan-form" action={whatsappUrl} target="_blank" method="GET">
@@ -169,7 +171,12 @@ const jsonLd = {
               <label class="form-label" for="hero-whatsapp">SEU WHATSAPP COM DDD <span class="required-star">*</span></label>
               <div class="phone-input-wrap">
                 <div class="phone-country-badge" aria-hidden="true">
-                  <span class="country-flag">🇧🇷</span>
+                  <svg class="country-flag-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="13" viewBox="0 0 720 504">
+                    <rect width="720" height="504" fill="#009c3b" rx="20"/>
+                    <polygon points="360,42 672,252 360,462 48,252" fill="#ffdf00"/>
+                    <circle cx="360" cy="252" r="126" fill="#002776"/>
+                    <path d="M234,252 a126,126 0 0,0 252,0" fill="none" stroke="#ffffff" stroke-width="12.6"/>
+                  </svg>
                   <span class="country-arrow">▾</span>
                 </div>
                 <input class="form-input phone-input" type="tel" id="hero-whatsapp" name="whatsapp" placeholder="(11) 96123-4567" required />
@@ -193,14 +200,15 @@ const jsonLd = {
         <!-- Layer 2: Right Hero Visual Stage with overlapping layers -->
         <div class="hero-stage">
           <div class="hero-image-frame">
-            <!-- White 'K' Watermark Icon in Top Right of Image -->
-            <img
-              class="hero-watermark-k"
-              src={asset(site.assets.logoSymbol)}
-              alt="K"
-              width="36"
-              height="36"
-            />
+            <!-- White 'K' Badge with Dark Rounded Backing in Top Right of Image -->
+            <div class="hero-watermark-k-badge" aria-hidden="true">
+              <img
+                src={asset(site.assets.logoSymbol)}
+                alt="K"
+                width="22"
+                height="22"
+              />
+            </div>
             <img
               class="hero-img-desktop"
               src={asset(site.assets.heroDesktop)}
@@ -227,7 +235,8 @@ const jsonLd = {
                 height="255"
               />
               <p class="hero-protocol-text">
-                <strong>Arquitetura bem feita</strong> <span class="cinza">não é diferencial. É protocolo.</span>
+                <strong>Arquitetura bem feita</strong> <span class="cinza">não é</span><br />
+                <span class="cinza">diferencial. É protocolo.</span>
               </p>
             </div>
           </div>
