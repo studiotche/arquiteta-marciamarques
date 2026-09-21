@@ -421,11 +421,11 @@ input, textarea, select {
   z-index: 1;
   display: grid;
   grid-template-columns: 600px 1fr;
-  align-items: stretch;
+  align-items: start;
   justify-content: center;
 }
 
-/* White Form Card: Left Layer (z-index: 10, sits OVER the image) */
+/* White Form Card: Bottom Layer (house sits OVER the card, like reference) */
 .hero-card {
   width: 100%;
   max-width: 100%;
@@ -435,12 +435,12 @@ input, textarea, select {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  border: 1px solid var(--color-border-card);
-  border-radius: 22px;
+  border: none;
+  border-radius: 20px;
   padding: 52px 50px 40px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: none;
   position: relative;
-  z-index: 10;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -593,8 +593,8 @@ input, textarea, select {
 
 .btn-submit:hover {
   background-color: var(--color-cta-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(77, 122, 63, 0.35);
+  transform: none;
+  box-shadow: none;
 }
 
 .hero-bullets {
@@ -622,10 +622,10 @@ input, textarea, select {
   flex-shrink: 0;
 }
 
-/* Right Hero Visual Stage: Overlaps Behind Left Card */
+/* Right Hero Visual Stage: Overlaps OVER Left Card (like reference) */
 .hero-stage {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   margin-left: -110px;
   width: calc(100% + 110px);
   min-width: 0;
@@ -635,7 +635,7 @@ input, textarea, select {
 .hero-image-frame {
   position: relative;
   width: 100%;
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: visible;
   display: flex;
   flex-direction: column;
@@ -652,7 +652,7 @@ input, textarea, select {
   justify-content: center;
   background-color: #232323;
   padding: 14px 20px 16px 22px;
-  border-radius: 0 22px 0 18px;
+  border-radius: 0 20px 0 14px;
   pointer-events: none;
 }
 
@@ -665,12 +665,12 @@ input, textarea, select {
 
 .hero-img-desktop {
   width: 100%;
-  height: 100%;
-  min-height: 762px;
-  object-fit: cover;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
   display: block;
-  border-radius: 22px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  box-shadow: none;
 }
 
 .hero-img-mobile {
@@ -687,7 +687,7 @@ input, textarea, select {
   border: 1px solid #E5E5E5;
   border-radius: 18px;
   padding: 14px 14px 18px;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+  box-shadow: none;
   z-index: 15;
   display: flex;
   flex-direction: column;
@@ -1906,7 +1906,7 @@ input, textarea, select {
 
   .hero-card {
     padding: 46px 42px 36px;
-    min-height: 720px;
+    min-height: 0;
   }
 
   .hero-stage {
@@ -1915,7 +1915,8 @@ input, textarea, select {
   }
 
   .hero-img-desktop {
-    min-height: 720px;
+    min-height: 0;
+    height: auto;
   }
 
   .hero-protocol-badge {
@@ -2047,7 +2048,7 @@ input, textarea, select {
     width: 100%;
     min-height: 0;
     border-radius: 20px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
   }
 
   .hero-watermark-k-badge {
@@ -2091,7 +2092,7 @@ input, textarea, select {
     min-height: auto;
     padding: 2.2rem 1.4rem;
     margin-bottom: 0;
-    border-radius: 22px;
+    border-radius: 20px;
   }
 
   .hero-card-title,
