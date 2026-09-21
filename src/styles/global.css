@@ -447,7 +447,7 @@ input, textarea, select {
   background-size: cover;
   border: none;
   border-radius: 30px;
-  padding: 64px 95px 48px 64px;
+  padding: 64px 95px 48px 230px;
   box-shadow: none;
   position: relative;
   z-index: 1;
@@ -1972,7 +1972,7 @@ input, textarea, select {
     flex: 0 1 790px;
     width: auto;
     max-width: 50%;
-    padding: 46px 42px 36px;
+    padding: 46px 42px 36px max(42px, calc((100vw - 1140px) / 2 - 20px));
     min-height: 0;
   }
 
@@ -2028,6 +2028,12 @@ input, textarea, select {
   .hero-card-title {
     font-size: 2.1rem;
     max-width: 100%;
+  }
+
+  .hero-card-desc,
+  .koplan-form,
+  .hero-bullets {
+    max-width: none;
   }
 
   .hero-stage {
