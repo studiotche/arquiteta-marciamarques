@@ -488,7 +488,7 @@ const jsonLd = {
       </div>
     </section>
 
-    <!-- 06. SECTION: NOSSO PORTFÓLIO -->
+    <!-- 06. SECTION: NOSSO PORTFÓLIO (project carousel + inner gallery) -->
     <section class="section-portfolio" id="portfolio">
       <div class="container">
         <div class="portfolio-header up">
@@ -497,49 +497,74 @@ const jsonLd = {
             PROJETOS QUE TRADUZEM <i><span class="cinza">NOSSA FORMA DE PENSAR E CONSTRUIR</span></i>
           </h2>
         </div>
+      </div>
 
-        <!-- Project selection tabs -->
-        <div class="portfolio-tabs up1" role="tablist">
-          {portfolioProjects.map((p, idx) => (
-            <button
-              class={`portfolio-tab-btn ${idx === 0 ? "active" : ""}`}
-              type="button"
-              role="tab"
-              data-target={p.id}
+      <div class="portfolio-carousel up1" data-portfolio>
+        <div class="portfolio-track" data-portfolio-track>
+          {portfolioProjects.map((project, idx) => (
+            <article
+              class={`portfolio-slide${idx === 0 ? " active" : ""}`}
+              data-portfolio-slide={idx}
+              aria-label={`${project.name} — slide ${idx + 1} de ${portfolioProjects.length}`}
             >
-              {p.name}
-            </button>
+              <div class="portfolio-slide-media">
+                {project.imagesDesktop.map((img, imgIdx) => (
+                  <img
+                    class={`portfolio-main${imgIdx === 0 ? " active" : ""}`}
+                    src={asset(img)}
+                    alt={`${project.name} — foto ${imgIdx + 1}`}
+                    loading={idx === 0 && imgIdx === 0 ? "eager" : "lazy"}
+                    width="1140"
+                    height="640"
+                    data-portfolio-main={imgIdx}
+                  />
+                ))}
+                <div class="portfolio-slide-top">
+                  <h3 class="portfolio-project-title">PORTFÓLIO<br /><i>KOPLAN</i></h3>
+                  <div class="portfolio-dots" role="tablist" aria-label={`Fotos de ${project.name}`}>
+                    {project.imagesDesktop.map((_, imgIdx) => (
+                      <button
+                        type="button"
+                        class={`portfolio-dot${imgIdx === 0 ? " active" : ""}`}
+                        data-portfolio-dot={imgIdx}
+                        aria-label={`Ver foto ${imgIdx + 1} de ${project.name}`}
+                      />
+                    ))}
+                  </div>
+                  <div class="portfolio-arrows">
+                    <button type="button" class="portfolio-arrow" data-portfolio-prev aria-label="Projeto anterior">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button type="button" class="portfolio-arrow" data-portfolio-next aria-label="Próximo projeto">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="portfolio-slide-bottom">
+                  <div class="portfolio-info">
+                    <p class="portfolio-project-loc">{project.locationDetails}</p>
+                    <p class="portfolio-project-desc">{project.description}</p>
+                  </div>
+                  <div class="portfolio-thumbs" role="tablist" aria-label={`Miniaturas de ${project.name}`}>
+                    {project.imagesDesktop.map((img, imgIdx) => (
+                      <button
+                        type="button"
+                        class={`portfolio-thumb${imgIdx === 0 ? " active" : ""}`}
+                        data-portfolio-thumb={imgIdx}
+                        aria-label={`Ver foto ${imgIdx + 1} de ${project.name}`}
+                      >
+                        <img src={asset(img)} alt="" loading="lazy" width="200" height="140" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
-
-        <!-- Desktop Showcase Cards -->
-        {portfolioProjects.map((project, idx) => (
-          <div
-            class={`portfolio-project-card ${idx === 0 ? "active" : ""}`}
-            id={`project-${project.id}`}
-          >
-            <div class="portfolio-info">
-              <h3 class="portfolio-project-title">PORTFÓLIO<br /><i>KOPLAN</i></h3>
-              <p class="portfolio-project-loc">{project.locationDetails}</p>
-              <p class="portfolio-project-desc">{project.description}</p>
-            </div>
-            <div class="portfolio-track-desktop">
-              {project.imagesDesktop.map((img) => (
-                <div class="portfolio-thumb-wrap">
-                  <img class="portfolio-thumb-img" src={asset(img)} alt={project.name} loading="lazy" width="300" height="225" />
-                </div>
-              ))}
-            </div>
-            <!-- Mobile Carousel -->
-            <div class="portfolio-mobile-carousel">
-              {project.imagesMobile.map((img) => (
-                <div class="portfolio-mobile-slide">
-                  <img src={asset(img)} alt={project.name} loading="lazy" width="300" height="225" />
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+        <div class="portfolio-cta up">
+          <a class="btn-submit como-cta-btn" href="#contato">SOLICITAR ORÇAMENTO</a>
+        </div>
       </div>
     </section>
 
@@ -900,27 +925,55 @@ const jsonLd = {
     }
   }
 
-  // Portfolio Tabs Switcher
-  const portfolioTabs = document.querySelectorAll<HTMLButtonElement>(".portfolio-tab-btn");
-  const portfolioCards = document.querySelectorAll<HTMLElement>(".portfolio-project-card");
+  // Portfolio: outer project carousel + inner photo gallery per slide
+  const portfolio = document.querySelector<HTMLElement>("[data-portfolio]");
+  if (portfolio) {
+    const track = portfolio.querySelector<HTMLElement>("[data-portfolio-track]");
+    const slides = [...portfolio.querySelectorAll<HTMLElement>("[data-portfolio-slide]")];
 
-  portfolioTabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const targetId = tab.dataset.target;
-      if (!targetId) return;
-
-      portfolioTabs.forEach((t) => t.classList.remove("active"));
-      tab.classList.add("active");
-
-      portfolioCards.forEach((card) => {
-        if (card.id === `project-${targetId}`) {
-          card.classList.add("active");
-        } else {
-          card.classList.remove("active");
-        }
+    const showPhoto = (slide: HTMLElement, photoIdx: number) => {
+      const total = slide.querySelectorAll(".portfolio-main").length;
+      const safe = ((photoIdx % total) + total) % total;
+      slide.querySelectorAll(".portfolio-main").forEach((img, i) => {
+        img.classList.toggle("active", i === safe);
       });
+      slide.querySelectorAll(".portfolio-thumb").forEach((btn, i) => {
+        btn.classList.toggle("active", i === safe);
+      });
+      slide.querySelectorAll(".portfolio-dot").forEach((dot, i) => {
+        dot.classList.toggle("active", i === safe);
+      });
+      slide.dataset.photo = String(safe);
+    };
+
+    const showSlide = (slideIdx: number) => {
+      const safe = ((slideIdx % slides.length) + slides.length) % slides.length;
+      const target = slides[safe];
+      if (track) {
+        track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: "smooth" });
+      }
+      slides.forEach((s, i) => s.classList.toggle("active", i === safe));
+      portfolio.dataset.slide = String(safe);
+    };
+
+    slides.forEach((slide, slideIdx) => {
+      slide.dataset.photo = "0";
+      slide.querySelectorAll(".portfolio-thumb").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          showPhoto(slide, Number((btn as HTMLElement).dataset.portfolioThumb ?? 0));
+        });
+      });
+      slide.querySelectorAll(".portfolio-dot").forEach((dot) => {
+        dot.addEventListener("click", () => {
+          showPhoto(slide, Number((dot as HTMLElement).dataset.portfolioDot ?? 0));
+        });
+      });
+      slide.querySelector("[data-portfolio-prev]")?.addEventListener("click", () => showSlide(slideIdx - 1));
+      slide.querySelector("[data-portfolio-next]")?.addEventListener("click", () => showSlide(slideIdx + 1));
     });
-  });
+
+    portfolio.dataset.slide = "0";
+  }
 
   // WhatsApp Floating Widget Toggle
   const whatsappTrigger = document.getElementById("whatsappTrigger");
