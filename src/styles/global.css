@@ -1563,20 +1563,27 @@ input, textarea, select {
   padding: 6rem 0;
 }
 
-/* Header: tag left, title right */
+/* Header: tag (1140 line) + title aligned to the icons column */
 .complementares-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 32px;
-  max-width: var(--content-max);
-  margin: 0 auto 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 704px) minmax(0, 1fr);
+  gap: 52px;
+  align-items: start;
+  width: auto;
+  max-width: none;
+  margin: 0 -24px 48px;
+  box-sizing: border-box;
+}
+
+.complementares-header .section-tag {
+  margin: 0;
+  padding-left: min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px)));
 }
 
 .complementares-header .section-title-kiona {
   margin: 0;
-  max-width: 560px;
-  text-align: right;
+  max-width: 100%;
+  text-align: left;
 }
 
 /* Photo (1600 line) + icons row */
@@ -2505,7 +2512,13 @@ input, textarea, select {
   }
 
   .complementares-header {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    margin: 0 0 32px;
+    gap: 12px;
+  }
+
+  .complementares-header .section-tag {
+    padding-left: 0;
   }
 
   .complementares-header .section-title-kiona {
