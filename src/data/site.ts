@@ -80,6 +80,11 @@ export const praQuemE = {
 export const beneficios = {
   sectionTitle: "BENEFÍCIOS",
   heading: "VOCÊ NÃO PRECISA ENTENDER DE OBRA. PRECISA DE QUEM ENTENDA POR VOCÊ.",
+  quote: {
+    pre: "NA ",
+    italic: "KOPLAN",
+    post: ", POR TRÁS DE CADA PROJETO EXISTE UM MÉTODO PENSADO PARA UNIR PRECISÃO TÉCNICA E SENSIBILIDADE ESTÉTICA EM CADA DECISÃO.",
+  },
   cards: [
     {
       title: "Certeza do resultado antes de investir:",
@@ -88,6 +93,8 @@ export const beneficios = {
         "Visualização imersiva, revisões ilimitadas + reembolso integral se não aprovar.",
       ],
       iconFill: "#CFD0D1",
+      image: "/assets/images/sala-arquitetura-KOPLAN.webp",
+      imageAlt: "Sala de estar com visualização 3D hiper-realista Koplan",
     },
     {
       title: "Orçamento sob controle do início ao fim:",
@@ -96,6 +103,8 @@ export const beneficios = {
         "Previsibilidade de investimento.",
       ],
       iconFill: "#687479",
+      image: "/assets/images/jardim-KOPLAN.webp",
+      imageAlt: "Jardim com orçamento sob controle Koplan",
     },
     {
       title: "Comunicação clara em todas as etapas:",
@@ -104,6 +113,8 @@ export const beneficios = {
         "Atendimento direto pelos sócios.",
       ],
       iconFill: "#CFD0D1",
+      image: "/assets/images/cozinha-grande-arquiteta-KOPLAN.webp",
+      imageAlt: "Cozinha ampla com comunicação clara em todas as etapas Koplan",
     },
     {
       title: "Projeto que sai do papel com qualidade:",
@@ -112,6 +123,8 @@ export const beneficios = {
         'Caderno executivo completo. Nada fica "para resolver na obra".',
       ],
       iconFill: "#687479",
+      image: "/assets/images/cozinha-minimalista-arquitetura-KOPLAN.webp",
+      imageAlt: "Cozinha minimalista com projeto de qualidade Koplan",
     },
   ],
 } as const;

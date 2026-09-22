@@ -763,7 +763,7 @@ input, textarea, select {
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  padding: calc(5rem + 160px) 0 6rem;
+  padding: calc(5rem + 160px) 0 calc(6rem + 736px);
   margin-top: -160px;
   position: relative;
   z-index: 1;
@@ -953,14 +953,81 @@ input, textarea, select {
 
 /* --------------------------------------------------------------------------
    7. Section: Benefícios & O Que Entregamos (Serviços)
+   Dark section with white overlapping sheet (like reference)
    -------------------------------------------------------------------------- */
 .section-beneficios-servicos {
+  background-color: var(--color-dark);
+  padding: 0 0 6rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* White overlapping sheet pulled over the previous section */
+.beneficios-sheet {
   background-color: var(--color-white);
-  background-image: url("/assets/images/K-fundo-KOPLAN.webp");
-  background-position: center right;
-  background-repeat: no-repeat;
-  background-size: contain;
-  padding: 6rem 0;
+  border-radius: var(--radius-lg);
+  max-width: var(--container-max);
+  margin: -736px auto 0;
+  padding: 96px 60px;
+  position: relative;
+  z-index: 3;
+}
+
+.beneficios-sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.beneficio-image-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.beneficio-image-card-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+.beneficios-quote {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  line-height: 1.35;
+  color: var(--color-black);
+  text-align: center;
+  max-width: var(--content-max);
+  margin: 64px auto 0;
+  font-weight: 400;
+}
+
+.beneficios-quote i,
+.beneficios-quote .cinza {
+  font-style: italic;
+  color: var(--color-gray);
+}
+
+/* Dark block below the sheet */
+.beneficios-dark-block {
+  margin-top: 128px;
+}
+
+.section-beneficios-servicos .section-title-kiona {
+  color: var(--color-white);
+}
+
+.section-beneficios-servicos .section-tag {
+  color: var(--color-gray-light);
+}
+
+.section-beneficios-servicos .servicos-hover-prompt {
+  color: var(--color-gray-light);
 }
 
 /* Benefícios Grid */
@@ -2105,6 +2172,7 @@ input, textarea, select {
 
   .section-pra-quem {
     padding-top: 5rem;
+    padding-bottom: calc(2.5rem + 240px);
   }
 
   .pra-quem-grid {
@@ -2251,6 +2319,25 @@ input, textarea, select {
 
   .section-pra-quem {
     padding-top: 4rem;
+  }
+
+  .beneficios-sheet {
+    margin-top: -240px;
+    padding: 48px 24px;
+    border-radius: 22px;
+  }
+
+  .beneficios-sheet-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .beneficios-quote {
+    font-size: 1.35rem;
+    margin-top: 40px;
+  }
+
+  .beneficios-dark-block {
+    margin-top: 64px;
   }
 
   .beneficios-grid,

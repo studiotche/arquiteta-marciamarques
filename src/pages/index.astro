@@ -297,62 +297,72 @@ const jsonLd = {
       </div>
     </section>
 
-    <!-- 03. SECTION: BENEFÍCIOS & SERVIÇOS -->
+    <!-- 03. SECTION: BENEFÍCIOS & SERVIÇOS (dark + overlapping white sheet) -->
     <section class="section-beneficios-servicos" id="beneficios">
       <div class="container">
-        <!-- Benefícios Block -->
-        <div class="beneficios-header up">
-          <p class="section-tag">{beneficios.sectionTitle}</p>
-          <h2 class="section-title-kiona">
-            VOCÊ <i><span class="cinza">NÃO PRECISA ENTENDER</span></i> DE OBRA. <i><span class="cinza">PRECISA</span></i> DE <i><span class="cinza">QUEM ENTENDA</span></i> POR VOCÊ.
-          </h2>
-        </div>
-
-        <div class="beneficios-grid">
-          {beneficios.cards.map((card, idx) => (
-            <div class={`beneficio-card up${(idx % 3) + 1}`}>
-              <h3 class="beneficio-card-title">{card.title}</h3>
-              <ul class="beneficio-list">
-                {card.items.map((item) => (
-                  <li class="beneficio-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
-                      <path d="M5.99012 10.9019C5.59959 11.2924 4.96643 11.2924 4.5759 10.9019L0.290114 6.61609C-0.10041 6.22557 -0.0950163 5.58701 0.295508 5.19648C0.686032 4.80596 1.32459 4.80057 1.71511 5.19109L4.5759 8.05188C4.96643 8.4424 5.59959 8.4424 5.99011 8.05188L13.7509 0.291092C14.1414 -0.0994327 14.78 -0.0940398 15.1705 0.296485C15.561 0.687009 15.5664 1.32557 15.1759 1.71609L5.99012 10.9019Z" fill={card.iconFill}/>
-                    </svg>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <!-- Serviços Block ("O QUE ENTREGAMOS:") -->
-        <div class="servicos-header-wrapper up" id="servicos">
-          <div>
-            <p class="section-tag">{servicos.sectionTitle}</p>
-            <h2 class="section-title-kiona">O QUE <i><span class="cinza">ENTREGAMOS:</span></i></h2>
-          </div>
-          <div class="servicos-hover-prompt">
-            <span>{servicos.hoverPrompt}</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
-          </div>
-        </div>
-
-        <div class="servicos-grid">
-          {servicos.cards.map((card, idx) => (
-            <article class={`servico-card up${(idx % 2) + 1}`}>
-              <div>
-                <div class="servico-tags">
-                  {card.tags.map((tag) => (
-                    <span class="servico-tag">{tag}</span>
+        <!-- White overlapping sheet with image cards + quote -->
+        <div class="beneficios-sheet up">
+          <div class="beneficios-sheet-grid">
+            {beneficios.cards.map((card, idx) => (
+              <div class={`beneficio-image-card up${(idx % 3) + 1}`}>
+                <img class="beneficio-image-card-photo" src={asset(card.image)} alt={card.imageAlt} loading="lazy" width="560" height="420" />
+                <h3 class="beneficio-card-title">{card.title}</h3>
+                <ul class="beneficio-list">
+                  {card.items.map((item) => (
+                    <li class="beneficio-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12" viewBox="0 0 16 12" fill="none">
+                        <path d="M5.99012 10.9019C5.59959 11.2924 4.96643 11.2924 4.5759 10.9019L0.290114 6.61609C-0.10041 6.22557 -0.0950163 5.58701 0.295508 5.19648C0.686032 4.80596 1.32459 4.80057 1.71511 5.19109L4.5759 8.05188C4.96643 8.4424 5.59959 8.4424 5.99011 8.05188L13.7509 0.291092C14.1414 -0.0994327 14.78 -0.0940398 15.1705 0.296485C15.561 0.687009 15.5664 1.32557 15.1759 1.71609L5.99012 10.9019Z" fill={card.iconFill}/>
+                      </svg>
+                      <span>{item}</span>
+                    </li>
                   ))}
-                </div>
-                <h3 class="servico-card-title">{card.title}</h3>
-                <p class="servico-card-sub">{card.subtitle}</p>
+                </ul>
               </div>
-              <p class="servico-card-desc">{card.description}</p>
-            </article>
-          ))}
+            ))}
+          </div>
+
+          <p class="beneficios-quote">
+            “{beneficios.quote.pre}<i><span class="cinza">{beneficios.quote.italic}</span></i><span class="cinza">{beneficios.quote.post}</span>”
+          </p>
+        </div>
+
+        <!-- Dark block below the sheet -->
+        <div class="beneficios-dark-block">
+          <div class="beneficios-header up">
+            <p class="section-tag">{beneficios.sectionTitle}</p>
+            <h2 class="section-title-kiona">
+              VOCÊ <i><span class="cinza">NÃO PRECISA ENTENDER</span></i> DE OBRA. <i><span class="cinza">PRECISA</span></i> DE <i><span class="cinza">QUEM ENTENDA</span></i> POR VOCÊ.
+            </h2>
+          </div>
+
+          <!-- Serviços Block ("O QUE ENTREGAMOS:") -->
+          <div class="servicos-header-wrapper up" id="servicos">
+            <div>
+              <p class="section-tag">{servicos.sectionTitle}</p>
+              <h2 class="section-title-kiona">O QUE <i><span class="cinza">ENTREGAMOS:</span></i></h2>
+            </div>
+            <div class="servicos-hover-prompt">
+              <span>{servicos.hoverPrompt}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+            </div>
+          </div>
+
+          <div class="servicos-grid">
+            {servicos.cards.map((card, idx) => (
+              <article class={`servico-card up${(idx % 2) + 1}`}>
+                <div>
+                  <div class="servico-tags">
+                    {card.tags.map((tag) => (
+                      <span class="servico-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <h3 class="servico-card-title">{card.title}</h3>
+                  <p class="servico-card-sub">{card.subtitle}</p>
+                </div>
+                <p class="servico-card-desc">{card.description}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
