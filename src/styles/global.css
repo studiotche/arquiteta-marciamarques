@@ -778,6 +778,17 @@ input, textarea, select {
   margin-right: auto;
 }
 
+/* Tag breathes above the title (like reference) */
+.section-pra-quem .section-tag {
+  margin-bottom: 28px;
+}
+
+/* Right column drops to align subhead with title first line */
+.pra-quem-side {
+  padding-top: 49px;
+  min-width: 0;
+}
+
 .section-tag {
   font-family: var(--font-body);
   font-size: 1rem;
@@ -2088,6 +2099,10 @@ input, textarea, select {
 
   .pra-quem-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pra-quem-side {
+    padding-top: 0;
   }
 
   .pra-quem-visuals {
