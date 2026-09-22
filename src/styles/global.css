@@ -996,8 +996,13 @@ input, textarea, select {
   align-items: start;
 }
 
+.beneficios-sheet-head {
+  text-align: left;
+}
+
 .beneficios-sheet-head .section-title-kiona {
   margin-bottom: 0;
+  text-align: left;
 }
 
 .beneficio-image-card {
