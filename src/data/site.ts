@@ -156,6 +156,8 @@ export const servicos = {
       subtitle: "Residencial, comercial e cultural. Planejar é a base de tudo o que criamos.",
       description:
         "Concepção completa de edificações, do estudo inicial ao executivo. A identidade de cada pessoa ou marca traduzida em forma e matéria, com soluções técnicas integradas. Trabalhamos com a metodologia BIM e parceria com engenheiros especializados.",
+      bgImage: "/assets/images/servicos-KOPLAN.webp",
+      bgImageAlt: "Restaurante projetado pela Koplan",
     },
     {
       title: "Design de Interiores",
@@ -163,6 +165,8 @@ export const servicos = {
       subtitle: "Lugares que nascem de histórias. Criados para serem vividos.",
       description:
         "Criação de ambientes internos funcionais e sofisticados, alinhados à sua identidade. Cada detalhe é pensado para oferecer conforto e estilo atemporal. Flexibilidade: Você pode contratar o projeto completo ou selecionar ambientes específicos para ajustar ao seu orçamento.",
+      bgImage: "/assets/images/sala-de-estar-arquitetura-KOPLAN.webp",
+      bgImageAlt: "Sala de estar projetada pela Koplan",
     },
     {
       title: "Viabilidade Financeira (E.V.F.):",
@@ -170,6 +174,8 @@ export const servicos = {
       subtitle: "Segurança antes de investir. Todos os custos mapeados.",
       description:
         "Orientação profissional para decisões de projeto, laudos e documentação técnica. Ideal para quem busca segurança antes de investir ou precisa solucionar questões específicas com rigor técnico.",
+      bgImage: "/assets/images/sala-cozinha-arquitetura-KOPLAN.webp",
+      bgImageAlt: "Cozinha integrada com viabilidade financeira Koplan",
     },
     {
       title: "Acompanhamento Técnico e Conexão com Parceiros:",
@@ -182,6 +188,8 @@ export const servicos = {
       subtitle: "Realizamos visitas para tirar dúvidas, verificar o andamento da obra e orientar ajustes.",
       description:
         "Conectamos você a parceiros de confiança para facilitar orçamentos e decisões. Nosso suporte garante que cada etapa cumpra o padrão de qualidade do projeto.",
+      bgImage: "/assets/images/jardim2-KOPLAN.webp",
+      bgImageAlt: "Casa com acompanhamento técnico Koplan",
     },
   ],
 } as const;
