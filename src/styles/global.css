@@ -988,7 +988,7 @@ input, textarea, select {
 
 .beneficios-sheet-grid {
   display: grid;
-  grid-template-columns: 300px 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   max-width: var(--content-max);
   margin-left: auto;
@@ -998,6 +998,7 @@ input, textarea, select {
 
 .beneficios-sheet-head {
   text-align: left;
+  max-width: 300px;
 }
 
 .beneficios-sheet-head .section-title-kiona {
