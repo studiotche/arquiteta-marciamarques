@@ -774,10 +774,10 @@ input, textarea, select {
   grid-template-columns: minmax(0, 1fr) 590px;
   gap: 56px;
   align-items: flex-start;
-  width: min(100% - 48px, 1600px);
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
+  width: auto;
+  max-width: none;
+  margin-left: -24px;
+  margin-right: -24px;
   padding-left: 0;
   padding-right: min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px)));
   box-sizing: border-box;
@@ -1331,15 +1331,15 @@ input, textarea, select {
   text-align: center;
 }
 
-/* Accordion (1140 line) + image (1600 line) row */
+/* Accordion (1140 line) + image (1600 line) row — same track as hero/section 2 */
 .como-funciona-row {
   display: grid;
   grid-template-columns: 550px minmax(0, 1fr);
   gap: 52px;
-  width: min(100% - 48px, 1600px);
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
+  width: auto;
+  max-width: none;
+  margin-left: -24px;
+  margin-right: -24px;
   padding-left: min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px)));
   box-sizing: border-box;
   align-items: start;
@@ -1399,6 +1399,11 @@ input, textarea, select {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px 20px;
+  transition: transform var(--transition-normal);
+}
+
+.process-accordion-item[open] .process-accordion-summary::after {
+  transform: rotate(45deg);
 }
 
 
@@ -2398,6 +2403,8 @@ input, textarea, select {
 
   .pra-quem-grid {
     grid-template-columns: 1fr;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 0;
     padding-right: 0;
   }
@@ -2421,6 +2428,8 @@ input, textarea, select {
 
   .como-funciona-row {
     grid-template-columns: 1fr;
+    margin-left: 0;
+    margin-right: 0;
     padding-left: 0;
   }
 

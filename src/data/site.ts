@@ -197,7 +197,7 @@ export const servicos = {
 export const comoFunciona = {
   sectionTitle: "COMO FUNCIONA",
   heading: "ETAPAS DETALHADAS DO PROCESSO KOPLAN:",
-  sideImage: "/assets/images/cozinha-grande-arquiteta-KOPLAN.webp",
+  sideImage: "/assets/images/cozinha-arquiteta-KOPLAN.webp",
   sideImageAlt: "Cozinha ampla em projeto Koplan",
   sideCard: {
     images: [

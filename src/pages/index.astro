@@ -390,13 +390,13 @@ const jsonLd = {
       <div class="container">
         <div class="como-funciona-header up">
           <p class="section-tag">{comoFunciona.sectionTitle}</p>
-          <h2 class="section-title-kiona">{comoFunciona.heading}</h2>
+          <h2 class="section-title-kiona">ETAPAS DETALHADAS DO<br />PROCESSO KOPLAN:</h2>
         </div>
 
         <div class="como-funciona-row">
           <div class="process-accordion-list">
             {comoFunciona.steps.map((step, idx) => (
-              <details class="process-accordion-item up" open={idx === 0}>
+              <details class="process-accordion-item up" open={idx === 0} name="processo-koplan">
                 <summary class="process-accordion-summary" data-step={step.number}>
                   <div class="process-title-group">
                     <h3 class="process-title">{step.title}</h3>
