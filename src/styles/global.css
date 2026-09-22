@@ -763,7 +763,8 @@ input, textarea, select {
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  padding: 5rem 0 6rem;
+  padding: calc(5rem + 160px) 0 6rem;
+  margin-top: -160px;
   position: relative;
   z-index: 1;
 }
