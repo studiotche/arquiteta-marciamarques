@@ -2002,15 +2002,16 @@ input, textarea, select {
 
 .testimonial-stars {
   display: flex;
-  gap: 4px;
+  align-items: center;
+  gap: 5px;
 }
 
 .testimonial-quote {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
-  color: var(--color-text-main);
-  font-weight: 300;
+  color: #202124;
+  font-weight: 400;
   margin: 0;
   position: relative;
   flex: 1;
@@ -2024,12 +2025,19 @@ input, textarea, select {
 .testimonial-author-name {
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--color-black);
-  margin: 0 0 4px;
+  margin: 0 0 2px;
 }
 
 .testimonial-author-role {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-gray);
+  margin: 0;
+}
+
+.testimonial-author-source {
   font-family: var(--font-body);
   font-size: 0.85rem;
   color: var(--color-gray);
