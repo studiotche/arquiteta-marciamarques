@@ -1328,96 +1328,193 @@ input, textarea, select {
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+
+/* Accordion (1140 line) + image (1600 line) row */
+.como-funciona-row {
+  display: grid;
+  grid-template-columns: 550px minmax(0, 1fr);
+  gap: 52px;
+  width: min(100% - 48px, 1600px);
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px)));
+  box-sizing: border-box;
+  align-items: start;
 }
 
 .process-accordion-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: var(--content-max);
-  margin: 0 auto;
+  min-width: 0;
 }
 
 .process-accordion-item {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.process-accordion-item[open] {
-  border-color: var(--color-gray-soft);
-  box-shadow: var(--shadow-card);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
 }
 
 .process-accordion-summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 28px;
+  gap: 16px;
+  min-height: 100px;
+  padding: 20px 0 20px 70px;
   cursor: pointer;
   user-select: none;
   list-style: none;
+  position: relative;
+  border-bottom: 1px solid rgba(104, 116, 121, 0.38);
 }
 
 .process-accordion-summary::-webkit-details-marker {
   display: none;
 }
 
-.process-summary-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.process-accordion-summary::before {
+  content: attr(data-step);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-body);
+  font-size: 2.3rem;
+  font-weight: 300;
+  color: var(--color-gray);
 }
 
-.process-num {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  color: var(--color-cta);
-  font-weight: 400;
+.process-accordion-summary::after {
+  content: '';
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  background-image: url("/assets/images/seta-branca.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
 }
+
+
 
 .process-title-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  min-width: 0;
 }
 
 .process-title {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 400;
   color: var(--color-black);
   margin: 0;
 }
 
 .process-tagline {
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 1.17rem;
+  font-weight: 300;
   color: var(--color-gray);
   margin: 0;
 }
 
-.process-icon-chevron {
-  width: 20px;
-  height: 20px;
-  transition: transform var(--transition-normal);
-  color: var(--color-gray);
-}
-
-.process-accordion-item[open] .process-icon-chevron {
-  transform: rotate(180deg);
-}
-
 .process-body {
-  padding: 0 28px 24px 72px;
+  padding: 18px 0 24px 70px;
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
   color: var(--color-text-main);
-  border-top: 1px solid var(--color-border);
-  margin-top: -6px;
-  padding-top: 18px;
+}
+
+/* Right visual: big image with floating mini-carousel card */
+.como-funciona-visual {
+  min-width: 0;
+}
+
+.como-funciona-image-frame {
+  position: relative;
+}
+
+.como-funciona-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+}
+
+.como-funciona-side-card {
+  position: absolute;
+  right: 61px;
+  bottom: -127px;
+  width: 310px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.como-side-carousel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 276 / 210;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.como-side-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.como-side-slide.active {
+  opacity: 1;
+}
+
+.como-side-card-text {
+  margin: 12px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--color-text-main);
+  font-weight: 300;
+}
+
+/* Centered CTA below the row */
+.como-funciona-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 170px;
+}
+
+.como-cta-btn {
+  width: 470px;
+  max-width: 100%;
+}
+
+.como-cta-bullets {
+  align-items: center;
+  text-align: center;
+  max-width: 100%;
+}
+
+.como-cta-bullets .hero-bullet-item {
+  justify-content: center;
+  text-align: center;
 }
 
 .process-body-extra {
@@ -2320,6 +2417,21 @@ input, textarea, select {
   .pra-quem-leisure-col {
     margin-top: 0;
     gap: 24px;
+  }
+
+  .como-funciona-row {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+  }
+
+  .como-funciona-side-card {
+    right: 20px;
+    bottom: -60px;
+    width: 270px;
+  }
+
+  .como-funciona-cta {
+    margin-top: 110px;
   }
 
   .complementares-grid {

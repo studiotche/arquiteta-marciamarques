@@ -197,6 +197,26 @@ export const servicos = {
 export const comoFunciona = {
   sectionTitle: "COMO FUNCIONA",
   heading: "ETAPAS DETALHADAS DO PROCESSO KOPLAN:",
+  sideImage: "/assets/images/cozinha-grande-arquiteta-KOPLAN.webp",
+  sideImageAlt: "Cozinha ampla em projeto Koplan",
+  sideCard: {
+    images: [
+      {
+        src: "/assets/images/APARTAMENTO_View14-copiar.webp",
+        alt: "Apartamento com processo criativo Koplan",
+      },
+      {
+        src: "/assets/images/sala-estar-KOPLAN.webp",
+        alt: "Sala de estar com gestão inteligente Koplan",
+      },
+    ],
+    text: "Processo criativo com gestão inteligente, com cada etapa planejada para evitar surpresa.",
+  },
+  ctaBullets: [
+    "RETORNO EM ATÉ 1 DIA ÚTIL.",
+    "ATENDIMENTO NACIONAL COM PROCESSO DIGITAL.",
+    "PRESENCIAL EM UBERLÂNDIA E GOIÂNIA.",
+  ],
   steps: [
     {
       number: "01",

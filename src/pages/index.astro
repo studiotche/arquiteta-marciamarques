@@ -385,7 +385,7 @@ const jsonLd = {
       </div>
     </section>
 
-    <!-- 04. SECTION: COMO FUNCIONA (PROCESS ACCORDION) -->
+    <!-- 04. SECTION: COMO FUNCIONA (PROCESS ACCORDION + SIDE IMAGE) -->
     <section class="section-como-funciona" id="como-funciona">
       <div class="container">
         <div class="como-funciona-header up">
@@ -393,27 +393,60 @@ const jsonLd = {
           <h2 class="section-title-kiona">{comoFunciona.heading}</h2>
         </div>
 
-        <div class="process-accordion-list">
-          {comoFunciona.steps.map((step, idx) => (
-            <details class="process-accordion-item up" open={idx === 0}>
-              <summary class="process-accordion-summary">
-                <div class="process-summary-left">
-                  <span class="process-num">{step.number}</span>
+        <div class="como-funciona-row">
+          <div class="process-accordion-list">
+            {comoFunciona.steps.map((step, idx) => (
+              <details class="process-accordion-item up" open={idx === 0}>
+                <summary class="process-accordion-summary" data-step={step.number}>
                   <div class="process-title-group">
                     <h3 class="process-title">{step.title}</h3>
                     <p class="process-tagline">{step.tagline}</p>
                   </div>
+                </summary>
+                <div class="process-body">
+                  <p>{step.description}</p>
+                  {step.extra && <p class="process-body-extra">{step.extra}</p>}
                 </div>
-                <svg class="process-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M6 9l6 6 6-6"/>
-                </svg>
-              </summary>
-              <div class="process-body">
-                <p>{step.description}</p>
-                {step.extra && <p class="process-body-extra">{step.extra}</p>}
+              </details>
+            ))}
+          </div>
+
+          <div class="como-funciona-visual up1">
+            <div class="como-funciona-image-frame">
+              <img
+                class="como-funciona-img"
+                src={asset(comoFunciona.sideImage)}
+                alt={comoFunciona.sideImageAlt}
+                loading="lazy"
+                width="768"
+                height="908"
+              />
+              <div class="como-funciona-side-card">
+                <div class="como-side-carousel" data-carousel>
+                  {comoFunciona.sideCard.images.map((img, idx) => (
+                    <img
+                      class={`como-side-slide${idx === 0 ? " active" : ""}`}
+                      src={asset(img.src)}
+                      alt={img.alt}
+                      loading="lazy"
+                      width="276"
+                      height="210"
+                    />
+                  ))}
+                </div>
+                <p class="como-side-card-text">{comoFunciona.sideCard.text}</p>
               </div>
-            </details>
-          ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="como-funciona-cta up">
+          <a class="btn-submit como-cta-btn" href="#contato">SOLICITAR ORÇAMENTO</a>
+          <ul class="hero-bullets como-cta-bullets">
+            {comoFunciona.ctaBullets.map((bullet) => (
+              <li class="hero-bullet-item"><span>{bullet}</span></li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
@@ -851,6 +884,20 @@ const jsonLd = {
     animatedElements.forEach((el) => revealObserver.observe(el));
   } else {
     animatedElements.forEach((el) => el.classList.add("active"));
+  }
+
+  // Como Funciona mini-carousel (auto-rotate)
+  const carousel = document.querySelector<HTMLElement>("[data-carousel]");
+  if (carousel) {
+    const slides = carousel.querySelectorAll<HTMLElement>(".como-side-slide");
+    if (slides.length > 1) {
+      let current = 0;
+      window.setInterval(() => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 4000);
+    }
   }
 
   // Portfolio Tabs Switcher
