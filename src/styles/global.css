@@ -1087,8 +1087,12 @@ input, textarea, select {
   margin-top: 128px;
 }
 
-.section-beneficios-servicos .section-title-kiona {
+.section-beneficios-servicos .beneficios-dark-block .section-title-kiona {
   color: var(--color-white);
+}
+
+.section-beneficios-servicos .beneficios-sheet-head .section-title-kiona {
+  color: var(--color-black);
 }
 
 .section-beneficios-servicos .section-tag {
