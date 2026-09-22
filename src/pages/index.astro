@@ -253,12 +253,27 @@ const jsonLd = {
             <i><span class="cinza">ARQUITETURA</span></i> PARA QUEM <i><span class="cinza">VALORIZA PROCESSO,</span></i> TEMPO E RESULTADO.
           </h2>
 
+          <div class="pra-quem-visuals">
+            <div class="pra-quem-images-row">
+              <img class="pra-quem-img-1" src={asset(site.assets.kitchenPraQuem)} alt="Cozinha planejada Koplan" width="426" height="624" />
+              <img class="pra-quem-img-2" src={asset(site.assets.leisurePraQuem)} alt="Área de lazer Koplan" width="425" height="493" />
+            </div>
+            <div class="pra-quem-badge">
+              <img class="pra-quem-badge-icon" src={asset(site.assets.logoSymbol)} alt="" width="33" height="42" />
+              <p class="pra-quem-badge-title">
+                <strong>{praQuemE.badge.bold1}</strong> <span class="cinza">{praQuemE.badge.gray}</span> <strong>{praQuemE.badge.bold2}</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="up1">
           <p class="pra-quem-subhead"><span class="cinza">A</span> KOPLAN <span class="cinza">ATENDE QUEM:</span></p>
 
           <ul class="pra-quem-list">
             {praQuemE.items.map((item) => (
               <li class="pra-quem-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 29 29" fill="none">
                   <path d="M14.5 0C22.5081 0 29 6.49187 29 14.5C29 22.5081 22.5081 29 14.5 29C6.49187 29 0 22.5081 0 14.5C0 6.49187 6.49187 0 14.5 0ZM22.126 8.68457C21.7372 8.30413 21.1153 8.30405 20.7266 8.68457L11.9941 17.2344C11.6054 17.6148 10.9834 17.6149 10.5947 17.2344L7.27344 13.9824C6.8847 13.6019 6.26276 13.6019 5.87402 13.9824L5.72949 14.123C5.32903 14.5152 5.329 15.1606 5.72949 15.5527L10.5947 20.3154C10.9834 20.6959 11.6054 20.6959 11.9941 20.3154L22.2705 10.2549C22.6707 9.86279 22.6707 9.21826 22.2705 8.82617L22.126 8.68457Z" fill="#292929"/>
                 </svg>
                 <span>
@@ -274,19 +289,6 @@ const jsonLd = {
             <span class="cinza">{praQuemE.quote.gray1}<br /><br />{praQuemE.quote.gray2} </span>
             <strong>{praQuemE.quote.bold}</strong>
           </p>
-        </div>
-
-        <div class="pra-quem-visuals up1">
-          <div class="pra-quem-images-row">
-            <img class="pra-quem-img-1" src={asset(site.assets.kitchenPraQuem)} alt="Cozinha planejada Koplan" width="426" height="624" />
-            <img class="pra-quem-img-2" src={asset(site.assets.leisurePraQuem)} alt="Área de lazer Koplan" width="425" height="493" />
-          </div>
-          <div class="pra-quem-badge">
-            <img class="pra-quem-badge-icon" src={asset(site.assets.logoSymbol)} alt="" width="33" height="42" />
-            <p class="pra-quem-badge-title">
-              <strong>{praQuemE.badge.bold1}</strong> <span class="cinza">{praQuemE.badge.gray}</span> <strong>{praQuemE.badge.bold2}</strong>
-            </p>
-          </div>
         </div>
       </div>
     </section>
