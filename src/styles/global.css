@@ -1968,10 +1968,17 @@ input, textarea, select {
    11. Section: Depoimentos (Client Testimonials)
    -------------------------------------------------------------------------- */
 .section-depoimentos {
-  background-color: var(--color-dark-deep);
+  background-color: var(--color-dark);
   color: var(--color-white);
   padding: 6rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.section-depoimentos .section-title-kiona {
+  color: var(--color-white);
+}
+
+.section-depoimentos .section-tag {
+  color: var(--color-gray-light);
 }
 
 .testimonials-grid {
@@ -1984,43 +1991,48 @@ input, textarea, select {
 }
 
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  padding: 36px 30px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border-card);
+  border-radius: 12px;
+  padding: 32px 28px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-  transition: transform var(--transition-normal), border-color var(--transition-normal);
+  gap: 20px;
 }
 
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.25);
+.testimonial-stars {
+  display: flex;
+  gap: 4px;
 }
 
 .testimonial-quote {
   font-family: var(--font-body);
-  font-size: 1.02rem;
+  font-size: 1rem;
   line-height: 1.65;
-  color: #E2E8F0;
+  color: var(--color-text-main);
   font-weight: 300;
   margin: 0;
   position: relative;
+  flex: 1;
+}
+
+.testimonial-author {
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
 }
 
 .testimonial-author-name {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-black);
   margin: 0 0 4px;
 }
 
 .testimonial-author-role {
   font-family: var(--font-body);
   font-size: 0.85rem;
-  color: var(--color-gray-light);
+  color: var(--color-gray);
   margin: 0;
 }
 

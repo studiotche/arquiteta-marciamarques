@@ -601,10 +601,15 @@ const jsonLd = {
         <div class="testimonials-grid">
           {testimonials.map((item, idx) => (
             <div class={`testimonial-card up${(idx % 3) + 1}`}>
+              <div class="testimonial-stars" aria-label="Avaliação 5 de 5">
+                {[0, 1, 2, 3, 4].map(() => (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#FBBC05" aria-hidden="true"><path d="M12 2l2.94 6.26 6.86.8-5.07 4.7 1.35 6.74L12 17.27 5.92 20.5l1.35-6.74-5.07-4.7 6.86-.8L12 2z"/></svg>
+                ))}
+              </div>
               <blockquote class="testimonial-quote">
                 {item.quote}
               </blockquote>
-              <div>
+              <div class="testimonial-author">
                 <h3 class="testimonial-author-name">{item.name}</h3>
                 <p class="testimonial-author-role">{item.role}</p>
               </div>
