@@ -970,11 +970,20 @@ input, textarea, select {
 .beneficios-sheet {
   background-color: var(--color-white);
   border-radius: var(--radius-lg);
-  max-width: var(--container-max);
-  margin: -736px auto 0;
+  max-width: none;
+  width: auto;
+  margin: -736px -24px 0;
   padding: 96px 60px;
   position: relative;
   z-index: 3;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1599px) {
+  .beneficios-sheet {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .beneficios-sheet-grid {
