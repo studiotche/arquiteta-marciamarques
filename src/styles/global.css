@@ -1655,7 +1655,7 @@ input, textarea, select {
 /* Partner row: text (1140 line) + wide photo (1600 line) */
 .partner-row {
   display: grid;
-  grid-template-columns: 480px minmax(0, 1fr);
+  grid-template-columns: 710px minmax(0, 1fr);
   gap: 52px;
   align-items: center;
   width: auto;
