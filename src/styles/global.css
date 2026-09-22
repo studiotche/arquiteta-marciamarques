@@ -864,7 +864,7 @@ input, textarea, select {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-top: 40px;
+  margin-top: 115px;
   margin-left: max(-230px, min(0px, calc(24px - (100vw - 1140px) / 2)));
 }
 
@@ -885,13 +885,21 @@ input, textarea, select {
   width: 100%;
   border-radius: var(--radius-md);
   object-fit: cover;
+}
+
+/* Leisure column: staggered above kitchen with badge tucked underneath */
+.pra-quem-leisure-col {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
   margin-top: -48px;
+  min-width: 0;
 }
 
 .pra-quem-badge {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   padding: 0;
   background: transparent;
   border: none;
@@ -2080,6 +2088,15 @@ input, textarea, select {
 
   .pra-quem-grid {
     grid-template-columns: 1fr;
+  }
+
+  .pra-quem-visuals {
+    margin-top: 0;
+  }
+
+  .pra-quem-leisure-col {
+    margin-top: 0;
+    gap: 24px;
   }
 
   .complementares-grid {

@@ -256,13 +256,15 @@ const jsonLd = {
           <div class="pra-quem-visuals">
             <div class="pra-quem-images-row">
               <img class="pra-quem-img-1" src={asset(site.assets.kitchenPraQuem)} alt="Cozinha planejada Koplan" width="426" height="624" />
-              <img class="pra-quem-img-2" src={asset(site.assets.leisurePraQuem)} alt="Área de lazer Koplan" width="425" height="493" />
-            </div>
-            <div class="pra-quem-badge">
-              <img class="pra-quem-badge-icon" src={asset(site.assets.logoSymbol)} alt="" width="33" height="42" />
-              <p class="pra-quem-badge-title">
-                <strong>{praQuemE.badge.bold1}</strong> <span class="cinza">{praQuemE.badge.gray}</span> <strong>{praQuemE.badge.bold2}</strong>
-              </p>
+              <div class="pra-quem-leisure-col">
+                <img class="pra-quem-img-2" src={asset(site.assets.leisurePraQuem)} alt="Área de lazer Koplan" width="425" height="493" />
+                <div class="pra-quem-badge">
+                  <img class="pra-quem-badge-icon" src={asset(site.assets.logoSymbol)} alt="" width="33" height="42" />
+                  <p class="pra-quem-badge-title">
+                    <strong>{praQuemE.badge.bold1}</strong> <span class="cinza">{praQuemE.badge.gray}</span> <strong>{praQuemE.badge.bold2}</strong>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
