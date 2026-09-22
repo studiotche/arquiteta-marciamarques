@@ -1713,14 +1713,20 @@ input, textarea, select {
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .portfolio-header .section-title-kiona {
   color: var(--color-white);
 }
 
-/* Project carousel: one 1140px slide visible + next peeking */
+/* Project carousel: one 1140px slide visible + next peeking, fixed controls */
 .portfolio-carousel {
+  overflow: visible;
+}
+
+.portfolio-viewport {
+  position: relative;
   overflow: hidden;
 }
 
@@ -1729,19 +1735,49 @@ input, textarea, select {
   gap: 32px;
   padding-left: max(24px, calc((100vw - 1140px) / 2));
   padding-right: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-}
-
-.portfolio-track::-webkit-scrollbar {
-  display: none;
+  will-change: transform;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portfolio-slide {
   flex: 0 0 min(1140px, calc(100vw - 48px));
-  scroll-snap-align: start;
+}
+
+/* Fixed overlay: dots + arrows stay put while slides glide beneath */
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.portfolio-overlay-inner {
+  width: min(1140px, calc(100vw - 48px));
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px 36px 0;
+  position: relative;
+}
+
+.portfolio-overlay .portfolio-dots {
+  padding-top: 12px;
+}
+
+.portfolio-overlay .portfolio-arrows {
+  position: absolute;
+  right: 36px;
+  top: 32px;
+  pointer-events: auto;
+}
+
+.portfolio-overlay .portfolio-dots {
+  pointer-events: auto;
 }
 
 .portfolio-slide-media {
@@ -2812,6 +2848,15 @@ input, textarea, select {
   .portfolio-arrow {
     width: 44px;
     height: 44px;
+  }
+
+  .portfolio-overlay-inner {
+    padding: 20px 20px 0;
+  }
+
+  .portfolio-overlay .portfolio-arrows {
+    right: 20px;
+    top: 20px;
   }
 
   .process-body {
