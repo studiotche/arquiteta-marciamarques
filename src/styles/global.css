@@ -1981,6 +1981,26 @@ input, textarea, select {
   color: var(--color-gray-light);
 }
 
+.depoimentos-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  max-width: var(--content-max);
+  margin: 0 auto 48px;
+}
+
+.depoimentos-header .section-tag {
+  margin: 8px 0 0;
+  flex-shrink: 0;
+}
+
+.depoimentos-header .section-title-kiona {
+  margin: 0;
+  max-width: 620px;
+  text-align: right;
+}
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
