@@ -774,13 +774,17 @@ input, textarea, select {
   grid-template-columns: minmax(0, 1fr) 590px;
   gap: 56px;
   align-items: flex-start;
-  width: auto;
-  max-width: none;
-  margin-left: -24px;
-  margin-right: -24px;
+  width: min(100% - 48px, 1600px);
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
   padding-left: 0;
   padding-right: min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px)));
   box-sizing: border-box;
+}
+
+.pra-quem-grid > div {
+  min-width: 0;
 }
 
 /* Title sits on the 1140px line while photos use the full column (1600px line) */
@@ -2441,8 +2445,8 @@ input, textarea, select {
 
   .pra-quem-grid {
     grid-template-columns: 1fr;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
     padding-left: 0;
     padding-right: 0;
   }
