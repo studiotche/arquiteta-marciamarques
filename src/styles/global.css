@@ -762,7 +762,7 @@ input, textarea, select {
   background-image: url("/assets/images/K-fundo-KOPLAN.webp");
   background-position: top left;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% auto;
   padding: 5rem 0 6rem;
   position: relative;
   z-index: 1;
