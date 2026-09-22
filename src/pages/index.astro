@@ -327,7 +327,6 @@ const jsonLd = {
                 </div>
               ) : (
                 <div class={`beneficio-image-card up${(idx % 3) + 1}`}>
-                  <img class="beneficio-image-card-photo" src={asset(card.image)} alt={card.imageAlt} loading="lazy" width="560" height="420" />
                   <h3 class="beneficio-card-title">{card.title}</h3>
                   <ul class="beneficio-list">
                     {card.items.map((item) => (
@@ -339,6 +338,7 @@ const jsonLd = {
                       </li>
                     ))}
                   </ul>
+                  <img class="beneficio-image-card-photo" src={asset(card.image)} alt={card.imageAlt} loading="lazy" width="560" height="420" />
                 </div>
               )
             ))}
