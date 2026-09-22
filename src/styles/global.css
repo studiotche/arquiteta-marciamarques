@@ -1536,46 +1536,83 @@ input, textarea, select {
    9. Section: Serviços Complementares & Parcerias Engenharia
    -------------------------------------------------------------------------- */
 .section-complementares {
-  background-color: var(--color-white);
+  background-color: var(--color-light);
   padding: 6rem 0;
+}
+
+/* Header: tag left, title right */
+.complementares-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  max-width: var(--content-max);
+  margin: 0 auto 48px;
+}
+
+.complementares-header .section-title-kiona {
+  margin: 0;
+  max-width: 560px;
+  text-align: right;
+}
+
+/* Photo (1600 line) + icons row */
+.complementares-row {
+  display: grid;
+  grid-template-columns: minmax(0, 704px) minmax(0, 1fr);
+  gap: 52px;
+  align-items: start;
+  width: auto;
+  max-width: none;
+  margin: 0 -24px 64px;
+}
+
+.complementares-photo {
+  width: 100%;
+  aspect-ratio: 704 / 399;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
 }
 
 .complementares-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  margin-bottom: 48px;
+  grid-template-columns: repeat(3, 160px);
+  gap: 32px 24px;
+  margin-bottom: 0;
+  align-content: start;
 }
 
 .complementar-card {
-  background: var(--color-light);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 24px 18px;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  transition: transform var(--transition-normal);
+  gap: 12px;
 }
 
 .complementar-card:hover {
-  transform: translateY(-4px);
+  transform: none;
 }
 
 .complementar-icon {
-  width: 54px;
-  height: 54px;
+  width: 77px;
+  height: 77px;
   object-fit: contain;
 }
 
 .complementar-text {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   line-height: 1.4;
   color: var(--color-black);
   margin: 0;
+  font-weight: 300;
 }
 
 .complementar-note {
@@ -1585,49 +1622,50 @@ input, textarea, select {
   margin-top: 4px;
 }
 
-/* Partner Box */
-.partner-box {
-  background: var(--color-dark);
-  color: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: 40px;
+/* Partner row: text (1140 line) + wide photo (1600 line) */
+.partner-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 36px;
+  grid-template-columns: 480px minmax(0, 1fr);
+  gap: 52px;
   align-items: center;
-  margin-bottom: 40px;
+  width: auto;
+  max-width: none;
+  margin: 0 -24px;
+}
+
+.partner-text {
+  padding-left: min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px)));
 }
 
 .partner-box-title {
   font-family: var(--font-heading);
-  font-size: 1.7rem;
+  font-size: 2.6rem;
   line-height: 1.3;
-  color: var(--color-white);
-  margin: 0 0 12px;
+  color: var(--color-black);
+  margin: 0 0 16px;
+  font-weight: 400;
 }
 
 .partner-box-title .cinza {
-  color: var(--color-gray-light);
+  font-style: italic;
+  color: var(--color-gray);
 }
 
 .partner-box-text {
   font-family: var(--font-body);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   line-height: 1.6;
-  color: var(--color-gray-light);
+  color: var(--color-gray);
   margin: 0;
-}
-
-.partner-photos-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  font-weight: 300;
 }
 
 .partner-photo {
   width: 100%;
-  border-radius: var(--radius-md);
+  aspect-ratio: 840 / 316;
   object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
 }
 
 /* --------------------------------------------------------------------------
@@ -2443,12 +2481,31 @@ input, textarea, select {
     margin-top: 110px;
   }
 
+  .complementares-header {
+    flex-direction: column;
+  }
+
+  .complementares-header .section-title-kiona {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  .complementares-row {
+    grid-template-columns: 1fr;
+    margin: 0 0 48px;
+  }
+
   .complementares-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .partner-box {
+  .partner-row {
     grid-template-columns: 1fr;
+    margin: 0;
+  }
+
+  .partner-text {
+    padding-left: 0;
   }
 
   .founders-wrapper {

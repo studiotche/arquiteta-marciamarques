@@ -454,36 +454,36 @@ const jsonLd = {
     <!-- 05. SECTION: SERVIÇOS COMPLEMENTARES -->
     <section class="section-complementares">
       <div class="container">
-        <div class="up">
+        <div class="complementares-header up">
           <p class="section-tag">{servicosComplementares.sectionTitle}</p>
           <h2 class="section-title-kiona">
             VOCÊ PODE <i><span class="cinza">CONTRATAR SEPARADAMENTE</span></i>:
           </h2>
         </div>
 
-        <div class="complementares-grid">
-          {servicosComplementares.items.map((item, idx) => (
-            <div class={`complementar-card up${(idx % 3) + 1}`}>
-              <img class="complementar-icon" src={asset(item.icon)} alt="" width="54" height="54" />
-              <p class="complementar-text">
-                {item.text}
-                {item.note && <span class="complementar-note">{item.note}</span>}
-              </p>
-            </div>
-          ))}
+        <div class="complementares-row">
+          <img class="complementares-photo" src={asset(site.assets.kitchenLarge)} alt="Cozinha grande e moderna" loading="lazy" width="713" height="404" />
+          <div class="complementares-grid">
+            {servicosComplementares.items.map((item, idx) => (
+              <div class={`complementar-card up${(idx % 3) + 1}`}>
+                <img class="complementar-icon" src={asset(item.icon)} alt="" width="77" height="77" />
+                <p class="complementar-text">
+                  {item.text}
+                  {item.note && <span class="complementar-note">{item.note}</span>}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div class="partner-box up">
-          <div>
+        <div class="partner-row up">
+          <div class="partner-text">
             <h3 class="partner-box-title">
               EM <i><span class="cinza">PARCERIA COM ENGENHEIROS</span></i> ESPECIALIZADOS:
             </h3>
             <p class="partner-box-text">{servicosComplementares.partnerBox.text}</p>
           </div>
-          <div class="partner-photos-row">
-            <img class="partner-photo" src={asset(site.assets.kitchenLarge)} alt="Cozinha grande e moderna" width="713" height="404" />
-            <img class="partner-photo" src={asset(site.assets.kitchenMinimalist)} alt="Cozinha minimalista" width="768" height="289" />
-          </div>
+          <img class="partner-photo" src={asset(site.assets.kitchenMinimalist)} alt="Cozinha minimalista" loading="lazy" width="840" height="316" />
         </div>
       </div>
     </section>
