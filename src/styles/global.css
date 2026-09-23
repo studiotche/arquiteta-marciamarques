@@ -1736,8 +1736,18 @@ footer[id] {
 .section-portfolio {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 6rem 0;
+  padding: 0;
   position: relative;
+}
+
+/* Light header band above the dark carousel (like reference) */
+.portfolio-header-band {
+  background-color: var(--color-light);
+  padding: 6rem 0 0;
+}
+
+.portfolio-header-band .section-tag {
+  color: var(--color-gray);
 }
 
 .portfolio-header {
@@ -1748,8 +1758,12 @@ footer[id] {
   text-align: center;
 }
 
-.portfolio-header .section-title-kiona {
-  color: var(--color-white);
+.portfolio-header-band .section-title-kiona {
+  color: var(--color-black);
+}
+
+.portfolio-dark {
+  padding: 0 0 6rem;
 }
 
 /* Project carousel: one 1140px slide visible + next peeking, fixed controls */
@@ -1765,14 +1779,14 @@ footer[id] {
 .portfolio-track {
   display: flex;
   gap: 32px;
-  padding-left: max(24px, calc((100vw - 1140px) / 2));
+  padding-left: max(24px, calc((100vw - 1380px) / 2));
   padding-right: 24px;
   will-change: transform;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portfolio-slide {
-  flex: 0 0 min(1140px, calc(100vw - 48px));
+  flex: 0 0 min(1380px, calc(100vw - 48px));
 }
 
 /* Fixed overlay: dots + arrows stay put while slides glide beneath */
@@ -1786,7 +1800,7 @@ footer[id] {
 }
 
 .portfolio-overlay-inner {
-  width: min(1140px, calc(100vw - 48px));
+  width: min(1380px, calc(100vw - 48px));
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -2482,14 +2496,14 @@ footer[id] {
 }
 
 .footer-form-bullets {
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
   max-width: 100%;
 }
 
 .footer-form-bullets .hero-bullet-item {
-  justify-content: flex-start;
-  text-align: left;
+  justify-content: center;
+  text-align: center;
 }
 
 .footer-top-grid {
