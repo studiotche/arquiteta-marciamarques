@@ -352,6 +352,7 @@ footer[id] {
 
 .mobile-menu-head img {
   height: 28px;
+  width: auto;
 }
 
 .mobile-menu-close {
@@ -468,7 +469,7 @@ footer[id] {
 .hero-card > * {
   width: 470px;
   max-width: 100%;
-  align-self: flex-end;
+  align-self: flex-start;
 }
 
 .hero-card-brand {

@@ -117,7 +117,7 @@ const jsonLd = {
     <div class="mobile-menu-panel">
       <div>
         <div class="mobile-menu-head">
-          <img src={asset(site.assets.logoWhite)} alt={site.name} width="120" height="30" />
+          <img src={asset(site.assets.logoWhite)} alt={site.name} width="117" height="30" />
           <button class="mobile-menu-close" type="button" data-close-menu aria-label="Fechar menu">✕</button>
         </div>
         <nav class="mobile-nav" aria-label="Navegação Móvel">
@@ -527,6 +527,8 @@ const jsonLd = {
                       {project.imagesDesktop.map((img, imgIdx) => (
                         <button
                           type="button"
+                          role="tab"
+                          aria-selected={imgIdx === 0 ? "true" : "false"}
                           class={`portfolio-thumb${imgIdx === 0 ? " active" : ""}`}
                           data-portfolio-thumb={imgIdx}
                           aria-label={`Ver foto ${imgIdx + 1} de ${project.name}`}
@@ -546,6 +548,8 @@ const jsonLd = {
                 {portfolioProjects.map((project, idx) => (
                   <button
                     type="button"
+                    role="tab"
+                    aria-selected={idx === 0 ? "true" : "false"}
                     class={`portfolio-dot${idx === 0 ? " active" : ""}`}
                     data-portfolio-goto={idx}
                     aria-label={`Ver projeto ${project.name}`}
@@ -653,6 +657,8 @@ const jsonLd = {
                 {garantia.founders.map((founder, idx) => (
                   <button
                     type="button"
+                    role="tab"
+                    aria-selected={idx === 0 ? "true" : "false"}
                     class={`sobre-float-dot${idx === 0 ? " active" : ""}`}
                     data-sobre-float-dot={idx}
                     aria-label={`Ver ${founder.name}`}
@@ -941,7 +947,10 @@ const jsonLd = {
       const showSobre = (idx: number) => {
         sobreIndex = ((idx % floatSlides.length) + floatSlides.length) % floatSlides.length;
         floatSlides.forEach((slide, i) => slide.classList.toggle("active", i === sobreIndex));
-        floatDots.forEach((dot, i) => dot.classList.toggle("active", i === sobreIndex));
+        floatDots.forEach((dot, i) => {
+          dot.classList.toggle("active", i === sobreIndex);
+          dot.setAttribute("aria-selected", i === sobreIndex ? "true" : "false");
+        });
       };
       floatDots.forEach((dot) => {
         dot.addEventListener("click", () => showSobre(Number(dot.dataset.sobreFloatDot ?? 0)));
@@ -970,7 +979,10 @@ const jsonLd = {
         track.style.transform = `translateX(${-current * step()}px)`;
       }
       slides.forEach((s, i) => s.classList.toggle("active", i === current));
-      dots.forEach((d, i) => d.classList.toggle("active", i === current));
+      dots.forEach((d, i) => {
+        d.classList.toggle("active", i === current);
+        d.setAttribute("aria-selected", i === current ? "true" : "false");
+      });
       if (prevBtn) prevBtn.disabled = current === 0;
       if (nextBtn) nextBtn.disabled = current === slides.length - 1;
       portfolio.dataset.slide = String(current);
@@ -989,6 +1001,7 @@ const jsonLd = {
       });
       slide.querySelectorAll(".portfolio-thumb").forEach((btn, i) => {
         btn.classList.toggle("active", i === safe);
+        btn.setAttribute("aria-selected", i === safe ? "true" : "false");
       });
     };
 
