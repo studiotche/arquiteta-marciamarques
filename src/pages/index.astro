@@ -719,34 +719,45 @@ const jsonLd = {
     <!-- 10. SECTION: VAMOS CONVERSAR & FOOTER -->
     <footer class="section-contato-footer" id="contato">
       <div class="container">
-        <div class="footer-top-grid">
-          <!-- Form Left -->
-          <div class="up">
-            <h2 class="section-title-kiona" style="color: #fff;">
+        <!-- White overlapping sheet: text left + form right -->
+        <div class="footer-sheet up">
+          <div class="footer-sheet-text">
+            <h2 class="section-title-kiona">
               VAMOS <i><span class="cinza">CONVERSAR</span></i> SOBRE O <i><span class="cinza">SEU PROJETO</span></i>
             </h2>
-            <p style="font-size: 1.1rem; color: #CFD0D1; margin-bottom: 28px;">
+            <p class="footer-sheet-desc">
               <strong>Entre em contato</strong> <span class="cinza">e veja como a <strong>Koplan</strong> pode traduzir sua identidade em arquitetura.</span>
             </p>
+          </div>
 
-            <form class="koplan-form" action={whatsappUrl} target="_blank" method="GET">
+          <div class="footer-sheet-form">
+            <form class="koplan-form footer-form" action={whatsappUrl} target="_blank" method="GET">
               <div class="form-group">
-                <label class="form-label" for="footer-nome" style="color: #fff;">NOME</label>
+                <label class="form-label" for="footer-nome">NOME <span class="required-star">*</span></label>
                 <input class="form-input" type="text" id="footer-nome" name="nome" placeholder="Seu Nome Completo" required />
               </div>
               <div class="form-group">
-                <label class="form-label" for="footer-email" style="color: #fff;">E-MAIL</label>
+                <label class="form-label" for="footer-email">E-MAIL <span class="required-star">*</span></label>
                 <input class="form-input" type="email" id="footer-email" name="email" placeholder="Seu E-mail" required />
               </div>
               <div class="form-group">
-                <label class="form-label" for="footer-whatsapp" style="color: #fff;">SEU WHATSAPP COM DDD</label>
+                <label class="form-label" for="footer-whatsapp">SEU WHATSAPP COM DDD <span class="required-star">*</span></label>
                 <input class="form-input" type="tel" id="footer-whatsapp" name="whatsapp" placeholder="(11) 96123-4567" required />
               </div>
               <button class="btn-submit" type="submit">SOLICITAR ORÇAMENTO</button>
             </form>
-          </div>
 
-          <!-- Contact Details Right -->
+            <ul class="hero-bullets footer-form-bullets">
+              <li class="hero-bullet-item"><span>RETORNO EM ATÉ 1 DIA ÚTIL.</span></li>
+              <li class="hero-bullet-item"><span>ATENDIMENTO NACIONAL COM PROCESSO DIGITAL.</span></li>
+              <li class="hero-bullet-item"><span>PRESENCIAL EM UBERLÂNDIA E GOIÂNIA.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-top-grid">
+
+          <!-- Contact Details -->
           <div class="footer-contact-info up1">
             <a href="#inicio" aria-label="Voltar ao início">
               <img class="footer-logo" src={asset(site.assets.logoWhite)} alt={site.name} width="253" height="65" />

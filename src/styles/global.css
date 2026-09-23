@@ -2313,7 +2313,7 @@ input, textarea, select {
    -------------------------------------------------------------------------- */
 .section-faq {
   background-color: var(--color-light);
-  padding: 6rem 0;
+  padding: 6rem 0 calc(6rem + 240px);
 }
 
 .faq-layout-grid {
@@ -2403,16 +2403,67 @@ input, textarea, select {
 .section-contato-footer {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 6rem 0 3rem;
+  padding: 0 0 3rem;
   position: relative;
   overflow: hidden;
+  z-index: 2;
+}
+
+/* White overlapping sheet: text + form */
+.footer-sheet {
+  background-color: var(--color-white);
+  border-radius: 20px;
+  max-width: var(--container-max);
+  margin: -240px auto 0;
+  padding: 96px 80px;
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 420px minmax(0, 533px);
+  gap: 60px;
+  justify-content: center;
+  align-items: start;
+}
+
+.footer-sheet-text .section-title-kiona {
+  margin-bottom: 20px;
+}
+
+.footer-sheet-desc {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--color-gray);
+  margin: 0;
+  font-weight: 300;
+}
+
+.footer-sheet-desc strong {
+  font-weight: 500;
+  color: var(--color-black);
+}
+
+.footer-sheet-form .koplan-form {
+  max-width: 100%;
+}
+
+.footer-form-bullets {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 100%;
+}
+
+.footer-form-bullets .hero-bullet-item {
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .footer-top-grid {
-  display: grid;
-  grid-template-columns: minmax(320px, 480px) 1fr;
-  gap: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   align-items: flex-start;
+  margin-top: 96px;
   margin-bottom: 64px;
   max-width: var(--content-max);
   margin-left: auto;
@@ -2873,8 +2924,19 @@ input, textarea, select {
     position: static;
   }
 
-  .footer-top-grid {
+  .section-faq {
+    padding-bottom: calc(2.5rem + 120px);
+  }
+
+  .footer-sheet {
     grid-template-columns: 1fr;
+    margin-top: -120px;
+    padding: 48px 28px;
+    gap: 40px;
+  }
+
+  .footer-top-grid {
+    margin-top: 64px;
   }
 }
 
