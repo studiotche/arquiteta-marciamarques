@@ -2460,20 +2460,17 @@ input, textarea, select {
 
 .footer-top-grid {
   display: flex;
-  flex-direction: column;
-  gap: 28px;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
   margin-top: 96px;
-  margin-bottom: 64px;
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
 }
 
-.footer-contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+.footer-logo-row {
+  display: contents;
 }
 
 .footer-logo {
@@ -2481,13 +2478,48 @@ input, textarea, select {
   height: auto;
 }
 
+.footer-ig-btn {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-normal);
+}
+
+.footer-ig-btn:hover {
+  transform: scale(1.08);
+}
+
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: var(--content-max);
+  margin: 48px auto 0;
+}
+
+.footer-contact-label {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--color-gray-light);
+  margin: 0;
+}
+
 .footer-contact-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px 32px;
 }
 
 .footer-contact-item a,
@@ -2528,7 +2560,12 @@ input, textarea, select {
 
 .footer-legal-links {
   display: flex;
-  gap: 24px;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-legal-links span[aria-hidden] {
+  color: var(--color-gray);
 }
 
 .footer-legal-links a {
@@ -2937,6 +2974,17 @@ input, textarea, select {
 
   .footer-top-grid {
     margin-top: 64px;
+  }
+
+  .footer-contact-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
   }
 }
 
