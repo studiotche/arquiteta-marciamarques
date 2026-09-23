@@ -634,24 +634,32 @@ const jsonLd = {
           </div>
         </div>
 
-        <div class="founders-wrapper up1">
-          <div class="founders-text">
-            <p>{garantia.sobre.p1}</p>
-            <p><strong>{garantia.sobre.p2}</strong></p>
-            <p>{garantia.sobre.p3}</p>
-            <p>{garantia.sobre.p4}</p>
-            <p>{garantia.sobre.p5}</p>
-            <p><strong>{garantia.sobre.p6}</strong></p>
+        <!-- Novo Sobre (Grid 1600px) -->
+        <div class="sobre-grid-1600 up1">
+          <!-- Left side -->
+          <div class="sobre-left">
+            <img class="sobre-img-main" src={asset(site.assets.aboutIllustration)} alt="Sobre a Koplan" loading="lazy" width="700" height="900" />
+            <div class="sobre-img-floating">
+              <img src={asset(garantia.founders[0].photo)} alt={garantia.founders[0].name} loading="lazy" width="200" height="260" />
+              <span class="sobre-floating-name">{garantia.founders[0].name}</span>
+            </div>
           </div>
 
-          <div class="founders-cards-row">
-            {garantia.founders.map((founder) => (
-              <div class="founder-card">
-                <img class="founder-photo" src={asset(founder.photo)} alt={founder.name} width="204" height="272" />
-                <h3 class="founder-name">{founder.name}</h3>
-                <p class="founder-title">{founder.title}</p>
+          <!-- Right side -->
+          <div class="sobre-right">
+            <div class="sobre-text-top">
+              <div class="sobre-text-col">
+                <p><span class="cinza">A Koplan </span><strong>é um estúdio de arquitetura e interiores, fundado por arquitetos que acreditam que planejamento estratégico não é opcional.</strong></p>
+                <p><strong>Atendimento:</strong> <span class="cinza">Nacional via processo digital integrado.</span></p>
+                <p><strong>Cada projeto recebe atenção direta dos sócios fundadores, sem intermediários.</strong> <span class="cinza">Trabalhamos com a metodologia BIM (compatibilização total entre disciplinas) e parceria com engenheiros especializados.</span></p>
               </div>
-            ))}
+              <img class="sobre-img-secondary" src={asset(garantia.founders[1].photo)} alt="Fundadores Koplan" loading="lazy" width="300" height="400" />
+            </div>
+            <div class="sobre-text-bottom">
+              <p><strong>O resultado não é apenas um projeto bonito, mas uma obra bem-sucedida do início ao fim.</strong> <span class="cinza">Valorizamos muito cada um de nossos clientes. Por isso a conversa aqui é clara, os números são transparentes e as promessas são cumpridas.</span></p>
+              <p><strong>A Koplan é a junção rara entre rigor técnico, sensibilidade estética e método de gestão.</strong></p>
+              <p><span class="cinza">Nos moldamos ao cliente, sem abrir mão da técnica.</span></p>
+            </div>
           </div>
         </div>
       </div>
