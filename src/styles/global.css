@@ -2208,12 +2208,35 @@ input, textarea, select {
   font-size: 0.9rem;
   color: var(--color-black);
   margin-top: 10px;
+  text-align: center;
 }
 
 .sobre-floating-title {
   font-family: var(--font-body);
   font-size: 0.8rem;
   color: var(--color-gray);
+  text-align: center;
+}
+
+.sobre-float-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.sobre-float-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-border-soft);
+  padding: 0;
+  transition: background var(--transition-normal), transform var(--transition-normal);
+}
+
+.sobre-float-dot.active {
+  background: var(--color-dark);
+  transform: scale(1.2);
 }
 
 .sobre-right {
@@ -2255,24 +2278,11 @@ input, textarea, select {
   gap: 20px;
 }
 
-.sobre-secondary-carousel {
-  display: grid;
-  width: 260px;
-  flex-shrink: 0;
-}
-
 .sobre-img-secondary {
-  grid-area: 1 / 1;
-  width: 100%;
+  width: 260px;
   border-radius: var(--radius-md);
   object-fit: cover;
   box-shadow: var(--shadow-card);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.sobre-img-secondary.active {
-  opacity: 1;
 }
 
 @media (max-width: 1024px) {

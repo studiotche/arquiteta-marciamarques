@@ -648,11 +648,21 @@ const jsonLd = {
             <div class="sobre-img-floating" data-sobre-float>
               {garantia.founders.map((founder, idx) => (
                 <div class={`sobre-float-slide${idx === 0 ? " active" : ""}`} data-sobre-float-slide={idx}>
-                  <img src={asset(founder.photo)} alt={founder.name} loading="lazy" width="200" height="260" />
+                  <img src={asset(founder.photo)} alt={founder.name} loading="lazy" width="240" height="320" />
                   <span class="sobre-floating-name">{founder.name}</span>
                   <small class="sobre-floating-title">{founder.title}</small>
                 </div>
               ))}
+              <div class="sobre-float-dots" role="tablist" aria-label="Arquitetos">
+                {garantia.founders.map((founder, idx) => (
+                  <button
+                    type="button"
+                    class={`sobre-float-dot${idx === 0 ? " active" : ""}`}
+                    data-sobre-float-dot={idx}
+                    aria-label={`Ver ${founder.name}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -664,19 +674,14 @@ const jsonLd = {
                 <p><strong>Atendimento:</strong> <span class="cinza">Nacional via processo digital integrado.</span></p>
                 <p><strong>Cada projeto recebe atenção direta dos sócios fundadores, sem intermediários.</strong> <span class="cinza">Trabalhamos com a metodologia BIM (compatibilização total entre disciplinas) e parceria com engenheiros especializados.</span></p>
               </div>
-              <div class="sobre-secondary-carousel" data-sobre-secondary>
-                {[garantia.founders[1], garantia.founders[0]].map((founder, idx) => (
-                  <img
-                    class={`sobre-img-secondary${idx === 0 ? " active" : ""}`}
-                    src={asset(founder.photo)}
-                    alt={founder.name}
-                    loading="lazy"
-                    width="300"
-                    height="400"
-                    data-sobre-secondary-slide={idx}
-                  />
-                ))}
-              </div>
+              <img
+                class="sobre-img-secondary"
+                src={asset(site.assets.foundersDuo)}
+                alt="Amanda e Leonardo, fundadores da Koplan"
+                loading="lazy"
+                width="300"
+                height="400"
+              />
             </div>
             <div class="sobre-text-bottom">
               <p><strong>O resultado não é apenas um projeto bonito, mas uma obra bem-sucedida do início ao fim.</strong> <span class="cinza">Valorizamos muito cada um de nossos clientes. Por isso a conversa aqui é clara, os números são transparentes e as promessas são cumpridas.</span></p>
@@ -983,19 +988,22 @@ const jsonLd = {
     }
   }
 
-  // Sobre founders synced carousels (floating card + secondary photo)
+  // Sobre founders carousel (floating card with dots)
   const sobreFloat = document.querySelector<HTMLElement>("[data-sobre-float]");
-  const sobreSecondary = document.querySelector<HTMLElement>("[data-sobre-secondary]");
-  if (sobreFloat && sobreSecondary) {
+  if (sobreFloat) {
     const floatSlides = [...sobreFloat.querySelectorAll<HTMLElement>("[data-sobre-float-slide]")];
-    const secondarySlides = [...sobreSecondary.querySelectorAll<HTMLElement>("[data-sobre-secondary-slide]")];
+    const floatDots = [...sobreFloat.querySelectorAll<HTMLElement>("[data-sobre-float-dot]")];
     if (floatSlides.length > 1) {
       let sobreIndex = 0;
-      window.setInterval(() => {
-        sobreIndex = (sobreIndex + 1) % floatSlides.length;
+      const showSobre = (idx: number) => {
+        sobreIndex = ((idx % floatSlides.length) + floatSlides.length) % floatSlides.length;
         floatSlides.forEach((slide, i) => slide.classList.toggle("active", i === sobreIndex));
-        secondarySlides.forEach((slide, i) => slide.classList.toggle("active", i === sobreIndex));
-      }, 4000);
+        floatDots.forEach((dot, i) => dot.classList.toggle("active", i === sobreIndex));
+      };
+      floatDots.forEach((dot) => {
+        dot.addEventListener("click", () => showSobre(Number(dot.dataset.sobreFloatDot ?? 0)));
+      });
+      window.setInterval(() => showSobre(sobreIndex + 1), 4000);
     }
   }
 
