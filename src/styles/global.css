@@ -457,7 +457,7 @@ footer[id] {
   background-size: cover;
   border: none;
   border-radius: 30px;
-  padding: 4em 4em 3em 0;
+  padding: 4em 4em 3em min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px)));
   box-shadow: none;
   position: relative;
   z-index: 1;
@@ -810,7 +810,7 @@ footer[id] {
 
 /* Title sits on the 1140px line while photos use the full column (1600px line) */
 .pra-quem-head {
-  padding-left: min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px)));
+  padding-left: min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px)));
 }
 
 /* Tag breathes above the title (like reference) */
@@ -2823,7 +2823,7 @@ footer[id] {
    -------------------------------------------------------------------------- */
 @media (max-width: 1640px) and (min-width: 1025px) {
   .hero-composition {
-    width: calc(100% - 40px);
+    width: min(100% - 48px, 1600px);
   }
 
   .hero-card {
@@ -2831,7 +2831,7 @@ footer[id] {
     min-width: 0;
     width: auto;
     max-width: 52%;
-    padding: 46px 42px 36px max(42px, calc((100vw - 1140px) / 2 - 20px));
+    padding: 46px 42px 36px min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px)));
     min-height: 0;
   }
 
