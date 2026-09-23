@@ -450,10 +450,19 @@ export const garantia = {
   sectionTitle: "GARANTIA",
   heading: "GARANTIA DE REEMBOLSO INTEGRAL",
   paragraphs: [
-    "Se ao final do anteprojeto 3D você não estiver satisfeito com o resultado, devolvemos 100% do valor investido até essa etapa.",
-    "Sem burocracia. Sem perguntas complexas.",
-    "Nossa única condição: que você participe do processo de forma colaborativa.",
-    "Por que oferecemos isso? Porque confiamos no nosso processo. E porque você merece investir com segurança.",
+    [
+      { text: "Se ao final do anteprojeto 3D você não estiver satisfeito com o resultado, devolvemos 100% do valor investido até essa etapa.", bold: true },
+      { text: " Sem burocracia. Sem perguntas complexas.", bold: false },
+    ],
+    [
+      { text: "Nossa única condição:", bold: true },
+      { text: " que você participe do processo de forma colaborativa.", bold: false },
+    ],
+    [
+      { text: "Por que oferecemos isso? Porque ", bold: false },
+      { text: "confiamos no nosso processo.", bold: true },
+      { text: " E porque você merece investir com segurança.", bold: false },
+    ],
   ],
   sobre: {
     p1: "A Koplan é um estúdio de arquitetura e interiores, fundado por arquitetos que acreditam que planejamento estratégico não é opcional.",

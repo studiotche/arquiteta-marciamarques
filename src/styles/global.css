@@ -2069,37 +2069,58 @@ input, textarea, select {
    -------------------------------------------------------------------------- */
 .section-garantia {
   background-color: var(--color-light);
-  background-image: url("/assets/images/K-fundo-KOPLAN.webp");
-  background-position: top left;
-  background-repeat: no-repeat;
-  background-size: contain;
   padding: 6rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .garantia-card-main {
-  background: var(--color-white);
-  border: 1px solid var(--color-border-card);
-  border-radius: var(--radius-lg);
-  padding: 48px;
-  margin-bottom: 48px;
-  box-shadow: var(--shadow-card);
-  max-width: var(--content-max);
-  margin-left: auto;
-  margin-right: auto;
+  background-color: var(--color-dark);
+  background-image: url("/assets/images/garantia-KOPLAN.webp");
+  background-size: cover;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 20px;
+  padding: 96px 80px;
+  margin: -288px auto 96px;
+  box-shadow: none;
+  max-width: var(--container-max);
+  display: grid;
+  grid-template-columns: 490px minmax(0, 1fr);
+  gap: 50px;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+}
+
+.garantia-card-head .section-tag {
+  color: var(--color-gray-light);
+}
+
+.garantia-card-head .section-title-kiona {
+  color: var(--color-white);
+  margin-bottom: 0;
 }
 
 .garantia-paragraphs {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 22px;
   font-family: var(--font-body);
-  font-size: 1.15rem;
-  line-height: 1.65;
-  color: var(--color-black);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: #F5F5F5;
+  font-weight: 300;
 }
 
 .garantia-paragraphs p {
   margin: 0;
+}
+
+.garantia-paragraphs strong {
+  font-weight: 500;
+  color: var(--color-white);
 }
 
 /* Novo Sobre (Grid 1600px) */
@@ -2754,6 +2775,17 @@ input, textarea, select {
 
   .partner-text {
     padding-left: 0;
+  }
+
+  .garantia-card-main {
+    grid-template-columns: 1fr;
+    margin-top: -120px;
+    padding: 48px 28px;
+    border-radius: 20px;
+  }
+
+  .garantia-paragraphs {
+    font-size: 1.1rem;
   }
 
   .founders-wrapper {
