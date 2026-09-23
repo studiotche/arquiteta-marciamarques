@@ -2453,7 +2453,10 @@ footer[id] {
   color: var(--color-white);
   padding: 0 0 3rem;
   position: relative;
-  overflow: hidden;
+  /* overflow:visible libera o overlap de -240px do .footer-sheet sobre o FAQ.
+     overflow:hidden clipava o topo da lamina branca. O scroll-x do watermark
+     continua contido pelo body{overflow-x:hidden}. */
+  overflow: visible;
   z-index: 5;
 }
 
@@ -2640,6 +2643,9 @@ footer[id] {
   margin: 40px 0 0;
   user-select: none;
   pointer-events: none;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* --------------------------------------------------------------------------
