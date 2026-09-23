@@ -2082,16 +2082,37 @@ input, textarea, select {
   background-repeat: no-repeat;
   border: none;
   border-radius: 20px;
-  padding: 96px 80px;
+  padding: 150px 80px;
   margin: -288px auto 96px;
   box-shadow: none;
   max-width: var(--container-max);
   display: grid;
   grid-template-columns: 490px minmax(0, 1fr);
   gap: 50px;
-  align-items: start;
+  align-items: center;
   position: relative;
   z-index: 2;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.garantia-card-main::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+.garantia-card-head,
+.garantia-paragraphs {
+  position: relative;
+  z-index: 1;
+}
+
+.garantia-card-head {
+  padding-top: 40px;
 }
 
 .garantia-card-head .section-tag {
