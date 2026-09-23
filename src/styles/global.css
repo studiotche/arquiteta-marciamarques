@@ -2309,10 +2309,10 @@ input, textarea, select {
 }
 
 /* --------------------------------------------------------------------------
-   13. Section: F.A.Q. (Sticky Title + Native Animated Accordion)
+   13. Section: F.A.Q. (Sticky Title + Native Accordion, same as Como Funciona)
    -------------------------------------------------------------------------- */
 .section-faq {
-  background-color: var(--color-white);
+  background-color: var(--color-light);
   padding: 6rem 0;
 }
 
@@ -2334,63 +2334,67 @@ input, textarea, select {
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
 }
 
-.faq-list details {
-  background: var(--color-light);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+.faq-item {
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
-.faq-list details[open] {
-  background: var(--color-white);
-  border-color: var(--color-border-soft);
-  box-shadow: var(--shadow-card);
-}
-
-.faq-list summary {
-  padding: 22px 26px;
-  font-family: var(--font-heading);
-  font-size: 1.15rem;
-  color: var(--color-black);
-  cursor: pointer;
-  list-style: none;
+.faq-summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
+  min-height: 88px;
+  padding: 20px 70px 20px 0;
+  cursor: pointer;
   user-select: none;
+  list-style: none;
+  position: relative;
+  border-bottom: 1px solid rgba(104, 116, 121, 0.38);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-black);
 }
 
-.faq-list summary::-webkit-details-marker {
+.faq-summary::-webkit-details-marker {
   display: none;
 }
 
-.faq-chevron {
-  width: 18px;
-  height: 18px;
-  color: var(--color-gray);
-  transition: transform 0.4s ease;
+.faq-summary::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  background-image: url("/assets/images/seta-branca.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  transition: transform var(--transition-normal);
   flex-shrink: 0;
 }
 
-.faq-list details[open] .faq-chevron {
-  transform: rotate(180deg);
+.faq-item[open] .faq-summary::after {
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .faq-answer {
-  overflow: hidden;
-  transition: height 0.43s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.43s ease;
-}
-
-.faq-answer-inner {
-  padding: 0 26px 22px;
+  padding: 18px 70px 24px 0;
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
   color: var(--color-text-main);
+}
+
+.faq-answer p {
+  margin: 0;
 }
 
 /* --------------------------------------------------------------------------

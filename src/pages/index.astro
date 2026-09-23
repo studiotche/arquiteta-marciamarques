@@ -703,17 +703,12 @@ const jsonLd = {
 
         <div class="faq-list">
           {faqs.map(([q, a], idx) => (
-            <details class="up" open={idx === 0}>
-              <summary>
+            <details class="faq-item up" open={idx === 0} name="faq-koplan">
+              <summary class="faq-summary">
                 <span>{q}</span>
-                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M6 9l6 6 6-6"/>
-                </svg>
               </summary>
               <div class="faq-answer">
-                <div class="faq-answer-inner">
-                  <p>{a}</p>
-                </div>
+                <p>{a}</p>
               </div>
             </details>
           ))}
@@ -870,90 +865,6 @@ const jsonLd = {
       if (event.key === "Escape" && menu.classList.contains("open")) closeMenu();
     });
   }
-
-  // FAQ Smooth Accordion Script (Preserved exactly as requested)
-  const faqItems = document.querySelectorAll<HTMLDetailsElement>(".faq-list details");
-  const faqTimeouts = new WeakMap<HTMLDetailsElement, number>();
-  const FAQ_DURATION = 430;
-
-  const clearFaqTimeout = (details: HTMLDetailsElement) => {
-    const timeout = faqTimeouts.get(details);
-    if (timeout !== undefined) window.clearTimeout(timeout);
-  };
-
-  const finishOpenFaq = (details: HTMLDetailsElement, answer: HTMLElement) => {
-    clearFaqTimeout(details);
-    faqTimeouts.set(
-      details,
-      window.setTimeout(() => {
-        if (details.open && !details.classList.contains("is-closing")) {
-          answer.style.height = "auto";
-        }
-      }, FAQ_DURATION),
-    );
-  };
-
-  const animatedCloseFaq = (details: HTMLDetailsElement) => {
-    const answer = details.querySelector<HTMLElement>(".faq-answer");
-    if (!details.open || !answer || details.classList.contains("is-closing"))
-      return;
-    details.classList.add("is-closing");
-    answer.style.height = `${answer.offsetHeight}px`;
-    answer.style.opacity = "1";
-    void answer.offsetHeight;
-    answer.style.height = "0px";
-    answer.style.opacity = "0";
-    clearFaqTimeout(details);
-    faqTimeouts.set(
-      details,
-      window.setTimeout(() => {
-        details.removeAttribute("open");
-        details.classList.remove("is-closing");
-        answer.style.height = "";
-        answer.style.opacity = "";
-      }, FAQ_DURATION),
-    );
-  };
-
-  const animatedOpenFaq = (details: HTMLDetailsElement) => {
-    const answer = details.querySelector<HTMLElement>(".faq-answer");
-    if (!answer || details.open) return;
-    details.classList.remove("is-closing");
-    details.setAttribute("open", "");
-    answer.style.height = "0px";
-    answer.style.opacity = "0";
-    void answer.offsetHeight;
-    answer.style.height = `${answer.scrollHeight}px`;
-    answer.style.opacity = "1";
-    finishOpenFaq(details, answer);
-  };
-
-  faqItems.forEach((details) => {
-    const summary = details.querySelector("summary");
-    if (!summary) return;
-    summary.addEventListener("click", (event) => {
-      event.preventDefault();
-      if (details.classList.contains("is-closing")) {
-        clearFaqTimeout(details);
-        details.classList.remove("is-closing");
-        const answer = details.querySelector<HTMLElement>(".faq-answer");
-        if (answer) {
-          answer.style.height = `${answer.scrollHeight}px`;
-          answer.style.opacity = "1";
-          finishOpenFaq(details, answer);
-        }
-        return;
-      }
-      if (details.open) {
-        animatedCloseFaq(details);
-      } else {
-        faqItems.forEach((other) => {
-          if (other !== details && other.open) animatedCloseFaq(other);
-        });
-        animatedOpenFaq(details);
-      }
-    });
-  });
 
   // Scroll Reveal Animations (.up, .up1, .up2, .up3)
   const animatedElements = document.querySelectorAll(".up, .up1, .up2, .up3");
