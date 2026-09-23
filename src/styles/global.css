@@ -2177,12 +2177,25 @@ input, textarea, select {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-float);
   text-align: center;
+  display: grid;
+}
+
+.sobre-float-slide {
+  grid-area: 1 / 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
 }
 
-.sobre-img-floating img {
+.sobre-float-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sobre-float-slide img {
   width: 160px;
   height: auto;
   border-radius: var(--radius-sm);
@@ -2195,6 +2208,12 @@ input, textarea, select {
   font-size: 0.9rem;
   color: var(--color-black);
   margin-top: 10px;
+}
+
+.sobre-floating-title {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--color-gray);
 }
 
 .sobre-right {
@@ -2236,11 +2255,24 @@ input, textarea, select {
   gap: 20px;
 }
 
-.sobre-img-secondary {
+.sobre-secondary-carousel {
+  display: grid;
   width: 260px;
+  flex-shrink: 0;
+}
+
+.sobre-img-secondary {
+  grid-area: 1 / 1;
+  width: 100%;
   border-radius: var(--radius-md);
   object-fit: cover;
   box-shadow: var(--shadow-card);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.sobre-img-secondary.active {
+  opacity: 1;
 }
 
 @media (max-width: 1024px) {
@@ -2254,6 +2286,11 @@ input, textarea, select {
   .sobre-text-top {
     flex-direction: column;
   }
+  .sobre-secondary-carousel {
+    width: 100%;
+    max-width: 320px;
+  }
+
   .sobre-img-secondary {
     width: 100%;
     max-width: 320px;

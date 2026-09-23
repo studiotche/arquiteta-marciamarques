@@ -645,9 +645,14 @@ const jsonLd = {
           <!-- Left side -->
           <div class="sobre-left">
             <img class="sobre-img-main" src={asset(site.assets.aboutIllustration)} alt="Sobre a Koplan" loading="lazy" width="700" height="900" />
-            <div class="sobre-img-floating">
-              <img src={asset(garantia.founders[0].photo)} alt={garantia.founders[0].name} loading="lazy" width="200" height="260" />
-              <span class="sobre-floating-name">{garantia.founders[0].name}</span>
+            <div class="sobre-img-floating" data-sobre-float>
+              {garantia.founders.map((founder, idx) => (
+                <div class={`sobre-float-slide${idx === 0 ? " active" : ""}`} data-sobre-float-slide={idx}>
+                  <img src={asset(founder.photo)} alt={founder.name} loading="lazy" width="200" height="260" />
+                  <span class="sobre-floating-name">{founder.name}</span>
+                  <small class="sobre-floating-title">{founder.title}</small>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -659,7 +664,19 @@ const jsonLd = {
                 <p><strong>Atendimento:</strong> <span class="cinza">Nacional via processo digital integrado.</span></p>
                 <p><strong>Cada projeto recebe atenção direta dos sócios fundadores, sem intermediários.</strong> <span class="cinza">Trabalhamos com a metodologia BIM (compatibilização total entre disciplinas) e parceria com engenheiros especializados.</span></p>
               </div>
-              <img class="sobre-img-secondary" src={asset(garantia.founders[1].photo)} alt="Fundadores Koplan" loading="lazy" width="300" height="400" />
+              <div class="sobre-secondary-carousel" data-sobre-secondary>
+                {[garantia.founders[1], garantia.founders[0]].map((founder, idx) => (
+                  <img
+                    class={`sobre-img-secondary${idx === 0 ? " active" : ""}`}
+                    src={asset(founder.photo)}
+                    alt={founder.name}
+                    loading="lazy"
+                    width="300"
+                    height="400"
+                    data-sobre-secondary-slide={idx}
+                  />
+                ))}
+              </div>
             </div>
             <div class="sobre-text-bottom">
               <p><strong>O resultado não é apenas um projeto bonito, mas uma obra bem-sucedida do início ao fim.</strong> <span class="cinza">Valorizamos muito cada um de nossos clientes. Por isso a conversa aqui é clara, os números são transparentes e as promessas são cumpridas.</span></p>
@@ -962,6 +979,22 @@ const jsonLd = {
         slides[current].classList.remove("active");
         current = (current + 1) % slides.length;
         slides[current].classList.add("active");
+      }, 4000);
+    }
+  }
+
+  // Sobre founders synced carousels (floating card + secondary photo)
+  const sobreFloat = document.querySelector<HTMLElement>("[data-sobre-float]");
+  const sobreSecondary = document.querySelector<HTMLElement>("[data-sobre-secondary]");
+  if (sobreFloat && sobreSecondary) {
+    const floatSlides = [...sobreFloat.querySelectorAll<HTMLElement>("[data-sobre-float-slide]")];
+    const secondarySlides = [...sobreSecondary.querySelectorAll<HTMLElement>("[data-sobre-secondary-slide]")];
+    if (floatSlides.length > 1) {
+      let sobreIndex = 0;
+      window.setInterval(() => {
+        sobreIndex = (sobreIndex + 1) % floatSlides.length;
+        floatSlides.forEach((slide, i) => slide.classList.toggle("active", i === sobreIndex));
+        secondarySlides.forEach((slide, i) => slide.classList.toggle("active", i === sobreIndex));
       }, 4000);
     }
   }
