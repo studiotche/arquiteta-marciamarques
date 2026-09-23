@@ -408,7 +408,7 @@ footer[id] {
   position: relative;
   background-color: var(--color-dark);
   padding-top: 2rem;
-  padding-bottom: 5.5rem;
+  padding-bottom: 0;
   overflow: visible;
   z-index: 2;
 }
@@ -420,12 +420,12 @@ footer[id] {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 272px;
+  height: 160px;
   background-color: var(--color-light);
   background-image: url("/assets/images/K-fundo-KOPLAN.webp");
   background-position: top left;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   z-index: 0;
   pointer-events: none;
 }
@@ -436,7 +436,7 @@ footer[id] {
   position: relative;
   z-index: 1;
   display: flex;
-  gap: 20px;
+  gap: 0;
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -445,17 +445,16 @@ footer[id] {
    Koplan Elementor ace0a55: flex-grow 1 / shrink 0, padding 4em 4em 0 0,
    inner widgets 470px align-self flex-end (right-aligned, natural left space) */
 .hero-card {
-  flex: 1 1 0;
-  min-width: 0;
-  width: auto;
-  max-width: none;
-  min-height: 942px;
+  flex: 0 0 auto;
+  width: calc(470px + 4em + min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px))));
+  max-width: 48%;
+  min-height: auto;
   background-color: var(--color-white) !important;
   background-image: url("/assets/images/k-bg-formulario-KOPLAN.webp");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  border: none;
+  border: 1px solid #EBEBEB;
   border-radius: 30px;
   padding: 4em 4em 3em min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px)));
   box-shadow: none;
@@ -658,24 +657,23 @@ footer[id] {
 
 /* Right Hero Visual Stage: image overlaps OVER Left Card via img margin (like reference) */
 .hero-stage {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   min-width: 0;
   width: auto;
   max-width: none;
   position: relative;
   z-index: 2;
-  margin-left: 0;
+  margin-left: -7.5em;
   display: flex;
 }
 
 .hero-image-frame {
   position: relative;
   width: 100%;
+  max-width: 922px;
   border-radius: 0;
   overflow: visible;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  display: block;
   z-index: 10;
 }
 
@@ -683,7 +681,7 @@ footer[id] {
 .hero-watermark-k-badge {
   position: absolute;
   top: 0;
-  right: 120px;
+  right: 0;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -703,13 +701,14 @@ footer[id] {
 
 .hero-img-desktop {
   width: 100%;
+  max-width: 922px;
   height: auto;
   min-height: 0;
   object-fit: fill;
   display: block;
   border-radius: 0;
   box-shadow: none;
-  margin-left: -7.5em;
+  margin-left: 0;
   overflow: visible;
 }
 
@@ -723,11 +722,11 @@ footer[id] {
   position: absolute;
   top: 50%;
   bottom: auto;
-  transform: translateY(-45%);
-  right: clamp(-110px, -7vw, -40px);
+  transform: translateY(-50%);
+  right: -55px;
   width: clamp(210px, 16vw, 240px);
   background-color: var(--color-white);
-  border: 1px solid #E5E5E5;
+  border: 1px solid #CCCCCC;
   border-radius: 20px;
   padding: 16px;
   box-shadow: none;
@@ -2824,42 +2823,54 @@ footer[id] {
 @media (max-width: 1640px) and (min-width: 1025px) {
   .hero-composition {
     width: min(100% - 48px, 1600px);
+    gap: 0;
   }
 
   .hero-card {
-    flex: 1 1 0;
+    flex: 0 0 auto;
     min-width: 0;
-    width: auto;
-    max-width: 52%;
-    padding: 46px 42px 36px min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px)));
-    min-height: 0;
+    width: calc(470px + 3.5em + min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px))));
+    max-width: 48%;
+    padding: 3.5em 3.5em 2.5em min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px)));
+    min-height: auto;
   }
 
   .hero-stage {
-    flex: 1 1 0;
+    flex: 1 1 auto;
     min-width: 0;
     width: auto;
-    max-width: 48%;
-  }
-
-  .hero-img-desktop {
-    min-height: 0;
-    height: auto;
+    max-width: none;
     margin-left: -7.5em;
   }
 
+  .hero-image-frame {
+    width: 100%;
+    max-width: 922px;
+    display: block;
+  }
+
+  .hero-img-desktop {
+    width: 100%;
+    max-width: 922px;
+    min-height: 0;
+    height: auto;
+    margin-left: 0;
+  }
+
   .hero-watermark-k-badge {
-    right: 90px;
+    top: 0;
+    right: 0;
   }
 
   .hero-protocol-badge {
     top: 50%;
     bottom: auto;
-    transform: translateY(-45%);
-    right: -40px;
-    width: clamp(200px, 20vw, 230px);
+    transform: translateY(-50%);
+    right: -50px;
+    width: clamp(200px, 16vw, 230px);
   }
 }
+
 
 /* Intermediate 1025–1400px: fixed-px grids (590/550/710/953) overflow here.
    Fluidize columns before the 1024px single-column collapse. */
