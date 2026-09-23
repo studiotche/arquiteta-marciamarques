@@ -716,13 +716,15 @@ footer[id] {
   display: none;
 }
 
-/* Protocol Floating Badge (Vertical Card hanging on right side of image) */
+/* Protocol Floating Badge (Vertical Card hanging on right side of image,
+   vertically centered on the photo, sticking out past its right edge) */
 .hero-protocol-badge {
   position: absolute;
-  top: auto;
-  bottom: 8%;
-  right: clamp(-32px, -2vw, -8px);
-  width: clamp(220px, 18vw, 290px);
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-45%);
+  right: clamp(-110px, -7vw, -40px);
+  width: clamp(210px, 16vw, 240px);
   background-color: var(--color-white);
   border: 1px solid #E5E5E5;
   border-radius: 20px;
@@ -1191,17 +1193,25 @@ footer[id] {
   margin-top: 4px;
 }
 
-/* Serviços / O Que Entregamos */
+/* Serviços / O Que Entregamos (tag left, title right — like reference) */
 .servicos-header-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 52px;
+  align-items: center;
   margin-bottom: 40px;
-  flex-wrap: wrap;
-  gap: 16px;
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
+}
+
+.servicos-header-wrapper .section-tag {
+  margin: 0;
+}
+
+.servicos-title {
+  margin: 0;
+  text-align: left;
 }
 
 .servicos-hover-prompt {
@@ -1641,10 +1651,10 @@ footer[id] {
   border-radius: 0;
   padding: 0;
   box-shadow: none;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
 }
 
@@ -2822,10 +2832,11 @@ footer[id] {
   }
 
   .hero-protocol-badge {
-    top: auto;
-    bottom: 8%;
-    right: -16px;
-    width: clamp(200px, 20vw, 250px);
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-45%);
+    right: -40px;
+    width: clamp(200px, 20vw, 230px);
   }
 }
 
@@ -2938,8 +2949,9 @@ footer[id] {
   }
 
   .hero-protocol-badge {
-    top: auto;
-    bottom: 8%;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-45%);
     right: 20px;
     width: 200px;
   }
@@ -2999,6 +3011,11 @@ footer[id] {
 
   .como-funciona-cta {
     margin-top: 110px;
+  }
+
+  .servicos-header-wrapper {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .complementares-header {
@@ -3141,6 +3158,7 @@ footer[id] {
   .hero-protocol-badge {
     position: relative;
     top: auto;
+    transform: none;
     right: auto;
     width: 100%;
     margin-top: 14px;
