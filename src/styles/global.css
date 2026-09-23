@@ -434,11 +434,14 @@ input, textarea, select {
   align-items: flex-start;
 }
 
-/* White Form Card: Bottom Layer (house sits OVER the card, like reference) */
+/* White Form Card: Bottom Layer (house sits OVER the card, like reference)
+   Koplan Elementor ace0a55: flex-grow 1 / shrink 0, padding 4em 4em 0 0,
+   inner widgets 470px align-self flex-end (right-aligned, natural left space) */
 .hero-card {
-  flex: 0 0 790px;
-  width: 790px;
-  max-width: 790px;
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  max-width: none;
   min-height: 942px;
   background-color: var(--color-white) !important;
   background-image: url("/assets/images/k-bg-formulario-KOPLAN.webp");
@@ -447,13 +450,19 @@ input, textarea, select {
   background-size: cover;
   border: none;
   border-radius: 30px;
-  padding: 64px 95px 48px 230px;
+  padding: 4em 4em 3em 0;
   box-shadow: none;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.hero-card > * {
+  width: 470px;
+  max-width: 100%;
+  align-self: flex-end;
 }
 
 .hero-card-brand {
@@ -642,13 +651,13 @@ input, textarea, select {
 
 /* Right Hero Visual Stage: image overlaps OVER Left Card via img margin (like reference) */
 .hero-stage {
-  flex: 0 0 790px;
-  width: 790px;
-  max-width: 790px;
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  max-width: none;
   position: relative;
   z-index: 2;
   margin-left: 0;
-  min-width: 0;
   display: flex;
 }
 
@@ -659,6 +668,8 @@ input, textarea, select {
   overflow: visible;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  z-index: 10;
 }
 
 /* 'K' Symbol sitting in the reserved notch of the house image (same bg as hero) */
@@ -691,7 +702,7 @@ input, textarea, select {
   display: block;
   border-radius: 0;
   box-shadow: none;
-  margin-left: -120px;
+  margin-left: -7.5em;
   overflow: visible;
 }
 
@@ -702,9 +713,10 @@ input, textarea, select {
 /* Protocol Floating Badge (Vertical Card hanging on right side of image) */
 .hero-protocol-badge {
   position: absolute;
-  top: 250px;
-  right: -32px;
-  width: 290px;
+  top: auto;
+  bottom: 8%;
+  right: clamp(-32px, -2vw, -8px);
+  width: clamp(220px, 18vw, 290px);
   background-color: var(--color-white);
   border: 1px solid #E5E5E5;
   border-radius: 20px;
@@ -2769,23 +2781,25 @@ input, textarea, select {
   }
 
   .hero-card {
-    flex: 0 1 790px;
+    flex: 1 1 0;
+    min-width: 0;
     width: auto;
-    max-width: 50%;
+    max-width: 52%;
     padding: 46px 42px 36px max(42px, calc((100vw - 1140px) / 2 - 20px));
     min-height: 0;
   }
 
   .hero-stage {
-    flex: 1 1 auto;
+    flex: 1 1 0;
+    min-width: 0;
     width: auto;
-    max-width: 50%;
+    max-width: 48%;
   }
 
   .hero-img-desktop {
     min-height: 0;
     height: auto;
-    margin-left: -90px;
+    margin-left: -7.5em;
   }
 
   .hero-watermark-k-badge {
@@ -2793,9 +2807,10 @@ input, textarea, select {
   }
 
   .hero-protocol-badge {
+    top: auto;
+    bottom: 8%;
     right: -16px;
-    width: 250px;
-    top: 30%;
+    width: clamp(200px, 20vw, 250px);
   }
 }
 
@@ -2823,6 +2838,12 @@ input, textarea, select {
     padding: 3rem 2.2rem 2.4rem;
     min-height: auto;
     border-radius: 22px;
+  }
+
+  .hero-card > * {
+    width: 100%;
+    max-width: none;
+    align-self: stretch;
   }
 
   .hero-card-title {
@@ -2855,8 +2876,9 @@ input, textarea, select {
   }
 
   .hero-protocol-badge {
+    top: auto;
+    bottom: 8%;
     right: 20px;
-    top: 30%;
     width: 200px;
   }
 
@@ -3012,7 +3034,7 @@ input, textarea, select {
   }
 
   .hero-stage {
-    order: 1;
+    order: 2;
     width: 100%;
     max-width: 100%;
     margin-left: 0;
@@ -3071,12 +3093,18 @@ input, textarea, select {
   }
 
   .hero-card {
-    order: 2;
+    order: 1;
     width: 100%;
     min-height: auto;
     padding: 2.2rem 1.4rem;
     margin-bottom: 0;
     border-radius: 20px;
+  }
+
+  .hero-card > * {
+    width: 100%;
+    max-width: none;
+    align-self: stretch;
   }
 
   .hero-card-title,
