@@ -5,7 +5,7 @@ export const site = {
   fullRole: "Projetos Arquitetônicos e Design de Interiores",
   city: "Uberlândia",
   state: "MG",
-  cities: "Uberlândia | MG e Goiânia | GO",
+  cities: "Uberlândia | MG e Goiânia |GO",
   phoneDisplay: "(34) 99717-1314",
   phoneLink: "5534997171314",
   telLink: "tel:+5534997171314",
