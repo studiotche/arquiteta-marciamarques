@@ -2314,6 +2314,8 @@ input, textarea, select {
 .section-faq {
   background-color: var(--color-light);
   padding: 6rem 0 calc(6rem + 240px);
+  position: relative;
+  z-index: 1;
 }
 
 .faq-layout-grid {
@@ -2406,7 +2408,7 @@ input, textarea, select {
   padding: 0 0 3rem;
   position: relative;
   overflow: hidden;
-  z-index: 2;
+  z-index: 5;
 }
 
 /* White overlapping sheet: text + form */
