@@ -1685,8 +1685,9 @@ footer[id] {
 
 /* Partner row: text 480px (1140 line) + wide photo */
 .partner-row {
+  --partner-pl: max(24px, min(230px, max(0px, calc((100vw - 1140px) / 2))));
   display: grid;
-  grid-template-columns: 480px minmax(0, 1fr);
+  grid-template-columns: calc(480px + var(--partner-pl)) minmax(0, 1fr);
   gap: 52px;
   align-items: center;
   width: auto;
@@ -1695,7 +1696,7 @@ footer[id] {
 }
 
 .partner-text {
-  padding-left: max(24px, min(230px, max(0px, calc((100vw - 1140px) / 2))));
+  padding-left: var(--partner-pl);
 }
 
 .partner-box-title {
