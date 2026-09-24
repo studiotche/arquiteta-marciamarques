@@ -446,15 +446,15 @@ footer[id] {
    inner widgets 470px align-self flex-end (right-aligned, natural left space) */
 .hero-card {
   flex: 0 0 auto;
-  width: calc(470px + 4em + min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px))));
-  max-width: 48%;
+  width: calc(472px + 5em + min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px))));
+  max-width: 50%;
   min-height: auto;
   background-color: var(--color-white) !important;
   background-image: url("/assets/images/k-bg-formulario-KOPLAN.webp");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  border: 1px solid #EBEBEB;
+  border: 1px solid #EDEDED;
   border-radius: 30px;
   padding: 4em 4em 3em min(230px, max(24px, calc((100vw - 1140px) / 2 - 24px)));
   box-shadow: none;
@@ -663,14 +663,14 @@ footer[id] {
   max-width: none;
   position: relative;
   z-index: 2;
-  margin-left: -7.5em;
+  margin-left: -5.5em;
   display: flex;
 }
 
 .hero-image-frame {
   position: relative;
   width: 100%;
-  max-width: 922px;
+  max-width: 757px;
   border-radius: 0;
   overflow: visible;
   display: block;
@@ -701,7 +701,7 @@ footer[id] {
 
 .hero-img-desktop {
   width: 100%;
-  max-width: 922px;
+  max-width: 757px;
   height: auto;
   min-height: 0;
   object-fit: fill;
