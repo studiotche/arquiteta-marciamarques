@@ -984,6 +984,7 @@ footer[id] {
   padding: 0 0 128px;
   position: relative;
   z-index: 2;
+  display: flow-root;
 }
 
 /* White overlapping sheet pulled over the previous section
