@@ -1743,7 +1743,7 @@ footer[id] {
 /* Light header band above the dark carousel (like reference) */
 .portfolio-header-band {
   background-color: var(--color-light);
-  padding: 6rem 0 120px;
+  padding: 6rem 0 200px;
 }
 
 .portfolio-header-band .section-tag {
@@ -1770,7 +1770,7 @@ footer[id] {
 /* Project carousel: one 1140px slide visible + next peeking, fixed controls */
 .portfolio-carousel {
   overflow: visible;
-  margin-top: -80px;
+  margin-top: -160px;
 }
 
 .portfolio-viewport {
@@ -1781,7 +1781,7 @@ footer[id] {
 .portfolio-track {
   display: flex;
   gap: 32px;
-  padding-left: max(32px, calc((100vw - 1430px) / 2));
+  padding-left: max(32px, calc(50vw - 800px + 32px));
   padding-right: 32px;
   will-change: transform;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1799,12 +1799,12 @@ footer[id] {
   right: 0;
   z-index: 5;
   pointer-events: none;
+  padding-left: max(32px, calc(50vw - 800px + 32px));
+  padding-right: 32px;
 }
 
 .portfolio-overlay-inner {
   width: min(1366px, calc(100vw - 64px));
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   align-items: flex-start;
   justify-content: center;
