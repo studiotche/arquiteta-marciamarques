@@ -2018,7 +2018,7 @@ footer[id] {
 .section-depoimentos {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 64px 0 280px;
+  padding: 64px 0 400px;
 }
 
 .section-depoimentos .section-title-kiona {
@@ -2130,14 +2130,15 @@ footer[id] {
   background-repeat: no-repeat;
   border: none;
   border-radius: 20px;
-  padding: 160px 32px;
-  margin: -180px auto 96px;
+  padding: 160px 80px;
+  margin: -300px auto 96px;
   box-shadow: none;
   max-width: var(--container-max);
-  display: grid;
-  grid-template-columns: minmax(0, 490px) minmax(0, 600px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 50px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 2;
@@ -2162,6 +2163,8 @@ footer[id] {
 
 .garantia-card-head {
   padding-top: 40px;
+  flex: 1 1 490px;
+  max-width: 580px;
 }
 
 .garantia-card-head .section-tag {
@@ -2182,6 +2185,8 @@ footer[id] {
   line-height: 1.5;
   color: #F5F5F5;
   font-weight: 300;
+  flex: 1 1 600px;
+  max-width: 660px;
 }
 
 .garantia-paragraphs p {
