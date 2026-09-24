@@ -786,7 +786,7 @@ footer[id] {
   padding: 18em 0 53em;
   margin-top: -10em;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .pra-quem-grid {
