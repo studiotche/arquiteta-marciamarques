@@ -1781,7 +1781,7 @@ footer[id] {
 .portfolio-track {
   display: flex;
   gap: 32px;
-  padding-left: max(32px, calc(50vw - 800px + 32px));
+  padding-left: max(32px, calc(50% - 800px + 32px));
   padding-right: 32px;
   will-change: transform;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1799,7 +1799,7 @@ footer[id] {
   right: 0;
   z-index: 5;
   pointer-events: none;
-  padding-left: max(32px, calc(50vw - 800px + 32px));
+  padding-left: max(32px, calc(50% - 800px + 32px));
   padding-right: 32px;
 }
 

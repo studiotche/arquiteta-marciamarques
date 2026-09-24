@@ -38,7 +38,7 @@ export const site = {
     gardenBenefits: "/assets/images/jardim-KOPLAN.webp",
     kitchenLarge: "/assets/images/cozinha-grande-arquiteta-KOPLAN.webp",
     kitchenMinimalist: "/assets/images/cozinha-minimalista-arquitetura-KOPLAN.webp",
-    foundersAmanda: "/assets/images/sobre-amanda-KOPLAN.webp",
+    foundersAmanda: "/assets/images/sobre-nos1-KOPLAN.webp",
     foundersLeonardo: "/assets/images/sobre-leo1-KOPLAN.webp",
     foundersDuo: "/assets/images/sobre-nos1-KOPLAN.webp",
     aboutIllustration: "/assets/images/sobre-KOPLAN.webp",
@@ -477,7 +477,7 @@ export const garantia = {
     {
       name: "Amanda",
       title: "Arquiteta",
-      photo: "/assets/images/sobre-amanda-KOPLAN.webp",
+      photo: "/assets/images/sobre-nos1-KOPLAN.webp",
     },
     {
       name: "Leonardo",
