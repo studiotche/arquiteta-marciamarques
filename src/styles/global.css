@@ -1743,7 +1743,7 @@ footer[id] {
 /* Light header band above the dark carousel (like reference) */
 .portfolio-header-band {
   background-color: var(--color-light);
-  padding: 6rem 0 0;
+  padding: 6rem 0 120px;
 }
 
 .portfolio-header-band .section-tag {
@@ -1751,7 +1751,7 @@ footer[id] {
 }
 
 .portfolio-header {
-  margin-bottom: 64px;
+  margin-bottom: 0;
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
@@ -1764,11 +1764,13 @@ footer[id] {
 
 .portfolio-dark {
   padding: 0 0 6rem;
+  display: flow-root;
 }
 
 /* Project carousel: one 1140px slide visible + next peeking, fixed controls */
 .portfolio-carousel {
   overflow: visible;
+  margin-top: -80px;
 }
 
 .portfolio-viewport {
