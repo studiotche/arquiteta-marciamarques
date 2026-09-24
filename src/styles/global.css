@@ -783,8 +783,8 @@ footer[id] {
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  padding: 28em 0 53em;
-  margin-top: -28em;
+  padding: 18em 0 53em;
+  margin-top: -10em;
   position: relative;
   z-index: 1;
 }
