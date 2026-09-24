@@ -783,10 +783,10 @@ footer[id] {
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  padding: 18em 0 53em;
-  margin-top: -10em;
+  padding: 288px 0 848px;
+  margin-top: -160px;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
 .pra-quem-grid {
