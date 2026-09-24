@@ -2018,7 +2018,7 @@ footer[id] {
 .section-depoimentos {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 64px 0 415px;
+  padding: 64px 0 280px;
 }
 
 .section-depoimentos .section-title-kiona {
@@ -2046,7 +2046,7 @@ footer[id] {
 .depoimentos-header .section-title-kiona {
   margin: 0;
   max-width: 620px;
-  text-align: right;
+  text-align: left;
 }
 
 .testimonials-grid {
@@ -2131,7 +2131,7 @@ footer[id] {
   border: none;
   border-radius: 20px;
   padding: 160px 32px;
-  margin: -288px auto 96px;
+  margin: -180px auto 96px;
   box-shadow: none;
   max-width: var(--container-max);
   display: grid;
