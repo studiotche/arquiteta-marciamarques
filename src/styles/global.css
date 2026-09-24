@@ -141,8 +141,8 @@ input, textarea, select {
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 /* Narrow content column inside 1600px sections (reference: 1140px) */
@@ -783,7 +783,7 @@ footer[id] {
   background-position: top left;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  padding: calc(5rem + 160px) 0 calc(6rem + 790px);
+  padding: 288px 0 848px;
   margin-top: -160px;
   position: relative;
   z-index: 1;
@@ -791,7 +791,7 @@ footer[id] {
 
 .pra-quem-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-columns: minmax(0, 1fr) 590px;
   gap: 56px;
   align-items: flex-start;
   width: min(100% - 48px, 1600px);
@@ -981,7 +981,7 @@ footer[id] {
    -------------------------------------------------------------------------- */
 .section-beneficios-servicos {
   background-color: var(--color-dark);
-  padding: 0 0 6rem;
+  padding: 0 0 128px;
   position: relative;
   z-index: 2;
 }
@@ -995,8 +995,8 @@ footer[id] {
   border-radius: var(--radius-lg);
   max-width: none;
   width: auto;
-  margin: calc(var(--sheet-overlap) * -1) -24px 0;
-  padding: 96px 60px;
+  margin: calc(var(--sheet-overlap) * -1) -32px 0;
+  padding: 128px 0;
   position: relative;
   z-index: 3;
   box-sizing: border-box;
@@ -1012,7 +1012,7 @@ footer[id] {
 .beneficios-sheet-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 30px 20px;
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
@@ -1373,31 +1373,29 @@ footer[id] {
    8. Section: Como Funciona (Etapas Detalhadas — Accordion)
    -------------------------------------------------------------------------- */
 .section-como-funciona {
-  background-color: var(--color-light);
-  padding: 6rem 0;
+  background-color: var(--color-white);
+  padding: 128px 0;
 }
 
 .como-funciona-header {
-  margin-bottom: 48px;
-  max-width: var(--content-max);
+  margin-bottom: 64px;
+  max-width: 1366px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
-/* Accordion (1140 line) + image (1600 line) row — same track as hero/section 2 */
+/* Accordion 550px + image 656px row, end-aligned on the 1366px inner line (like reference) */
 .como-funciona-row {
   display: grid;
-  grid-template-columns: minmax(320px, 550px) minmax(0, 1fr);
+  grid-template-columns: 550px 656px;
   gap: 52px;
-  width: auto;
-  max-width: none;
-  margin-left: -24px;
-  margin-right: -24px;
-  padding-left: max(24px, min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px))));
-  padding-right: 24px;
-  box-sizing: border-box;
+  justify-content: end;
   align-items: start;
+  max-width: 1366px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
 .process-accordion-list {
@@ -1419,7 +1417,7 @@ footer[id] {
   justify-content: space-between;
   gap: 16px;
   min-height: 100px;
-  padding: 20px 0 20px 70px;
+  padding: 16px 48px 16px 112px;
   cursor: pointer;
   user-select: none;
   list-style: none;
@@ -1487,7 +1485,7 @@ footer[id] {
 }
 
 .process-body {
-  padding: 18px 0 24px 70px;
+  padding: 18px 48px 24px 112px;
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
@@ -1562,14 +1560,14 @@ footer[id] {
 }
 
 .como-cta-btn {
-  width: 470px;
+  width: 500px;
   max-width: 100%;
 }
 
 .como-cta-bullets {
   align-items: center;
   text-align: center;
-  max-width: 100%;
+  max-width: 392px;
 }
 
 .como-cta-bullets .hero-bullet-item {
@@ -1592,7 +1590,7 @@ footer[id] {
    -------------------------------------------------------------------------- */
 .section-complementares {
   background-color: var(--color-light);
-  padding: 6rem 0;
+  padding: 128px 0 128px;
 }
 
 /* Header: tag (1140 line) + title aligned to the icons column */
@@ -1603,13 +1601,13 @@ footer[id] {
   align-items: start;
   width: auto;
   max-width: none;
-  margin: 0 -24px 48px;
+  margin: 0 -32px 48px;
   box-sizing: border-box;
 }
 
 .complementares-header .section-tag {
   margin: 0;
-  padding-left: min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px)));
+  padding-left: min(230px, max(0px, calc((100vw - 1140px) / 2)));
 }
 
 .complementares-header .section-title-kiona {
@@ -1626,7 +1624,7 @@ footer[id] {
   align-items: start;
   width: auto;
   max-width: none;
-  margin: 0 -24px 64px;
+  margin: 0 -32px 64px;
 }
 
 .complementares-photo {
@@ -1684,19 +1682,19 @@ footer[id] {
   margin-top: 4px;
 }
 
-/* Partner row: text (1140 line) + wide photo (1600 line) */
+/* Partner row: text 480px (1140 line) + wide photo */
 .partner-row {
   display: grid;
-  grid-template-columns: 710px minmax(0, 1fr);
+  grid-template-columns: 480px minmax(0, 1fr);
   gap: 52px;
   align-items: center;
   width: auto;
   max-width: none;
-  margin: 0 -24px;
+  margin: 80px -32px 0;
 }
 
 .partner-text {
-  padding-left: max(24px, min(230px, max(0px, calc((100vw - 1140px) / 2 - 24px))));
+  padding-left: max(24px, min(230px, max(0px, calc((100vw - 1140px) / 2))));
 }
 
 .partner-box-title {
@@ -1751,7 +1749,7 @@ footer[id] {
 }
 
 .portfolio-header {
-  margin-bottom: 48px;
+  margin-bottom: 64px;
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
@@ -1779,14 +1777,14 @@ footer[id] {
 .portfolio-track {
   display: flex;
   gap: 32px;
-  padding-left: max(24px, calc((100vw - 1380px) / 2));
-  padding-right: 24px;
+  padding-left: max(32px, calc((100vw - 1430px) / 2));
+  padding-right: 32px;
   will-change: transform;
   transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portfolio-slide {
-  flex: 0 0 min(1380px, calc(100vw - 48px));
+  flex: 0 0 min(1366px, calc(100vw - 64px));
 }
 
 /* Fixed overlay: dots + arrows stay put while slides glide beneath */
@@ -1800,7 +1798,7 @@ footer[id] {
 }
 
 .portfolio-overlay-inner {
-  width: min(1380px, calc(100vw - 48px));
+  width: min(1366px, calc(100vw - 64px));
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -2016,7 +2014,7 @@ footer[id] {
 .section-depoimentos {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 6rem 0;
+  padding: 64px 0 415px;
 }
 
 .section-depoimentos .section-title-kiona {
@@ -2033,7 +2031,7 @@ footer[id] {
   justify-content: space-between;
   gap: 32px;
   max-width: var(--content-max);
-  margin: 0 auto 48px;
+  margin: 0 auto 96px;
 }
 
 .depoimentos-header .section-tag {
@@ -2050,7 +2048,7 @@ footer[id] {
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 20px;
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
@@ -2059,8 +2057,8 @@ footer[id] {
 .testimonial-card {
   background: var(--color-white);
   border: 1px solid var(--color-border-card);
-  border-radius: 12px;
-  padding: 32px 28px;
+  border-radius: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -2115,7 +2113,7 @@ footer[id] {
    -------------------------------------------------------------------------- */
 .section-garantia {
   background-color: var(--color-light);
-  padding: 6rem 0;
+  padding: 0 0 96px;
   position: relative;
   z-index: 1;
 }
@@ -2128,13 +2126,14 @@ footer[id] {
   background-repeat: no-repeat;
   border: none;
   border-radius: 20px;
-  padding: 150px 80px;
+  padding: 160px 32px;
   margin: -288px auto 96px;
   box-shadow: none;
   max-width: var(--container-max);
   display: grid;
-  grid-template-columns: 490px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 490px) minmax(0, 600px);
   gap: 50px;
+  justify-content: center;
   align-items: center;
   position: relative;
   z-index: 2;
@@ -2359,15 +2358,15 @@ footer[id] {
    -------------------------------------------------------------------------- */
 .section-faq {
   background-color: var(--color-light);
-  padding: 6rem 0 calc(6rem + 240px);
+  padding: 96px 0 384px;
   position: relative;
   z-index: 1;
 }
 
 .faq-layout-grid {
   display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 48px;
+  grid-template-columns: 299px 610px;
+  justify-content: space-between;
   align-items: flex-start;
   max-width: var(--content-max);
   margin-left: auto;
@@ -2451,28 +2450,28 @@ footer[id] {
 .section-contato-footer {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 0 0 3rem;
+  padding: 0 0 32px;
   position: relative;
-  /* overflow:visible libera o overlap de -240px do .footer-sheet sobre o FAQ.
+  /* overflow:visible libera o overlap de -288px do .footer-sheet sobre o FAQ.
      overflow:hidden clipava o topo da lamina branca. O scroll-x do watermark
      continua contido pelo body{overflow-x:hidden}. */
   overflow: visible;
   z-index: 5;
 }
 
-/* White overlapping sheet: text + form */
+/* White overlapping sheet: text 490px + form 500px, space-between on the 1140 line */
 .footer-sheet {
   background-color: var(--color-white);
   border-radius: 20px;
   max-width: var(--container-max);
-  margin: -240px auto 0;
-  padding: 96px 80px;
+  margin: -288px auto 0;
+  padding: 64px max(32px, calc((100% - 1140px) / 2));
   position: relative;
   z-index: 3;
   display: grid;
-  grid-template-columns: 420px minmax(0, 533px);
-  gap: 60px;
-  justify-content: center;
+  grid-template-columns: minmax(0, 490px) minmax(0, 500px);
+  gap: 32px;
+  justify-content: space-between;
   align-items: start;
 }
 
@@ -2514,7 +2513,7 @@ footer[id] {
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  margin-top: 96px;
+  margin-top: 128px;
   max-width: var(--content-max);
   margin-left: auto;
   margin-right: auto;
@@ -2876,7 +2875,7 @@ footer[id] {
    Fluidize columns before the 1024px single-column collapse. */
 @media (max-width: 1400px) and (min-width: 1025px) {
   .pra-quem-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 590px);
     gap: 32px;
     padding-right: 24px;
   }
