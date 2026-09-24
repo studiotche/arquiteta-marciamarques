@@ -2018,7 +2018,7 @@ footer[id] {
 .section-depoimentos {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 64px 0 400px;
+  padding: 64px 0 340px;
 }
 
 .section-depoimentos .section-title-kiona {
@@ -2130,9 +2130,10 @@ footer[id] {
   background-repeat: no-repeat;
   border: none;
   border-radius: 20px;
-  padding: 160px 80px;
-  margin: -300px auto 96px;
+  padding: 100px 80px;
+  margin: -240px auto 96px;
   box-shadow: none;
+  width: 100%;
   max-width: var(--container-max);
   display: flex;
   flex-direction: row;
@@ -3092,7 +3093,7 @@ footer[id] {
   }
 
   .garantia-card-main {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     margin-top: -120px;
     padding: 48px 28px;
     border-radius: 20px;
