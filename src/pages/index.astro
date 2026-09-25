@@ -623,20 +623,22 @@ const jsonLd = {
 
     <!-- 08. SECTION: GARANTIA & SOBRE NÓS -->
     <section class="section-garantia" id="garantia">
-      <div class="garantia-card-main up">
-        <div class="garantia-card-content">
-          <div class="garantia-card-head">
-            <p class="section-tag">{garantia.sectionTitle}</p>
-            <h2 class="garantia-heading">GARANTIA DE<br/>REEMBOLSO INTEGRAL</h2>
-          </div>
-          <div class="garantia-paragraphs">
-            {garantia.paragraphs.map((parts) => (
-              <p>
-                {parts.map((seg) => (
-                  seg.bold ? <strong>{seg.text}</strong> : <span>{seg.text}</span>
-                ))}
-              </p>
-            ))}
+      <div class="garantia-card-wrapper">
+        <div class="garantia-card-main up">
+          <div class="garantia-card-content">
+            <div class="garantia-card-head">
+              <p class="section-tag">{garantia.sectionTitle}</p>
+              <h2 class="garantia-heading">GARANTIA DE<br/>REEMBOLSO INTEGRAL</h2>
+            </div>
+            <div class="garantia-paragraphs">
+              {garantia.paragraphs.map((parts) => (
+                <p>
+                  {parts.map((seg) => (
+                    seg.bold ? <strong>{seg.text}</strong> : <span>{seg.text}</span>
+                  ))}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -2018,7 +2018,7 @@ footer[id] {
 .section-depoimentos {
   background-color: var(--color-dark);
   color: var(--color-white);
-  padding: 64px 0 340px;
+  padding: 64px 0 120px;
 }
 
 .section-depoimentos .section-title-kiona {
@@ -2122,6 +2122,11 @@ footer[id] {
   z-index: 1;
 }
 
+.garantia-card-wrapper {
+  background: linear-gradient(to bottom, var(--color-dark) 50%, var(--color-light) 50%);
+  width: 100%;
+}
+
 .garantia-card-main {
   background-color: var(--color-dark);
   background-image: url("/assets/images/garantia-KOPLAN.webp");
@@ -2131,7 +2136,7 @@ footer[id] {
   border: 1px solid #687479;
   border-radius: 20px;
   padding: 100px 80px;
-  margin: -180px auto 96px;
+  margin: 0 auto 96px;
   box-shadow: none;
   width: min(100% - 48px, 1600px);
   max-width: var(--container-max);
