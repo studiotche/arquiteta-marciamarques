@@ -2488,6 +2488,7 @@ footer[id] {
   padding: 0 0 32px;
   position: relative;
   z-index: 5;
+  margin-top: -1px;
 }
 
 .footer-sheet-wrapper {
@@ -2499,8 +2500,8 @@ footer[id] {
 .footer-sheet {
   background-color: var(--color-white);
   background-image: var(--bgFormulario);
-  background-size: cover;
-  background-position: center;
+  background-size: contain;
+  background-position: center left;
   background-repeat: no-repeat;
   border-radius: 20px;
   max-width: var(--container-max);
