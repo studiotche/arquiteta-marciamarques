@@ -483,7 +483,7 @@ footer[id] {
 
 .hero-card-title {
   font-family: var(--font-heading);
-  font-size: 2.6rem;
+  font-size: clamp(1.5rem, 6vw, 2.6rem);
   line-height: 1.3;
   color: var(--color-black);
   margin: 0 0 18px;
@@ -500,7 +500,7 @@ footer[id] {
 
 .hero-card-desc {
   font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.3rem);
   line-height: 1.3;
   color: #687479;
   font-weight: 300;
@@ -663,7 +663,7 @@ footer[id] {
   max-width: none;
   position: relative;
   z-index: 2;
-  margin-left: -5.5em;
+  margin-left: clamp(-5.5vw, -3vw, 0px);
   display: flex;
 }
 
@@ -792,7 +792,7 @@ footer[id] {
 .pra-quem-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 590px;
-  gap: 56px;
+  gap: clamp(24px, 4vw, 56px);
   align-items: flex-start;
   width: min(100% - 48px, 1600px);
   max-width: var(--container-max);
@@ -835,7 +835,7 @@ footer[id] {
 
 .section-title-kiona {
   font-family: var(--font-heading);
-  font-size: 2.6rem;
+  font-size: clamp(1.5rem, 3.5vw, 2.6rem);
   line-height: 1.3;
   color: var(--color-black);
   margin: 0 0 32px;
@@ -850,7 +850,7 @@ footer[id] {
 
 .pra-quem-subhead {
   font-family: var(--font-heading);
-  font-size: 1.6em;
+  font-size: clamp(1.2rem, 2vw, 1.6em);
   font-weight: 400;
   letter-spacing: 1.5px;
   line-height: 1.3;
@@ -2252,7 +2252,7 @@ footer[id] {
 .sobre-grid-1600 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 72px;
+  gap: clamp(40px, 6vw, 72px);
   align-items: center;
   width: min(100% - 48px, 1600px);
   max-width: var(--container-max);
@@ -2393,7 +2393,6 @@ footer[id] {
 @media (max-width: 1024px) {
   .sobre-grid-1600 {
     grid-template-columns: 1fr;
-    gap: 80px;
   }
   .sobre-img-floating {
     right: 5%;
@@ -2921,7 +2920,7 @@ footer[id] {
     min-width: 0;
     width: auto;
     max-width: none;
-    margin-left: -7.5em;
+    margin-left: clamp(-6vw, -3vw, 0px);
   }
 
   .hero-image-frame {
@@ -3037,7 +3036,6 @@ footer[id] {
   }
 
   .hero-card-title {
-    font-size: 2.1rem;
     max-width: 100%;
   }
 
@@ -3240,7 +3238,7 @@ footer[id] {
   }
 
   .hero-stage {
-    order: 2;
+    order: 1;
     width: 100%;
     max-width: 100%;
     margin-left: 0;
@@ -3300,7 +3298,7 @@ footer[id] {
   }
 
   .hero-card {
-    order: 1;
+    order: 2;
     width: 100%;
     min-height: auto;
     padding: 2.2rem 1.4rem;
@@ -3314,10 +3312,17 @@ footer[id] {
     align-self: stretch;
   }
 
-  .hero-card-title,
-  .section-title-kiona {
-    font-size: 1.85rem;
+  .hero-card-brand img {
+    width: 130px;
+    margin: 0 auto;
   }
+
+  .hero-card-title,
+  .hero-card-desc {
+    text-align: center;
+  }
+
+  /* .hero-card-title and .section-title-kiona are now handled by clamp() globally */
 
   .section-pra-quem {
     padding-top: 4rem;
@@ -3429,6 +3434,15 @@ footer[id] {
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-card {
+    padding: 1.8rem 1.2rem;
+  }
+
   .complementares-grid {
     grid-template-columns: 1fr;
   }
