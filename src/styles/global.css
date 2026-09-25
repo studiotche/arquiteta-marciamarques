@@ -2128,10 +2128,10 @@ footer[id] {
   background-size: cover;
   background-position: 0% 50%;
   background-repeat: no-repeat;
-  border: none;
+  border: 1px solid #687479;
   border-radius: 20px;
   padding: 100px 80px;
-  margin: -240px auto 96px;
+  margin: -180px auto 96px;
   box-shadow: none;
   width: 100%;
   max-width: var(--container-max);
@@ -2152,7 +2152,7 @@ footer[id] {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   pointer-events: none;
 }
 
@@ -2163,9 +2163,8 @@ footer[id] {
 }
 
 .garantia-card-head {
-  padding-top: 40px;
-  flex: 1 1 490px;
-  max-width: 580px;
+  flex: 1 1 400px;
+  max-width: 460px;
 }
 
 .garantia-card-head .section-tag {
@@ -2173,8 +2172,13 @@ footer[id] {
 }
 
 .garantia-card-head .section-title-kiona {
-  color: var(--color-white);
   margin-bottom: 0;
+}
+
+.garantia-card-head .section-title-kiona i {
+  color: var(--color-white);
+  font-weight: 300;
+  font-style: italic;
 }
 
 .garantia-paragraphs {
@@ -2182,12 +2186,12 @@ footer[id] {
   flex-direction: column;
   gap: 22px;
   font-family: var(--font-body);
-  font-size: 1.3rem;
-  line-height: 1.5;
-  color: #F5F5F5;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #a3a3a3;
   font-weight: 300;
-  flex: 1 1 600px;
-  max-width: 660px;
+  flex: 1 1 500px;
+  max-width: 540px;
 }
 
 .garantia-paragraphs p {
