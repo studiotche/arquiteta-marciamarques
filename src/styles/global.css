@@ -981,6 +981,10 @@ footer[id] {
    -------------------------------------------------------------------------- */
 .section-beneficios-servicos {
   background-color: var(--color-dark);
+  background-image: url('/assets/images/K-fundo-KOPLAN.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 0 0 128px;
   position: relative;
   z-index: 2;
@@ -2017,6 +2021,10 @@ footer[id] {
    -------------------------------------------------------------------------- */
 .section-depoimentos {
   background-color: var(--color-dark);
+  background-image: url('/assets/images/K-fundo-KOPLAN.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--color-white);
   padding: 64px 0 120px;
 }
@@ -2490,6 +2498,10 @@ footer[id] {
 /* White overlapping sheet: text 490px + form 500px, space-between on the 1140 line */
 .footer-sheet {
   background-color: var(--color-white);
+  background-image: url('/assets/images/k-bg-formulario-KOPLAN.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 20px;
   max-width: var(--container-max);
   margin: 0 auto;

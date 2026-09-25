@@ -477,7 +477,7 @@ export const garantia = {
     {
       name: "Amanda",
       title: "Arquiteta",
-      photo: "/assets/images/sobre-nos1-KOPLAN.webp",
+      photo: "/assets/images/Design-sem-nome.svg",
     },
     {
       name: "Leonardo",

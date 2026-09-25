@@ -104,11 +104,7 @@ function wireAnchors(lenis: Lenis): void {
         location.hash = hash;
       }
 
-      // Acessibilidade: transfere o foco no skip-link
-      if (hash === "#conteudo" && !target.hasAttribute("tabindex")) {
-        target.setAttribute("tabindex", "-1");
-        target.focus({ preventScroll: true });
-      }
+
     },
     { passive: false }
   );
