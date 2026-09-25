@@ -1481,7 +1481,7 @@ footer[id] {
 
 .process-title {
   font-family: var(--font-body);
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--color-black);
   margin: 0;
@@ -1489,7 +1489,7 @@ footer[id] {
 
 .process-tagline {
   font-family: var(--font-body);
-  font-size: 1.17rem;
+  font-size: 0.95rem;
   font-weight: 300;
   color: var(--color-gray);
   margin: 0;
@@ -1508,6 +1508,10 @@ footer[id] {
 
 .process-body .accordion-inner {
   padding: 18px 48px 24px 112px;
+}
+
+.process-body p {
+  margin: 0;
 }
 
 /* Right visual: big image with floating mini-carousel card */
@@ -2504,6 +2508,11 @@ footer[id] {
 
 .faq-answer p {
   margin: 0;
+}
+
+.accordion-inner {
+  display: flex;
+  flex-direction: column;
 }
 
 /* --------------------------------------------------------------------------

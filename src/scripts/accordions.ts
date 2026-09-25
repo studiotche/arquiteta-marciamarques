@@ -65,6 +65,8 @@ accordions.forEach((details) => {
   const summary = details.querySelector("summary");
   if (!summary) return;
   
+  getContentWrapper(details);
+  
   summary.addEventListener("click", (event) => {
     event.preventDefault();
     if (details.classList.contains("is-closing")) {
