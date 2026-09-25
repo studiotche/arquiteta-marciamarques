@@ -2500,7 +2500,7 @@ footer[id] {
 .footer-sheet {
   background-color: var(--color-white);
   background-image: var(--bgFormulario);
-  background-size: contain;
+  background-size: auto 100%;
   background-position: center left;
   background-repeat: no-repeat;
   border-radius: 20px;
@@ -2513,7 +2513,13 @@ footer[id] {
   grid-template-columns: minmax(0, 490px) minmax(0, 500px);
   gap: 32px;
   justify-content: space-between;
-  align-items: start;
+  align-items: stretch;
+}
+
+.footer-sheet-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .footer-sheet-text .section-title-kiona {
