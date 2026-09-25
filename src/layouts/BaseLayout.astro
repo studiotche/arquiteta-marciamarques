@@ -28,6 +28,10 @@ const ogImage = new URL(site.seo.ogImage.replace(/^\//, ""), site.seo.url);
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/webp" sizes="32x32" href={asset(site.assets.favicon)} />
     <link rel="icon" type="image/webp" sizes="192x192" href={asset(site.assets.favicon192)} />
+    <style define:vars={{
+      bgKoplan: `url('${asset("/assets/images/K-fundo-KOPLAN.webp")}')`,
+      bgFormulario: `url('${asset("/assets/images/k-bg-formulario-KOPLAN.webp")}')`
+    }}></style>
     <link rel="apple-touch-icon" sizes="180x180" href={asset(site.assets.faviconApple)} />
     <link
       rel="preload"
