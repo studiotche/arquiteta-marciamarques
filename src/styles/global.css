@@ -2187,7 +2187,7 @@ footer[id] {
   flex-wrap: wrap;
   gap: 50px;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   max-width: 1140px;
   margin: 0 auto;
   position: relative;
@@ -2207,6 +2207,7 @@ footer[id] {
 
 .garantia-card-head .section-tag {
   color: var(--color-gray-light);
+  margin-bottom: 80px;
 }
 
 .garantia-heading {
@@ -2997,6 +2998,10 @@ footer[id] {
 @media (max-width: 1024px) {
   .hero-section {
     padding-bottom: 2.5rem;
+  }
+
+  .garantia-card-head .section-tag {
+    margin-bottom: 32px;
   }
 
   .hero-section::after {
