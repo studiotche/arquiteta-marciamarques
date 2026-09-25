@@ -2135,12 +2135,6 @@ footer[id] {
   box-shadow: none;
   width: min(100% - 48px, 1600px);
   max-width: var(--container-max);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 50px;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
   z-index: 2;
   overflow: hidden;
@@ -2154,6 +2148,19 @@ footer[id] {
   z-index: 0;
   background: rgba(0, 0, 0, 0.5);
   pointer-events: none;
+}
+
+.garantia-card-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .garantia-card-head,
