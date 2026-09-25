@@ -1506,12 +1506,13 @@ footer[id] {
   transition: height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.32s ease;
 }
 
-.process-body .accordion-inner {
+.process-body > p:not(.process-body-extra) {
   padding: 18px 48px 24px 112px;
+  margin: 0;
 }
 
-.process-body p {
-  margin: 0;
+.process-body > p:not(.process-body-extra):has(+ .process-body-extra) {
+  padding-bottom: 0;
 }
 
 /* Right visual: big image with floating mini-carousel card */
@@ -1598,7 +1599,7 @@ footer[id] {
 }
 
 .process-body-extra {
-  margin-top: 12px;
+  margin: 12px 48px 24px 112px;
   font-size: 0.92rem;
   color: var(--color-gray);
   background: var(--color-light);
@@ -2502,17 +2503,9 @@ footer[id] {
   transition: height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.32s ease;
 }
 
-.faq-answer .accordion-inner {
+.faq-answer > p {
   padding: 18px 70px 24px 0;
-}
-
-.faq-answer p {
   margin: 0;
-}
-
-.accordion-inner {
-  display: flex;
-  flex-direction: column;
 }
 
 /* --------------------------------------------------------------------------
@@ -3417,8 +3410,11 @@ footer[id] {
     top: 20px;
   }
 
-  .process-body .accordion-inner {
+  .process-body > p:not(.process-body-extra) {
     padding-left: 28px;
+  }
+  .process-body > .process-body-extra {
+    margin-left: 28px;
   }
 }
 

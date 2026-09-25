@@ -3,19 +3,7 @@ const accordionTimeouts = new WeakMap<HTMLDetailsElement, number>();
 const ACCORDION_DURATION = 400;
 
 const getContentWrapper = (details: HTMLDetailsElement) => {
-  const wrapper = details.querySelector<HTMLElement>(".process-body, .faq-answer");
-  if (!wrapper) return null;
-  
-  if (!wrapper.querySelector(":scope > .accordion-inner")) {
-    const inner = document.createElement("div");
-    inner.className = "accordion-inner";
-    while (wrapper.firstChild) {
-      inner.appendChild(wrapper.firstChild);
-    }
-    wrapper.appendChild(inner);
-  }
-  
-  return wrapper;
+  return details.querySelector<HTMLElement>(".process-body, .faq-answer");
 };
 
 const clearAccordionTimeout = (details: HTMLDetailsElement) => {
