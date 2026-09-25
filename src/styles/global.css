@@ -2133,7 +2133,7 @@ footer[id] {
   padding: 100px 80px;
   margin: -180px auto 96px;
   box-shadow: none;
-  width: 100%;
+  width: min(100% - 48px, 1600px);
   max-width: var(--container-max);
   display: flex;
   flex-direction: row;
@@ -2209,7 +2209,7 @@ footer[id] {
   grid-template-columns: 1fr 1fr;
   gap: 72px;
   align-items: center;
-  width: 100%;
+  width: min(100% - 48px, 1600px);
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
