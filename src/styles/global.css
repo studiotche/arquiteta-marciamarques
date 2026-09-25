@@ -1755,8 +1755,17 @@ footer[id] {
 /* --------------------------------------------------------------------------
    10. Section: Nosso Portfólio (Desktop Slider & Mobile Carousel)
    -------------------------------------------------------------------------- */
-.section-portfolio {
+.portfolio-depoimentos-wrapper {
   background-color: var(--color-dark);
+  background-image: var(--bgKoplan);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.section-portfolio {
+  background-color: transparent;
   color: var(--color-white);
   padding: 0;
   position: relative;
@@ -2038,11 +2047,7 @@ footer[id] {
    11. Section: Depoimentos (Client Testimonials)
    -------------------------------------------------------------------------- */
 .section-depoimentos {
-  background-color: var(--color-dark);
-  background-image: var(--bgKoplan);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: transparent;
   color: var(--color-white);
   padding: 64px 0 120px;
 }
