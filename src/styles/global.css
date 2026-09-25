@@ -1458,10 +1458,11 @@ footer[id] {
   background-repeat: no-repeat;
   background-size: 20px 20px;
   transition: transform var(--transition-normal);
+  transform: rotate(180deg);
 }
 
-.process-accordion-item[open] .process-accordion-summary::after {
-  transform: rotate(45deg);
+.process-accordion-item[open]:not(.is-closing) .process-accordion-summary::after {
+  transform: rotate(135deg);
 }
 
 
@@ -1476,7 +1477,7 @@ footer[id] {
 .process-title {
   font-family: var(--font-body);
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: bold;
   color: var(--color-black);
   margin: 0;
 }
@@ -1495,6 +1496,9 @@ footer[id] {
   font-size: 1rem;
   line-height: 1.65;
   color: var(--color-text-main);
+  overflow: hidden;
+  opacity: 1;
+  transition: height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.32s ease;
 }
 
 /* Right visual: big image with floating mini-carousel card */
@@ -2438,6 +2442,7 @@ footer[id] {
   border-bottom: 1px solid rgba(104, 116, 121, 0.38);
   font-family: var(--font-body);
   font-size: 1rem;
+  font-weight: bold;
   color: var(--color-black);
 }
 
@@ -2461,10 +2466,11 @@ footer[id] {
   background-size: 20px 20px;
   transition: transform var(--transition-normal);
   flex-shrink: 0;
+  transform: translateY(-50%) rotate(180deg);
 }
 
-.faq-item[open] .faq-summary::after {
-  transform: translateY(-50%) rotate(45deg);
+.faq-item[open]:not(.is-closing) .faq-summary::after {
+  transform: translateY(-50%) rotate(135deg);
 }
 
 .faq-answer {
@@ -2473,6 +2479,9 @@ footer[id] {
   font-size: 1rem;
   line-height: 1.65;
   color: var(--color-text-main);
+  overflow: hidden;
+  opacity: 1;
+  transition: height 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.32s ease;
 }
 
 .faq-answer p {
