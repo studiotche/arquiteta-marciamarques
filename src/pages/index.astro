@@ -388,7 +388,7 @@ const jsonLd = {
         <div class="como-funciona-row">
           <div class="process-accordion-list">
             {comoFunciona.steps.map((step, idx) => (
-              <details class="process-accordion-item up" open={idx === 0} name="processo-koplan">
+              <details class="process-accordion-item up" open={idx === 0} data-group="processo-koplan">
                 <summary class="process-accordion-summary" data-step={step.number}>
                   <div class="process-title-group">
                     <h3 class="process-title">{step.title}</h3>
@@ -707,7 +707,7 @@ const jsonLd = {
 
         <div class="faq-list">
           {faqs.map(([q, a], idx) => (
-            <details class="faq-item up" open={idx === 0} name="faq-koplan">
+            <details class="faq-item up" open={idx === 0} data-group="faq-koplan">
               <summary class="faq-summary">
                 <span>{q}</span>
               </summary>

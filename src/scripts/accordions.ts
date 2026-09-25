@@ -72,9 +72,9 @@ accordions.forEach((details) => {
     if (details.open) {
       animatedCloseAccordion(details);
     } else {
-      const name = details.getAttribute("name");
-      if (name) {
-        document.querySelectorAll<HTMLDetailsElement>(`details[name="${name}"]`).forEach((other) => {
+      const group = details.getAttribute("data-group");
+      if (group) {
+        document.querySelectorAll<HTMLDetailsElement>(`details[data-group="${group}"]`).forEach((other) => {
           if (other !== details && other.open) animatedCloseAccordion(other);
         });
       }
