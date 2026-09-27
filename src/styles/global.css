@@ -3461,3 +3461,923 @@ footer[id] {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   17. Camada de paridade mobile com koplan.com.br (Elementor)
+   Regras de referência medidas em 390×844 e 768×1024:
+   - Colapso de coluna real em ≤767px (tablet 768–1024 mantém linha/wrap)
+   - Gutters laterais de 18px no mobile
+   - Hero: imagem primeiro (order), H1 25.6px center, badge em linha
+   - Portfólio: empilhamento vertical com galeria mobile + texto abaixo
+   - Depoimentos: mantém cards (só corrige quebra)
+   - Menu (header/mobile-menu) intocado por decisão explícita
+   Esta camada vem por último e vence regras anteriores em igual
+   especificidade. Desktop (>1024px) não é alterado.
+   ========================================================================== */
+
+/* Galeria mobile do portfólio: escondida no desktop/tablet */
+.portfolio-mobile-gallery {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   17a. Tablet 768–1024px: linha/wrap como a referência (não empilha tudo)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .hero-composition {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .hero-card {
+    flex: 1 1 400px;
+    max-width: 560px;
+  }
+
+  .hero-card > * {
+    align-self: stretch;
+  }
+
+  .hero-stage {
+    flex: 1 1 400px;
+    max-width: 620px;
+    margin-left: 0;
+  }
+
+  .hero-card-brand img {
+    margin: 0;
+  }
+
+  .hero-card-title,
+  .hero-card-desc {
+    text-align: left;
+  }
+
+  .hero-card-title {
+    font-size: clamp(1.9rem, 3vw, 2.2rem);
+  }
+
+  /* Badge volta a flutuar sobre a imagem no tablet */
+  .hero-protocol-badge {
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    padding: 16px;
+  }
+
+  .hero-protocol-thumb {
+    width: 100%;
+    height: auto;
+  }
+
+  .hero-protocol-text {
+    margin: 12px 0 0;
+    text-align: center;
+  }
+
+  /* FAQ volta a lado a lado no tablet (referência: dir=row em 768px) */
+  .faq-layout-grid {
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .faq-sticky-title {
+    position: sticky;
+    top: 96px;
+  }
+
+  .complementares-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .beneficios-sheet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17b. Mobile ≤767px: paridade total com a referência
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Anti-overflow: nenhum elemento estoura a viewport */
+  html, body {
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero-composition,
+  .pra-quem-grid,
+  .beneficios-sheet-grid,
+  .servicos-grid,
+  .como-funciona-row,
+  .complementares-row,
+  .partner-row,
+  .testimonials-grid,
+  .footer-sheet {
+    min-width: 0;
+  }
+
+  section[id],
+  footer[id] {
+    scroll-margin-top: 72px;
+  }
+
+  /* ---- Tags e títulos: ritmo centralizado do mobile de referência ---- */
+  .section-tag {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+
+  .section-title-kiona {
+    font-size: clamp(1.35rem, 6.4vw, 1.7rem);
+    line-height: 1.3;
+  }
+
+  /* ---- HERO (imagem primeiro, card depois) ---- */
+  .hero-section {
+    padding-top: 0;
+    padding-bottom: 2rem;
+  }
+
+  .hero-composition {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    width: calc(100% - 36px);
+  }
+
+  .hero-stage {
+    order: -1;
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .hero-image-frame {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .hero-img-desktop {
+    display: none;
+  }
+
+  .hero-img-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 715 / 490;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .hero-watermark-k-badge {
+    padding: 10px 14px 12px 16px;
+    border-radius: 0 20px 0 14px;
+  }
+
+  .hero-watermark-k-badge img {
+    width: 20px;
+  }
+
+  /* Badge vira linha horizontal abaixo da foto (referência mobile) */
+  .hero-protocol-badge {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    transform: none;
+    width: 100%;
+    margin-top: 14px;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+
+  .hero-protocol-thumb {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+  }
+
+  .hero-protocol-text {
+    margin: 0;
+    text-align: left;
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  .hero-card {
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+    padding: 2rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .hero-card > * {
+    width: 100%;
+    max-width: none;
+    align-self: stretch;
+  }
+
+  .hero-card-brand {
+    margin-bottom: 18px;
+  }
+
+  .hero-card-brand img {
+    width: 130px;
+    margin: 0 auto;
+  }
+
+  .hero-card-title {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .hero-card-desc {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .koplan-form {
+    gap: 12px;
+  }
+
+  .form-input {
+    min-height: 47px;
+    padding: 12px 18px;
+    font-size: 1rem;
+  }
+
+  .form-input.phone-input {
+    padding-left: 52px;
+  }
+
+  .btn-submit {
+    padding: 16px 20px;
+    font-size: 0.88rem;
+  }
+
+  .hero-bullets {
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .hero-bullet-item {
+    font-size: 0.68rem;
+    letter-spacing: 1.2px;
+  }
+
+  /* ---- PRA QUEM É ---- */
+  .section-pra-quem {
+    padding-top: 3.5rem;
+  }
+
+  .pra-quem-grid {
+    grid-template-columns: 1fr;
+    width: calc(100% - 36px);
+    padding-right: 0;
+  }
+
+  .pra-quem-head {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .pra-quem-head .section-tag,
+  .pra-quem-head .section-title-kiona {
+    text-align: center;
+  }
+
+  .pra-quem-side {
+    padding-top: 0;
+  }
+
+  .pra-quem-subhead {
+    text-align: center;
+    font-size: 1.15rem;
+  }
+
+  .pra-quem-list {
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .pra-quem-item {
+    padding: 16px 14px;
+    font-size: 0.95rem;
+  }
+
+  .pra-quem-visuals {
+    margin-top: 28px;
+  }
+
+  .pra-quem-images-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .pra-quem-leisure-col {
+    margin-top: 0;
+    gap: 20px;
+  }
+
+  .pra-quem-quote {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  /* ---- BENEFÍCIOS (sheet branca) ---- */
+  .beneficios-sheet {
+    padding: 40px 20px;
+    border-radius: 22px;
+  }
+
+  .beneficios-sheet-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .beneficios-sheet-head {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .beneficios-sheet-head .section-tag,
+  .beneficios-sheet-head .section-title-kiona {
+    text-align: center;
+  }
+
+  .beneficio-image-card-photo {
+    aspect-ratio: 414 / 300;
+  }
+
+  .beneficio-dark-card {
+    min-height: 440px;
+    padding: 24px;
+  }
+
+  .beneficios-quote {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-top: 36px;
+    padding: 0 4px;
+  }
+
+  .beneficios-dark-block {
+    margin-top: 56px;
+  }
+
+  /* ---- SERVIÇOS ---- */
+  .servicos-header-wrapper {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .servicos-header-wrapper .section-tag,
+  .servicos-title {
+    text-align: center;
+  }
+
+  .servicos-grid {
+    gap: 20px;
+  }
+
+  .servico-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-height: 480px;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .servico-card-desc {
+    max-height: none;
+    opacity: 1;
+  }
+
+  .servico-tag {
+    font-size: 0.75rem;
+    padding: 8px 14px;
+  }
+
+  /* ---- COMO FUNCIONA ---- */
+  .section-como-funciona {
+    padding: 72px 0;
+  }
+
+  .como-funciona-header {
+    margin-bottom: 36px;
+    text-align: center;
+  }
+
+  .como-funciona-header .section-tag,
+  .como-funciona-header .section-title-kiona {
+    text-align: center;
+  }
+
+  .como-funciona-row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .process-accordion-summary {
+    min-height: 76px;
+    padding: 14px 56px 14px 52px;
+    gap: 12px;
+  }
+
+  .process-accordion-summary:hover {
+    padding-left: 52px;
+  }
+
+  .process-accordion-summary::before {
+    font-size: 1.6rem;
+  }
+
+  .process-accordion-summary::after {
+    width: 44px;
+    height: 44px;
+    background-size: 16px 16px;
+  }
+
+  .process-title {
+    font-size: 0.95rem;
+  }
+
+  .process-tagline {
+    font-size: 0.88rem;
+  }
+
+  .process-body {
+    font-size: 0.95rem;
+  }
+
+  .process-body > p:not(.process-body-extra) {
+    padding: 14px 8px 20px 52px;
+  }
+
+  .process-body > .process-body-extra {
+    margin: 0 8px 20px 52px;
+    font-size: 0.88rem;
+  }
+
+  .como-funciona-side-card {
+    right: 4%;
+    bottom: -48px;
+    width: min(250px, 62%);
+    padding: 12px;
+  }
+
+  .como-funciona-cta {
+    margin-top: 96px;
+    padding: 0 18px;
+  }
+
+  .como-cta-btn {
+    width: 100%;
+  }
+
+  /* ---- COMPLEMENTARES ---- */
+  .section-complementares {
+    padding: 72px 0;
+  }
+
+  .complementares-header {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 0 0 28px;
+    text-align: center;
+  }
+
+  .complementares-header .section-tag {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .complementares-header .section-title-kiona {
+    text-align: center;
+  }
+
+  .complementares-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin: 0 0 40px;
+  }
+
+  .complementares-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+
+  .complementar-card {
+    align-items: flex-start;
+  }
+
+  .complementar-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .complementar-text {
+    font-size: 0.95rem;
+  }
+
+  .partner-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin: 56px 0 0;
+  }
+
+  .partner-text {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .partner-box-title {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .partner-box-text {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* ---- PORTFÓLIO: empilhamento vertical (referência mobile) ---- */
+  .portfolio-header-band {
+    padding: 4rem 0 220px;
+  }
+
+  .portfolio-header-band .section-tag,
+  .portfolio-header-band .section-title-kiona {
+    text-align: center;
+  }
+
+  .portfolio-dark {
+    padding-bottom: 4rem;
+  }
+
+  .portfolio-carousel {
+    margin-top: -180px;
+  }
+
+  .portfolio-viewport {
+    overflow: visible;
+  }
+
+  .portfolio-track {
+    flex-direction: column;
+    gap: 48px;
+    padding-left: 18px;
+    padding-right: 18px;
+    transform: none !important;
+  }
+
+  .portfolio-slide {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Desliga o sistema overlay desktop no mobile */
+  .portfolio-slide-media,
+  .portfolio-overlay {
+    display: none;
+  }
+
+  /* Galeria mobile: swipe horizontal por projeto + texto abaixo */
+  .portfolio-mobile-gallery {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .portfolio-mobile-scroller {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 20px;
+  }
+
+  .portfolio-mobile-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portfolio-mobile-scroller img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 20px;
+    scroll-snap-align: center;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .portfolio-mobile-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .portfolio-mobile-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    padding: 0;
+  }
+
+  .portfolio-mobile-dot.active {
+    background: var(--color-white);
+    transform: scale(1.25);
+  }
+
+  .portfolio-mobile-info {
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  .portfolio-mobile-info .portfolio-project-loc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-white);
+    margin: 0 0 6px;
+  }
+
+  .portfolio-mobile-info .portfolio-project-desc {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--color-gray-light);
+    margin: 0;
+  }
+
+  .portfolio-cta {
+    margin-top: 40px;
+    padding: 0 18px;
+  }
+
+  /* ---- DEPOIMENTOS: mantém cards, corrige quebra ---- */
+  .section-depoimentos {
+    padding: 48px 0 88px;
+  }
+
+  .depoimentos-header {
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto 36px;
+    text-align: center;
+  }
+
+  .depoimentos-header .section-tag {
+    margin: 0;
+    text-align: center;
+  }
+
+  .depoimentos-header .section-title-kiona {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .testimonial-card {
+    min-width: 0;
+    padding: 20px;
+    border-radius: 18px;
+    overflow-wrap: break-word;
+  }
+
+  .testimonial-quote {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  /* ---- GARANTIA / SOBRE ---- */
+  .garantia-card-main {
+    padding: 40px 20px;
+    border-radius: 20px;
+  }
+
+  .garantia-card-content {
+    gap: 32px;
+  }
+
+  .garantia-card-head .section-tag {
+    margin-bottom: 24px;
+  }
+
+  .garantia-heading {
+    font-size: 1.55rem;
+  }
+
+  .garantia-paragraphs {
+    font-size: 1rem;
+  }
+
+  .sobre-grid-1600 {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .sobre-img-floating {
+    right: 4%;
+    bottom: -24px;
+  }
+
+  .sobre-float-slide img {
+    width: 128px;
+  }
+
+  .sobre-text-top {
+    flex-direction: column;
+  }
+
+  .sobre-img-secondary {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .sobre-text-col p,
+  .sobre-text-bottom p {
+    font-size: 1.05rem;
+  }
+
+  /* ---- FAQ ---- */
+  .section-faq {
+    padding: 72px 0 88px;
+  }
+
+  .faq-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .faq-sticky-title {
+    position: static;
+    text-align: center;
+  }
+
+  .faq-sticky-title .section-tag,
+  .faq-sticky-title .section-title-kiona {
+    text-align: center;
+  }
+
+  .faq-summary {
+    min-height: 72px;
+    padding: 16px 56px 16px 0;
+    font-size: 0.95rem;
+  }
+
+  .faq-summary::after {
+    width: 44px;
+    height: 44px;
+    background-size: 16px 16px;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+  }
+
+  .faq-answer > p {
+    padding: 14px 8px 20px 0;
+  }
+
+  /* ---- CONTATO / FOOTER ---- */
+  .footer-sheet {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px 20px;
+  }
+
+  .footer-sheet-text .section-title-kiona {
+    text-align: center;
+  }
+
+  .footer-sheet-desc {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .footer-top-grid {
+    margin-top: 56px;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-logo-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-contact-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .footer-watermark {
+    font-size: clamp(3rem, 18vw, 5rem);
+  }
+
+  .whatsapp-widget-container {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .whatsapp-trigger-btn {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17c. Micro telas ≤380px
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-composition {
+    width: calc(100% - 32px);
+  }
+
+  .hero-card {
+    padding: 1.6rem 1.1rem;
+  }
+
+  .hero-card-title {
+    font-size: 1.45rem;
+  }
+
+  .complementares-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-track {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .footer-sheet,
+  .beneficios-sheet,
+  .garantia-card-main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

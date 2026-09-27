@@ -540,6 +540,29 @@ const jsonLd = {
                     </div>
                   </div>
                 </div>
+                <div class="portfolio-mobile-gallery" data-portfolio-mobile>
+                  <div class="portfolio-mobile-scroller" data-portfolio-mobile-scroller>
+                    {project.imagesMobile.map((img, imgIdx) => (
+                      <img
+                        src={asset(img)}
+                        alt={`${project.name} — foto ${imgIdx + 1}`}
+                        loading="lazy"
+                        width="800"
+                        height="1000"
+                        data-portfolio-mobile-img={imgIdx}
+                      />
+                    ))}
+                  </div>
+                  <div class="portfolio-mobile-dots" aria-hidden="true">
+                    {project.imagesMobile.map((_, imgIdx) => (
+                      <span class={`portfolio-mobile-dot${imgIdx === 0 ? " active" : ""}`} data-portfolio-mobile-dot={imgIdx} />
+                    ))}
+                  </div>
+                  <div class="portfolio-mobile-info">
+                    <p class="portfolio-project-loc">{project.locationDetails}</p>
+                    <p class="portfolio-project-desc">{project.description}</p>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
@@ -984,7 +1007,8 @@ const jsonLd = {
 
     const render = () => {
       if (track) {
-        track.style.transform = `translateX(${-current * step()}px)`;
+        const stacked = window.matchMedia("(max-width: 767px)").matches;
+        track.style.transform = stacked ? "" : `translateX(${-current * step()}px)`;
       }
       slides.forEach((s, i) => s.classList.toggle("active", i === current));
       dots.forEach((d, i) => {
@@ -1040,6 +1064,17 @@ const jsonLd = {
 
     window.addEventListener("resize", render);
     render();
+
+    // Portfólio mobile empilhado: sincroniza dots do swipe por projeto
+    portfolio.querySelectorAll("[data-portfolio-mobile-scroller]").forEach((scroller) => {
+      const gallery = scroller.closest("[data-portfolio-mobile]");
+      const dots = gallery ? [...gallery.querySelectorAll("[data-portfolio-mobile-dot]")] : [];
+      scroller.addEventListener("scroll", () => {
+        const w = scroller.clientWidth || 1;
+        const i = Math.min(dots.length - 1, Math.round(scroller.scrollLeft / w));
+        dots.forEach((d, di) => d.classList.toggle("active", di === i));
+      }, { passive: true });
+    });
   }
 
   // WhatsApp Floating Widget Toggle
